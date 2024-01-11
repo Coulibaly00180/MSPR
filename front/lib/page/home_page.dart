@@ -7,7 +7,8 @@ class HomePage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        body: GridView.count(
+        body:
+        GridView.count(
           primary: false,
           padding: const EdgeInsets.all(20),
           crossAxisSpacing: 10,
@@ -17,25 +18,73 @@ class HomePage extends StatelessWidget {
             Container(
               padding: const EdgeInsets.all(8),
               color: Colors.teal[100],
-              child: const Text("MON PROFIL"),
+              child: const Center(
+                  child: Column(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      Icon(Icons.login),
+                      Text("MON PROFIL", textAlign: TextAlign.center),
+                    ],
+                  ),
+              ),
             ),
             Container(
               padding: const EdgeInsets.all(8),
               color: Colors.teal[200],
-              child: const Text('MES ANNONCES'),
+              child: const Center(
+                  child: Column(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      Icon(Icons.add_a_photo),
+                      Text('MES ANNONCES', textAlign: TextAlign.center),
+                    ],
+                  )
+              ),
             ),
             Container(
               padding: const EdgeInsets.all(8),
               color: Colors.teal[300],
-              child: const Text('MES AROSA-JE'),
+              child: const Center(
+                  child: Column(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      Icon(Icons.event_available),
+                      Text('MES AROSA-JE', textAlign: TextAlign.center),
+                    ],
+                  )
+              ),
             ),
             Container(
               padding: const EdgeInsets.all(8),
               color: Colors.teal[400],
-              child: const Text('CONSEILS'),
+              child: const Center(
+                  child: Column(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      Icon(Icons.comment),
+                      Text('CONSEILS', textAlign: TextAlign.center),
+                    ],
+                  ),
+              ),
             ),
           ],
-        )
+        ),
+        bottomNavigationBar: BottomNavigationBar(
+          items: const <BottomNavigationBarItem>[
+            BottomNavigationBarItem(
+              icon: Icon(Icons.home),
+              label: 'Accueil',
+            ),
+            BottomNavigationBarItem(
+              icon: Icon(Icons.search),
+              label: 'Recherche',
+            ),
+            BottomNavigationBarItem(
+              icon: Icon(Icons.add_a_photo),
+              label: 'Mes Annonces',
+            ),
+          ],
+        ),
     );
   }
 }
