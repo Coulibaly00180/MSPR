@@ -13,7 +13,7 @@ class _BottomAppBarMenuState extends State<BottomAppBarMenu> {
   final List<String> pageRoutes = [
     '/',
     '/search',
-    '/',
+    '/profil',
   ];
 
   @override
@@ -40,9 +40,9 @@ class _BottomAppBarMenuState extends State<BottomAppBarMenu> {
             label: 'Search',
           ),
           NavigationDestination(
-            selectedIcon: Icon(Icons.camera_alt_outlined),
-            icon: Icon(Icons.camera_alt),
-            label: 'Mes Annonces',
+            selectedIcon: Icon(Icons.person_2),
+            icon: Icon(Icons.person_2_outlined),
+            label: 'Mon Profil',
           ),
         ],
     );

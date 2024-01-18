@@ -9,8 +9,10 @@ class HomePage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        body:
-          Column(
+        appBar: AppBar(
+          title: const Text("Welcome !"),
+        ),
+        body: Column(
             children: [
               //Image.asset("assets/images/logo.png"),
               Expanded(
@@ -23,7 +25,7 @@ class HomePage extends StatelessWidget {
                   childAspectRatio: 1.6,
                   children: <Widget>[
                     ElevatedButton(
-                        onPressed: () => context.go("/"),
+                        onPressed: () => context.go("/profil"),
                         style: ButtonStyle(backgroundColor: MaterialStateProperty.all<Color>(Colors.green)),
                         child:
                         const Text(
@@ -34,7 +36,7 @@ class HomePage extends StatelessWidget {
                         style: ButtonStyle(backgroundColor: MaterialStateProperty.all<Color>(Colors.teal)),
                         child:
                         const Text(
-                            "MES AROSA-JE",
+                            "DECLARER UNE VISITE",
                             style: TextStyle(color : Colors.white,fontWeight: FontWeight.bold))),
                     ElevatedButton(
                         onPressed: () => context.go("/search"),
@@ -48,7 +50,7 @@ class HomePage extends StatelessWidget {
                         style: ButtonStyle(backgroundColor: MaterialStateProperty.all<Color>(Colors.green)),
                         child:
                         const Text(
-                            "CONSEILS",
+                            "CATALOGUE",
                             style: TextStyle(color : Colors.white, fontWeight: FontWeight.bold))),
                   ],
                 ),

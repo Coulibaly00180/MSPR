@@ -12,8 +12,10 @@ class SearchPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body:
-          FlutterMap(
+        appBar: AppBar(
+          title: const Text("Annonces à proximité"),
+        ),
+      body: FlutterMap(
               options: const MapOptions(
                   initialCenter: LatLng(47.2061667, -1.5419617), rotation: 0),
               mapController: mapController,
