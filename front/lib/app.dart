@@ -14,6 +14,7 @@ final _router = GoRouter(
           GoRoute(path: "search", builder: (_,__) => SearchPage()),
           GoRoute(path: "profil", builder: (_,__) => MyProfilPage()),
           GoRoute(path: "annonces", builder: (_, __) => MyAdsPage()),
+         // Je pense que il fait modifier le lien suivant
           GoRoute(path: "add-announcement", builder: (_, __) =>  AddAnnouncementPage()),
         ],
       )
