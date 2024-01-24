@@ -8,70 +8,87 @@ class MyProfilPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        title: const Text("Mon Profil"),
-      ),
-      body: Column(
-        children: [
-          Card(
-              elevation: 0,
-              shape: RoundedRectangleBorder(
-                borderRadius: BorderRadius.circular(12),
-                side: BorderSide(color:
-                Theme.of(context).colorScheme.outline),
+    Color cardColor = Colors.white;
+    TextStyle titleTextStyle = TextStyle(
+      fontWeight: FontWeight.bold,
+      color: Colors.black,
+    );
+    TextStyle contentTextStyle = TextStyle(
+      color: Colors.black,
+    );
+    BorderSide cardBorderSide = BorderSide(color: Colors.grey.shade700);
+
+    return Theme(
+      data: ThemeData.dark(),
+      child: Scaffold(
+        appBar: AppBar(
+          title: const Text("Mon Profil"),
+          backgroundColor: Colors.black,
+        ),
+        body: Padding(
+          padding: const EdgeInsets.all(16.0),
+          child: Column(
+            children: [
+              _buildCard(
+                title: "Mes Informations personelles",
+                contents: ["Nom", "Prénom", "Adresse"],
+                cardColor: cardColor,
+                titleTextStyle: titleTextStyle,
+                contentTextStyle: contentTextStyle,
+                cardBorderSide: cardBorderSide,
               ),
-              child: const Padding(
-                padding: EdgeInsets.all(16.0),
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.stretch,
-                  children: [
-                    Center(child: Text("Mes Informations personelles", style: TextStyle(fontWeight: FontWeight.bold),)),
-                    Text("Nom"),
-                    Text("Prénom"),
-                    Text("Adresse")
-                  ],
-                ),
-              )),
-          Card(
-            elevation: 0,
-            shape: RoundedRectangleBorder(
-                borderRadius: BorderRadius.circular(12),
-                side: BorderSide(color:
-                Theme.of(context).colorScheme.outline),
-            ),
-              child: const Padding(
-                padding: EdgeInsets.all(16.0),
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.stretch,
-                  children: [
-                    Center(child: Text("Mes Annonces", style: TextStyle(fontWeight: FontWeight.bold))),
-                    Text("Annonce 1"),
-                    Text("Annonce 1"),
-                  ],
-                ),
-              )
+              SizedBox(height: 16),
+              _buildCard(
+                title: "Mes Annonces",
+                contents: ["Annonce 1", "Annonce 2"],
+                cardColor: cardColor,
+                titleTextStyle: titleTextStyle,
+                contentTextStyle: contentTextStyle,
+                cardBorderSide: cardBorderSide,
+              ),
+              SizedBox(height: 16),
+              _buildCard(
+                title: "Mes Prochains ARosa-Je",
+                contents: ["Annonce 1", "Annonce 2"],
+                cardColor: cardColor,
+                titleTextStyle: titleTextStyle,
+                contentTextStyle: contentTextStyle,
+                cardBorderSide: cardBorderSide,
+              ),
+            ],
           ),
-          Card(
-              elevation: 0,
-              shape: RoundedRectangleBorder(
-                borderRadius: BorderRadius.circular(12),
-                side: BorderSide(color:
-                Theme.of(context).colorScheme.outline),
-              ),
-              child: const Padding(
-                padding: EdgeInsets.all(16.0),
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.stretch,
-                  children: [
-                    Center(child: Text("Mes Prochains ARosa-Je", style: TextStyle(fontWeight: FontWeight.bold))),
-                    Text("Annonce 1"),
-                    Text("Annonce 1"),
-                  ],
-                ))
-          )],
-      ),
+        ),
         bottomNavigationBar: BottomAppBarMenu(),
+        backgroundColor: Colors.black,
+      ),
+    );
+  }
+
+  Widget _buildCard({
+    required String title,
+    required List<String> contents,
+    required Color cardColor,
+    required TextStyle titleTextStyle,
+    required TextStyle contentTextStyle,
+    required BorderSide cardBorderSide,
+  }) {
+    return Card(
+      color: cardColor,
+      elevation: 0,
+      shape: RoundedRectangleBorder(
+        borderRadius: BorderRadius.circular(12),
+        side: cardBorderSide,
+      ),
+      child: Padding(
+        padding: const EdgeInsets.all(16.0),
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.stretch,
+          children: [
+            Center(child: Text(title, style: titleTextStyle)),
+            for (var content in contents) Text(content, style: contentTextStyle),
+          ],
+        ),
+      ),
     );
   }
 }
