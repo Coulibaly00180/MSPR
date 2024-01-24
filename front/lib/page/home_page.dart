@@ -8,56 +8,75 @@ class HomePage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
+    return Theme(
+      data: ThemeData.dark().copyWith(
+        cardColor: Colors.white,
+      ),
+      child: Scaffold(
         appBar: AppBar(
-          title: const Text("Welcome !"),
+          title: const Text("WELCOME !"),
+          centerTitle: true,
+          backgroundColor: Colors.black,
+          elevation: 0,
         ),
-        body: Column(
+        body: SafeArea(
+          child: Column(
             children: [
-              //Image.asset("assets/images/logo.png"),
+              Container(
+                padding: const EdgeInsets.all(16.0),
+                child: Image.asset("assets/images/logo.png", width: 100),
+              ),
+              Padding(
+                padding: const EdgeInsets.symmetric(horizontal: 20.0),
+                child: Text(
+                  "“A'rosa-je” aide les particuliers à prendre soin de leurs plantes, en les mettant en relation avec d’autres particuliers pour les garder en cas d’absence.",
+                  textAlign: TextAlign.center,
+                  style: TextStyle(fontSize: 16, color: Colors.white70),
+                ),
+              ),
               Expanded(
                 child: GridView.count(
                   primary: false,
-                  padding: const EdgeInsets.all(40),
-                  crossAxisSpacing: 6,
-                  mainAxisSpacing: 6,
+                  padding: const EdgeInsets.all(20),
+                  crossAxisSpacing: 10,
+                  mainAxisSpacing: 10,
                   crossAxisCount: 2,
-                  childAspectRatio: 1.6,
                   children: <Widget>[
-                    ElevatedButton(
-                        onPressed: () => context.go("/profil"),
-                        style: ButtonStyle(backgroundColor: MaterialStateProperty.all<Color>(Colors.green)),
-                        child:
-                        const Text(
-                            "MON PROFIL",
-                            style: TextStyle(color : Colors.white,fontWeight: FontWeight.bold))),
-                    ElevatedButton(
-                        onPressed: () => context.go("/"),
-                        style: ButtonStyle(backgroundColor: MaterialStateProperty.all<Color>(Colors.teal)),
-                        child:
-                        const Text(
-                            "DECLARER UNE VISITE",
-                            style: TextStyle(color : Colors.white,fontWeight: FontWeight.bold))),
-                    ElevatedButton(
-                        onPressed: () => context.go("/search"),
-                        style: ButtonStyle(backgroundColor: MaterialStateProperty.all<Color>(Colors.teal)),
-                        child:
-                        const Text(
-                            "TROUVER UNE PLANTE",
-                            style: TextStyle(color : Colors.white,fontWeight: FontWeight.bold))),
-                    ElevatedButton(
-                        onPressed: () => context.go("/"),
-                        style: ButtonStyle(backgroundColor: MaterialStateProperty.all<Color>(Colors.green)),
-                        child:
-                        const Text(
-                            "CATALOGUE",
-                            style: TextStyle(color : Colors.white, fontWeight: FontWeight.bold))),
+                    _buildButton(context, "FORUM", "forum", true),
+                    _buildButton(context, "MES ANNONCES", "annonces", false),
+                    _buildButton(context, "MES AROSA-JE", "arosa-je", false),
+                    _buildButton(context, "CONSEILS", "conseils", true),
                   ],
                 ),
               ),
             ],
           ),
-        bottomNavigationBar: BottomAppBarMenu()
+        ),
+        backgroundColor: Colors.black,
+        bottomNavigationBar: BottomAppBarMenu(),
+      ),
+    );
+  }
+
+  Widget _buildButton(BuildContext context, String text, String route, bool isLight) {
+    return Card(
+      color: isLight ? Colors.white : Colors.green.shade400,
+      child: InkWell(
+        onTap: () => context.go(route),
+        child: Center(
+          child: Text(
+            text,
+            textAlign: TextAlign.center,
+            style: TextStyle(
+              color: isLight ? Colors.black : Colors.white,
+              fontWeight: FontWeight.bold,
+            ),
+          ),
+        ),
+      ),
+      shape: RoundedRectangleBorder(
+        borderRadius: BorderRadius.circular(15),
+      ),
     );
   }
 }
