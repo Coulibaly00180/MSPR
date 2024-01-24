@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:front/page/add_announcements.dart';
 import 'package:front/page/home_page.dart';
+import 'package:front/page/my_announcements.dart';
 import 'package:front/page/my_profil_page.dart';
 import 'package:front/page/search_page.dart';
 import 'package:go_router/go_router.dart';
@@ -11,6 +13,8 @@ final _router = GoRouter(
         routes: [
           GoRoute(path: "search", builder: (_,__) => SearchPage()),
           GoRoute(path: "profil", builder: (_,__) => MyProfilPage()),
+          GoRoute(path: "annonces", builder: (_, __) => MyAdsPage()),
+          GoRoute(path: "add-announcement", builder: (_, __) =>  AddAnnouncementPage()),
         ],
       )
     ]);

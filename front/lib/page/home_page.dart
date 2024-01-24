@@ -57,12 +57,11 @@ class HomePage extends StatelessWidget {
       ),
     );
   }
-
   Widget _buildButton(BuildContext context, String text, String route, bool isLight) {
     return Card(
       color: isLight ? Colors.white : Colors.green.shade400,
       child: InkWell(
-        onTap: () => context.go(route),
+        onTap: () => context.go("/$route"),
         child: Center(
           child: Text(
             text,
