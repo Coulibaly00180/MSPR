@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import '../widgets/appbar/bottom_appbar_menu.dart';
 
 
+
 class AddAnnouncementPage extends StatelessWidget {
   const AddAnnouncementPage({Key? key}) : super(key: key);
 
@@ -85,7 +86,7 @@ class AddAnnouncementPage extends StatelessWidget {
                         const SizedBox(height: 20),
                         ElevatedButton(
                           onPressed: () {
-                            // TODO: Impplement les fonctions pour ajouter l'annonce
+                            // TODO: Implement les fonctions pour ajouter l'annonce
                           },
                           child: const Text('Ajouter mon annonce'),
                           style: ElevatedButton.styleFrom(

@@ -35,6 +35,7 @@ class MyAdsPage extends StatelessWidget {
                 subtitle: const Text('15/06/24 au 30/06/24'),
                 trailing: ElevatedButton(
                   onPressed: () {
+                    context.go('/annonces/$index/details');
                   },
                   child: const Text('DETAILS'),
                   style: ElevatedButton.styleFrom(
@@ -47,7 +48,6 @@ class MyAdsPage extends StatelessWidget {
           },
         ),
 
-        // Il faut Modifier ici pour fonction bien
         floatingActionButton: FloatingActionButton.extended(
           onPressed: ()=>
             context.go("/annonces/add"),

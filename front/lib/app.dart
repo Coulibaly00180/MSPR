@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:front/page/add_announcements.dart';
+import 'package:front/page/announce_details.dart';
 import 'package:front/page/home_page.dart';
 import 'package:front/page/my_announcements.dart';
 import 'package:front/page/my_profil_page.dart';
@@ -27,7 +28,11 @@ final _router = GoRouter(
           routes: [
             GoRoute(
               path: 'add',
-              builder: (BuildContext context, GoRouterState state) => const AddAnnouncementPage(),
+              builder: (BuildContext context, GoRouterState state) =>  AddAnnouncementPage(),
+            ),
+            GoRoute(
+              path: ':id/details',
+              builder: (BuildContext context, GoRouterState state) => PlantDetailsPage(),
             ),
           ],
         ),
