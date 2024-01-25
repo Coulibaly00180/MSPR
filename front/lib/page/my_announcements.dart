@@ -50,7 +50,7 @@ class MyAdsPage extends StatelessWidget {
         // Il faut Modifier ici pour fonction bien
         floatingActionButton: FloatingActionButton.extended(
           onPressed: ()=>
-            context.go("add-announcement"),
+            context.go("/annonces/add"),
           icon: const Icon(Icons.add),
           label: const Text('Ajouter une Annonce'),
           backgroundColor: Colors.green,

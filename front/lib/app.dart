@@ -8,17 +8,34 @@ import 'package:go_router/go_router.dart';
 
 
 final _router = GoRouter(
-    routes: [
-      GoRoute(path: "/", builder: (_,__) => HomePage(),
-        routes: [
-          GoRoute(path: "search", builder: (_,__) => SearchPage()),
-          GoRoute(path: "profil", builder: (_,__) => MyProfilPage()),
-          GoRoute(path: "annonces", builder: (_, __) => MyAdsPage()),
-         // Je pense que il fait modifier le lien suivant
-          GoRoute(path: "add-announcement", builder: (_, __) =>  AddAnnouncementPage()),
-        ],
-      )
-    ]);
+  routes: [
+    GoRoute(
+      path: '/',
+      builder: (BuildContext context, GoRouterState state) => const HomePage(),
+      routes: [
+        GoRoute(
+          path: 'search',
+          builder: (BuildContext context, GoRouterState state) => SearchPage(),
+        ),
+        GoRoute(
+          path: 'profil',
+          builder: (BuildContext context, GoRouterState state) =>  MyProfilPage(),
+        ),
+        GoRoute(
+          path: 'annonces',
+          builder: (BuildContext context, GoRouterState state) =>  MyAdsPage(),
+          routes: [
+            GoRoute(
+              path: 'add',
+              builder: (BuildContext context, GoRouterState state) => const AddAnnouncementPage(),
+            ),
+          ],
+        ),
+        // Other routes can be added here if necessary
+      ],
+    ),
+  ],
+);
 
 class MyApp extends StatelessWidget {
   const MyApp({super.key});
