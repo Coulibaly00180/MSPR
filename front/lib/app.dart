@@ -3,7 +3,7 @@ import 'package:front/page/add_announcements.dart';
 import 'package:front/page/announce_details.dart';
 import 'package:front/page/home_page.dart';
 import 'package:front/page/my_announcements.dart';
-import 'package:front/page/my_profil_page.dart';
+import 'package:front/page/my_profil.dart';
 import 'package:front/page/search_page.dart';
 import 'package:go_router/go_router.dart';
 
