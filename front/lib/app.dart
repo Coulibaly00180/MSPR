@@ -14,7 +14,7 @@ final _router = GoRouter(
   routes: [
     GoRoute(
       path: '/',
-      builder: (BuildContext context, GoRouterState state) =>ConnectionPage(),
+      builder: (BuildContext context, GoRouterState state) => ConnectionPage(),
       routes: [
         GoRoute(
           path: 'home',
