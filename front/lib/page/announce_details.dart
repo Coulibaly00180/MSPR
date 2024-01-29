@@ -27,17 +27,13 @@ class PlantDetailsPage extends StatelessWidget {
               'AGATA',
               style: TextStyle(
                 fontWeight: FontWeight.bold,
-                fontSize: 24,
-                color: Colors.white,
+                fontSize: 24
               ),
             ),
             const SizedBox(height: 10),
-            Text(
-              'ARosa-jeur: JohnD\nTaille: 45cm\nSon Nom: Nom\nType: Intérieur\nCe qu\'elle aime:',
-              style: TextStyle(
-                color: Colors.white70,
-                fontSize: 16,
-              ),
+            const Text(
+              'ARos-eur: JohnD\nTaille: 45cm\nSon Nom: Nom\nType: Intérieur\nCe qu\'elle aime:',
+              style: TextStyle(fontSize: 16,),
               textAlign: TextAlign.center,
             ),
             const SizedBox(height: 20),
@@ -45,31 +41,31 @@ class PlantDetailsPage extends StatelessWidget {
               onPressed: () {
                 //TODO Implement delete functionality
               },
-              child: const Text('Supprimer mon annonce'),
               style: ElevatedButton.styleFrom(
                 primary: Colors.red,
                 onPrimary: Colors.white,
                 minimumSize: const Size(double.infinity, 50),
               ),
+              child: const Text('Supprimer mon annonce')
             ),
             const SizedBox(height: 10),
             ElevatedButton(
               onPressed: () {
                 // TODO Implement contact functionality
               },
-              child: const Text('Contacter mon ARosa-jeur'),
               style: ElevatedButton.styleFrom(
                 primary: Colors.blue,
                 onPrimary: Colors.white,
                 minimumSize: const Size(double.infinity, 50),
               ),
+              child: const Text('Contacter mon ARos-eur'),
             ),
             const SizedBox(height: 30),
           ],
         ),
       ),
       floatingActionButtonLocation: FloatingActionButtonLocation.centerFloat,
-      bottomNavigationBar: BottomAppBarMenu(),
+      bottomNavigationBar: const BottomAppBarMenu(),
     );
   }
 }

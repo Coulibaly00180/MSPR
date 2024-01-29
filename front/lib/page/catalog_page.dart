@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:front/constant/css.dart';
 import 'package:front/widgets/searchBar/search_bar.dart';
 import '../widgets/appbar/bottom_appbar_menu.dart';
 
@@ -8,12 +9,14 @@ class CatalogPage extends StatefulWidget {
   @override
   State<CatalogPage> createState() => _CatalogPage();
 }
+
 class _CatalogPage extends State<CatalogPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text("Catalogue")
+        title: const Text("Catalogue"),
+        backgroundColor: greenBar,
       ),
       body: const SafeArea(
         child: Column(
