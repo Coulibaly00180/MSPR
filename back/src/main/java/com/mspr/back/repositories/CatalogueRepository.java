@@ -1,10 +1,7 @@
 package com.mspr.back.repositories;
 
-import org.springframework.stereotype.Repository;
+import com.mspr.back.entities.Catalogue;
+import org.springframework.data.repository.CrudRepository;
 
-/*
-public Class CatalogueRepository implements JpaRepository<Catalogue, Long> {
+public interface CatalogueRepository extends CrudRepository<Catalogue, Long> {
 }
-
-
- */
