@@ -9,58 +9,47 @@ class MyProfilPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     Color cardColor = Colors.white;
-    TextStyle titleTextStyle = TextStyle(
-      fontWeight: FontWeight.bold,
-      color: Colors.black,
-    );
-    TextStyle contentTextStyle = TextStyle(
-      color: Colors.black,
-    );
+    TextStyle titleTextStyle = const TextStyle(fontWeight: FontWeight.bold, color: Colors.black);
+    TextStyle contentTextStyle = const TextStyle(color: Colors.black);
     BorderSide cardBorderSide = BorderSide(color: Colors.grey.shade700);
 
-    return Theme(
-      data: ThemeData.dark(),
-      child: Scaffold(
-        appBar: AppBar(
-          title: const Text("Mon Profil"),
-          backgroundColor: Colors.black,
+    return Scaffold(
+      appBar: AppBar(
+        title: const Text("Mon Profil")),
+      body: Padding(
+        padding: const EdgeInsets.all(16.0),
+        child: Column(
+          children: [
+            _buildCard(
+              title: "Mes Informations personelles",
+              contents: ["Nom", "Prénom", "Adresse"],
+              cardColor: cardColor,
+              titleTextStyle: titleTextStyle,
+              contentTextStyle: contentTextStyle,
+              cardBorderSide: cardBorderSide,
+            ),
+            SizedBox(height: 16),
+            _buildCard(
+              title: "Mes Annonces",
+              contents: ["Annonce 1", "Annonce 2","Annonce 3"],
+              cardColor: cardColor,
+              titleTextStyle: titleTextStyle,
+              contentTextStyle: contentTextStyle,
+              cardBorderSide: cardBorderSide,
+            ),
+            SizedBox(height: 16),
+            _buildCard(
+              title: "Mes Prochains ARosa-Je",
+              contents: ["Annonce 1", "Annonce 2"],
+              cardColor: cardColor,
+              titleTextStyle: titleTextStyle,
+              contentTextStyle: contentTextStyle,
+              cardBorderSide: cardBorderSide,
+            ),
+          ],
         ),
-        body: Padding(
-          padding: const EdgeInsets.all(16.0),
-          child: Column(
-            children: [
-              _buildCard(
-                title: "Mes Informations personelles",
-                contents: ["Nom", "Prénom", "Adresse"],
-                cardColor: cardColor,
-                titleTextStyle: titleTextStyle,
-                contentTextStyle: contentTextStyle,
-                cardBorderSide: cardBorderSide,
-              ),
-              SizedBox(height: 16),
-              _buildCard(
-                title: "Mes Annonces",
-                contents: ["Annonce 1", "Annonce 2","Annonce 3"],
-                cardColor: cardColor,
-                titleTextStyle: titleTextStyle,
-                contentTextStyle: contentTextStyle,
-                cardBorderSide: cardBorderSide,
-              ),
-              SizedBox(height: 16),
-              _buildCard(
-                title: "Mes Prochains ARosa-Je",
-                contents: ["Annonce 1", "Annonce 2"],
-                cardColor: cardColor,
-                titleTextStyle: titleTextStyle,
-                contentTextStyle: contentTextStyle,
-                cardBorderSide: cardBorderSide,
-              ),
-            ],
-          ),
-        ),
-        bottomNavigationBar: BottomAppBarMenu(),
-        backgroundColor: Colors.black,
       ),
+      bottomNavigationBar: BottomAppBarMenu(),
     );
   }
 

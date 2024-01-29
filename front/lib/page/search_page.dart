@@ -54,7 +54,7 @@ class SearchPage extends StatelessWidget {
                   ),
                 ],
               ),
-              child: TextField(
+              child: const TextField(
                 decoration: InputDecoration(
                   hintText: 'Search here...',
                   border: InputBorder.none,

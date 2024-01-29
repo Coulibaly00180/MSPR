@@ -8,52 +8,43 @@ class HomePage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Theme(
-      data: ThemeData.dark().copyWith(
-        cardColor: Colors.white,
+    return Scaffold(
+      appBar: AppBar(
+        title: const Text("WELCOME !"),
+        centerTitle: true,
+        elevation: 0,
       ),
-      child: Scaffold(
-        appBar: AppBar(
-          title: const Text("WELCOME !"),
-          centerTitle: true,
-          backgroundColor: Colors.black,
-          elevation: 0,
+      body: SafeArea(
+        child: Column(
+          children: [
+            Image.asset("assets/images/logo.png", width: 150),
+            const Padding(
+              padding: EdgeInsets.symmetric(horizontal: 20.0),
+              child: Text(
+                "“A'rosa-je” aide les particuliers à prendre soin de leurs plantes, en les mettant en relation avec d’autres particuliers pour les garder en cas d’absence.",
+                textAlign: TextAlign.center,
+                style: TextStyle(fontSize: 16),
+              ),
+            ),
+            Expanded(
+              child: GridView.count(
+                primary: false,
+                padding: const EdgeInsets.all(20),
+                crossAxisSpacing: 3,
+                mainAxisSpacing: 0,
+                crossAxisCount: 2,
+                children: <Widget>[
+                  _buildButton(context, "MON PROFIL", "profil", true),
+                  _buildButton(context, "MES ANNONCES", "annonces", false),
+                  _buildButton(context, "MES AROSA-JE", "arosa-je", false),
+                  _buildButton(context, "CONSEILS", "catalog", true),
+                ],
+              ),
+            ),
+          ],
         ),
-        body: SafeArea(
-          child: Column(
-            children: [
-              Container(
-                child: Image.asset("assets/images/logo.png", width: 150),
-              ),
-              const Padding(
-                padding: const EdgeInsets.symmetric(horizontal: 20.0),
-                child: Text(
-                  "“A'rosa-je” aide les particuliers à prendre soin de leurs plantes, en les mettant en relation avec d’autres particuliers pour les garder en cas d’absence.",
-                  textAlign: TextAlign.center,
-                  style: TextStyle(fontSize: 16, color: Colors.white70),
-                ),
-              ),
-              Expanded(
-                child: GridView.count(
-                  primary: false,
-                  padding: const EdgeInsets.all(20),
-                  crossAxisSpacing: 3,
-                  mainAxisSpacing: 0,
-                  crossAxisCount: 2,
-                  children: <Widget>[
-                    _buildButton(context, "MON PROFIL", "profil", true),
-                    _buildButton(context, "MES ANNONCES", "annonces", false),
-                    _buildButton(context, "MES AROSA-JE", "arosa-je", false),
-                    _buildButton(context, "CONSEILS", "catalog", true),
-                  ],
-                ),
-              ),
-            ],
-          ),
-        ),
-        backgroundColor: Colors.black,
-        bottomNavigationBar: const BottomAppBarMenu(),
       ),
+      bottomNavigationBar: const BottomAppBarMenu(),
     );
   }
   Widget _buildButton(BuildContext context, String text, String route, bool isLight) {
@@ -69,7 +60,7 @@ class HomePage extends StatelessWidget {
             text,
             textAlign: TextAlign.center,
             style: TextStyle(
-              color: isLight ? Colors.black : Colors.white,
+              color: isLight ? Colors.green.shade400 : Colors.white,
               fontWeight: FontWeight.bold,
             ),
           ),
