@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:front/page/add_announcements.dart';
 import 'package:front/page/announce_details.dart';
 import 'package:front/page/catalog_page.dart';
+import 'package:front/page/connection.dart';
 import 'package:front/page/home_page.dart';
 import 'package:front/page/my_announcements.dart';
 import 'package:front/page/my_profil.dart';
@@ -28,6 +29,10 @@ final _router = GoRouter(
           builder: (BuildContext context, GoRouterState state) =>  MyProfilPage(),
         ),
         GoRoute(
+          path: 'conseils',
+          builder: (BuildContext context, GoRouterState state) => ConnectionPage(),
+        ),
+        GoRoute(
           path: 'annonces',
           builder: (BuildContext context, GoRouterState state) =>  MyAdsPage(),
           routes: [
@@ -41,7 +46,7 @@ final _router = GoRouter(
             ),
           ],
         ),
-        // Other routes can be added here if necessary
+
       ],
     ),
   ],
@@ -55,8 +60,8 @@ class MyApp extends StatelessWidget {
     return MaterialApp.router(
       debugShowCheckedModeBanner: false,
       title: 'ARosa-je',
-      theme: ThemeData.light(), // Define your light theme here (if any)
-      darkTheme: ThemeData.dark().copyWith( // Here you define the dark theme
+      theme: ThemeData.light(),
+      darkTheme: ThemeData.dark().copyWith(
         colorScheme: const ColorScheme.dark(
           primary: Colors.deepPurple,
           secondary: Colors.deepPurpleAccent,
