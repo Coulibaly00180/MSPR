@@ -12,7 +12,7 @@ class CatalogPage extends StatelessWidget {
         centerTitle: true,
         backgroundColor: Colors.black,
         elevation: 0,
-      )
+      ),
     );
   }
 }
