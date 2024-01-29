@@ -1,4 +1,3 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 class CatalogPage extends StatelessWidget {
@@ -13,6 +12,7 @@ class CatalogPage extends StatelessWidget {
         backgroundColor: Colors.black,
         elevation: 0,
       ),
+      body: Text("Recherche"),
     );
   }
 }
