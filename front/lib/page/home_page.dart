@@ -26,7 +26,7 @@ class HomePage extends StatelessWidget {
                 padding: const EdgeInsets.all(16.0),
                 child: Image.asset("assets/images/logo.png", width: 100),
               ),
-              Padding(
+             const Padding(
                 padding: const EdgeInsets.symmetric(horizontal: 20.0),
                 child: Text(
                   "“A'rosa-je” aide les particuliers à prendre soin de leurs plantes, en les mettant en relation avec d’autres particuliers pour les garder en cas d’absence.",

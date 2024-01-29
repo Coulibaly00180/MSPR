@@ -40,6 +40,11 @@ class _BottomAppBarMenuState extends State<BottomAppBarMenu> {
             label: 'Search',
           ),
           NavigationDestination(
+            selectedIcon: Icon(Icons.menu_book),
+            icon: Icon(Icons.menu_book_outlined),
+            label: 'Catalogue',
+          ),
+          NavigationDestination(
             selectedIcon: Icon(Icons.person_2),
             icon: Icon(Icons.person_2_outlined),
             label: 'Mon Profil',
