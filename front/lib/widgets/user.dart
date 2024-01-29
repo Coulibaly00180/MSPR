@@ -11,7 +11,6 @@ class UserService {
     User(email: 'user2@example.com', password: 'mypassword'),
   ];
 
-  // A method to validate user credentials.
   User? validateUser(String email, String password) {
     for (var user in _users) {
       if (user.email == email && user.password == password) {
@@ -20,6 +19,10 @@ class UserService {
     }
     return null;
   }
+
+  // Method to register a new user
+  void registerUser(String email, String password) {
+    final newUser = User(email: email, password: password);
+    _users.add(newUser);
+  }
 }
-
-

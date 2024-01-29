@@ -11,6 +11,8 @@ class ConnectionPage extends StatefulWidget {
 class _ConnectionPageState extends State<ConnectionPage> {
   final _formKey = GlobalKey<FormState>();
   final _userService = UserService();
+  final _loginFormKey = GlobalKey<FormState>();
+  final _registerFormKey = GlobalKey<FormState>();
 
   // Login state
   String email = '';
@@ -29,7 +31,7 @@ class _ConnectionPageState extends State<ConnectionPage> {
       if (user != null) {
         context.go('/home');
       } else {
-        _showErrorDialog();
+        _showErrorDialog('Invalid email or password.');
       }
     }
   }
@@ -37,19 +39,35 @@ class _ConnectionPageState extends State<ConnectionPage> {
   void _register() {
     if (_formKey.currentState!.validate()) {
       _formKey.currentState!.save();
-      // Registration logic goes here
-      print('Registered with Name: $regName, First Name: $regFirstName, Email: $regEmail, Password: $regPassword');
-      // Navigate to confirmation or login
+      _userService.registerUser(regEmail, regPassword);
+      _showSuccessDialog('User successfully registered.');
     }
   }
 
-  void _showErrorDialog() {
+  void _showErrorDialog(String message) {
     showDialog(
       context: context,
       builder: (BuildContext context) {
         return AlertDialog(
           title: Text("Error"),
-          content: Text("Invalid email or password."),
+          content: Text(message),
+          actions: <Widget>[
+            TextButton(
+              child: Text("Close"),
+              onPressed: () => Navigator.of(context).pop(),
+            ),
+          ],
+        );
+      },
+    );
+  }
+  void _showSuccessDialog(String message) {
+    showDialog(
+      context: context,
+      builder: (BuildContext context) {
+        return AlertDialog(
+          title: Text("Success"),
+          content: Text(message),
           actions: <Widget>[
             TextButton(
               child: Text("Close"),
