@@ -39,7 +39,7 @@ class HomePage extends StatelessWidget {
                   primary: false,
                   padding: const EdgeInsets.all(20),
                   crossAxisSpacing: 7,
-                  mainAxisSpacing: 7,
+                  mainAxisSpacing: 10,
                   crossAxisCount: 2,
                   children: <Widget>[
                     _buildButton(context, "FORUM", "forum", true),
