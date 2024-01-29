@@ -1,8 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:front/widgets/appbar/bottom_appbar_menu.dart';
-
-import '../widgets/user.dart';
-
+import 'package:go_router/go_router.dart';
+import '../widgets/user.dart'; // Adjust the import path based on your project structure
 
 class ConnectionPage extends StatefulWidget {
   @override
@@ -11,22 +10,25 @@ class ConnectionPage extends StatefulWidget {
 
 class _ConnectionPageState extends State<ConnectionPage> {
   final _formKey = GlobalKey<FormState>();
-  final _userService = UserService(); // Create an instance of UserService
+  final _userService = UserService();
 
+  // Login state
   String email = '';
   String password = '';
-  String name = '';
-  String firstName = '';
+
+  // Registration state
+  String regEmail = '';
+  String regPassword = '';
+  String regName = '';
+  String regFirstName = '';
 
   void _login() {
     if (_formKey.currentState!.validate()) {
       _formKey.currentState!.save();
       var user = _userService.validateUser(email, password);
       if (user != null) {
-        // Navigate to the home screen or dashboard
-        Navigator.pushReplacementNamed(context,'/home');
+        context.go('/home');
       } else {
-        // Show an error message
         _showErrorDialog();
       }
     }
@@ -35,10 +37,9 @@ class _ConnectionPageState extends State<ConnectionPage> {
   void _register() {
     if (_formKey.currentState!.validate()) {
       _formKey.currentState!.save();
-      // Here, you would usually send the data to your backend or authentication service
-      // For now, let's just print the data to the console
-      print('Name: $name, First Name: $firstName, Email: $email, Password: $password');
-      // You should then navigate to a confirmation screen or back to the login
+      // Registration logic goes here
+      print('Registered with Name: $regName, First Name: $regFirstName, Email: $regEmail, Password: $regPassword');
+      // Navigate to confirmation or login
     }
   }
 
@@ -47,20 +48,19 @@ class _ConnectionPageState extends State<ConnectionPage> {
       context: context,
       builder: (BuildContext context) {
         return AlertDialog(
-          title: new Text("Error"),
-          content: new Text("Invalid email or password."),
+          title: Text("Error"),
+          content: Text("Invalid email or password."),
           actions: <Widget>[
-            new TextButton(
-              child: new Text("Close"),
-              onPressed: () {
-                Navigator.of(context).pop();
-              },
+            TextButton(
+              child: Text("Close"),
+              onPressed: () => Navigator.of(context).pop(),
             ),
           ],
         );
       },
     );
   }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -76,63 +76,47 @@ class _ConnectionPageState extends State<ConnectionPage> {
             TextFormField(
               decoration: InputDecoration(labelText: 'Email'),
               keyboardType: TextInputType.emailAddress,
-              onSaved: (value) => email = value!,
+              onSaved: (value) => email = value ?? '',
               validator: (value) => value!.isEmpty ? 'Please enter your email' : null,
             ),
             TextFormField(
               decoration: InputDecoration(labelText: 'Mot de passe'),
               obscureText: true,
-              onSaved: (value) => password = value!,
+              onSaved: (value) => password = value ?? '',
               validator: (value) => value!.isEmpty ? 'Please enter your password' : null,
             ),
             TextButton(
               onPressed: () {
-                // TODO: Navigate to password recovery page
+                // Navigate to password recovery page
               },
               child: Text('Mot de passe oublié ?'),
             ),
             ElevatedButton(
-              onPressed: () {
-                if (_formKey.currentState!.validate()) {
-                  _formKey.currentState!.save();
-                  var user = _userService.validateUser(email, password);
-                  if (user != null) {
-                    // Navigate to the home screen or dashboard
-                    Navigator.pushReplacementNamed(context, '/home'); // Replace with your home route
-                  } else {
-                    // Show an error message
-                    _showErrorDialog();
-                  }                }
-              },
+              onPressed: _login,
               child: Text('Connexion'),
             ),
             Divider(color: Colors.grey),
             // Registration form
             TextFormField(
               decoration: InputDecoration(labelText: 'Nom'),
-              onSaved: (value) => name = value!,
+              onSaved: (value) => regName = value ?? '',
             ),
             TextFormField(
               decoration: InputDecoration(labelText: 'Prénom'),
-              onSaved: (value) => firstName = value!,
+              onSaved: (value) => regFirstName = value ?? '',
             ),
             TextFormField(
               decoration: InputDecoration(labelText: 'Email'),
               keyboardType: TextInputType.emailAddress,
-              onSaved: (value) => email = value!,
+              onSaved: (value) => regEmail = value ?? '',
             ),
             TextFormField(
               decoration: InputDecoration(labelText: 'Mot de passe'),
               obscureText: true,
-              onSaved: (value) => password = value!,
+              onSaved: (value) => regPassword = value ?? '',
             ),
             ElevatedButton(
-              onPressed: () {
-                if (_formKey.currentState!.validate()) {
-                  _formKey.currentState!.save();
-                  // TODO: Perform registration with name, first name, email, and password
-                }
-              },
+              onPressed: _register,
               child: Text('S\'inscrire'),
             ),
           ],
