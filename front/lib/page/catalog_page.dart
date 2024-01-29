@@ -1,8 +1,8 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
-class Catalog extends StatelessWidget {
-  const Catalog({super.key});
+class CatalogPage extends StatelessWidget {
+  const CatalogPage({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -12,7 +12,7 @@ class Catalog extends StatelessWidget {
         centerTitle: true,
         backgroundColor: Colors.black,
         elevation: 0,
-      )
+      ),
     );
   }
 }
