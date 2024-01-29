@@ -40,7 +40,7 @@ class MyProfilPage extends StatelessWidget {
               SizedBox(height: 16),
               _buildCard(
                 title: "Mes Annonces",
-                contents: ["Annonce 1", "Annonce 2"],
+                contents: ["Annonce 1", "Annonce 2","Annonce 3"],
                 cardColor: cardColor,
                 titleTextStyle: titleTextStyle,
                 contentTextStyle: contentTextStyle,
