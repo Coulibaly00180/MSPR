@@ -11,7 +11,7 @@ class BottomAppBarMenu extends StatefulWidget {
 class _BottomAppBarMenuState extends State<BottomAppBarMenu> {
   int currentPageIndex = 0;
   final List<String> pageRoutes = [
-    '/',
+    '/home',
     '/search',
     '/profil',
     '/catalog',

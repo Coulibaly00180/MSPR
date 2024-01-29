@@ -23,10 +23,9 @@ class HomePage extends StatelessWidget {
           child: Column(
             children: [
               Container(
-                padding: const EdgeInsets.all(16.0),
-                child: Image.asset("assets/images/logo.png", width: 100),
+                child: Image.asset("assets/images/logo.png", width: 150),
               ),
-             const Padding(
+              const Padding(
                 padding: const EdgeInsets.symmetric(horizontal: 20.0),
                 child: Text(
                   "“A'rosa-je” aide les particuliers à prendre soin de leurs plantes, en les mettant en relation avec d’autres particuliers pour les garder en cas d’absence.",
@@ -38,8 +37,8 @@ class HomePage extends StatelessWidget {
                 child: GridView.count(
                   primary: false,
                   padding: const EdgeInsets.all(20),
-                  crossAxisSpacing: 7,
-                  mainAxisSpacing: 10,
+                  crossAxisSpacing: 3,
+                  mainAxisSpacing: 0,
                   crossAxisCount: 2,
                   children: <Widget>[
                     _buildButton(context, "FORUM", "forum", true),
