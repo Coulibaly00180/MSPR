@@ -133,9 +133,12 @@ class _ConnectionPageState extends State<ConnectionPage> {
               obscureText: true,
               onSaved: (value) => regPassword = value ?? '',
             ),
-            ElevatedButton(
-              onPressed: _register,
-              child: Text('S\'inscrire'),
+            Padding(
+              padding: const EdgeInsets.all(8.0),
+              child: ElevatedButton(
+                onPressed: _register,
+                child: Text('S\'inscrire'),
+              ),
             ),
           ],
         ),
