@@ -54,11 +54,20 @@ class MyApp extends StatelessWidget {
     return MaterialApp.router(
       debugShowCheckedModeBanner: false,
       title: 'ARosa-je',
-      theme: ThemeData(
-        colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
-        useMaterial3: true,
+      theme: ThemeData.light(), // Define your light theme here (if any)
+      darkTheme: ThemeData.dark().copyWith( // Here you define the dark theme
+        colorScheme: ColorScheme.dark(
+          primary: Colors.deepPurple,
+          secondary: Colors.deepPurpleAccent,
+        ),
+        appBarTheme: AppBarTheme(
+          backgroundColor: Colors.black,
+          foregroundColor: Colors.white, // Text color
+        ),
       ),
+      themeMode: ThemeMode.dark,
       routerConfig: _router,
     );
   }
 }
+
