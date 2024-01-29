@@ -14,35 +14,36 @@ final _router = GoRouter(
   routes: [
     GoRoute(
       path: '/',
-      builder: (BuildContext context, GoRouterState state) => const HomePage(),
+      builder: (BuildContext context, GoRouterState state) =>ConnectionPage(),
       routes: [
+        GoRoute(
+          path: 'home',
+          builder: (BuildContext context, GoRouterState state) => HomePage(),
+        ),
         GoRoute(
           path: 'search',
           builder: (BuildContext context, GoRouterState state) => SearchPage(),
         ),
         GoRoute(
           path: 'catalog',
-          builder: (BuildContext context, GoRouterState state) => CatalogPage(),
+          builder: (BuildContext context, GoRouterState state) => const CatalogPage(),
         ),
         GoRoute(
           path: 'profil',
-          builder: (BuildContext context, GoRouterState state) =>  MyProfilPage(),
+          builder: (BuildContext context, GoRouterState state) => const MyProfilPage(),
         ),
-        GoRoute(
-          path: 'conseils',
-          builder: (BuildContext context, GoRouterState state) => ConnectionPage(),
-        ),
+
         GoRoute(
           path: 'annonces',
-          builder: (BuildContext context, GoRouterState state) =>  MyAdsPage(),
+          builder: (BuildContext context, GoRouterState state) =>  const MyAdsPage(),
           routes: [
             GoRoute(
               path: 'add',
-              builder: (BuildContext context, GoRouterState state) =>  AddAnnouncementPage(),
+              builder: (BuildContext context, GoRouterState state) =>  const AddAnnouncementPage(),
             ),
             GoRoute(
               path: ':id/details',
-              builder: (BuildContext context, GoRouterState state) => PlantDetailsPage(),
+              builder: (BuildContext context, GoRouterState state) => const PlantDetailsPage(),
             ),
           ],
         ),
