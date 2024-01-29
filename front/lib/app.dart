@@ -19,6 +19,10 @@ final _router = GoRouter(
           builder: (BuildContext context, GoRouterState state) => SearchPage(),
         ),
         GoRoute(
+          path: 'catalog',
+          builder: (BuildContext context, GoRouterState state) => SearchPage(),
+        ),
+        GoRoute(
           path: 'profil',
           builder: (BuildContext context, GoRouterState state) =>  MyProfilPage(),
         ),
