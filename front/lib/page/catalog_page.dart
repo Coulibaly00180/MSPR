@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import '../widgets/appbar/bottom_appbar_menu.dart';
 
 class CatalogPage extends StatefulWidget {
   const CatalogPage({super.key});
@@ -13,37 +14,20 @@ class _CatalogPage extends State<CatalogPage> {
       appBar: AppBar(
         title: const Text("Catalogue")
       ),
-      body: Padding(
-        padding: const EdgeInsets.all(8.0),
-        child: SearchAnchor(
-            builder: (BuildContext context, SearchController controller) {
-              return SearchBar(
-                controller: controller,
-                padding: const MaterialStatePropertyAll<EdgeInsets>(
-                    EdgeInsets.symmetric(horizontal: 16.0)),
-                onTap: () {
-                  controller.openView();
-                },
-                onChanged: (_) {
-                  controller.openView();
-                },
-                leading: const Icon(Icons.search),
-              );
-            }, suggestionsBuilder:
-            (BuildContext context, SearchController controller) {
-          return List<ListTile>.generate(5, (int index) {
-            final String item = 'item $index';
-            return ListTile(
-              title: Text(item),
-              onTap: () {
-                setState(() {
-                  controller.closeView(item);
-                });
-              },
-            );
-          });
-        }),
+      body: const SafeArea(
+        child: Column(
+          children: <Widget>[
+            Padding(
+              padding: EdgeInsets.all(8.0),
+              child: SearchBar(),
+            ),
+            Text('Résultats de la recherche :'),
+            Text('Derniers sujets ajoutés :'),
+            // Ajoutez d'autres widgets ici, comme la liste des résultats de recherche
+          ],
         ),
-      );
+      ),
+      bottomNavigationBar: const BottomAppBarMenu(),
+    );
   }
 }

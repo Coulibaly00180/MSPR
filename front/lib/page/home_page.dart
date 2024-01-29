@@ -41,10 +41,10 @@ class HomePage extends StatelessWidget {
                   mainAxisSpacing: 0,
                   crossAxisCount: 2,
                   children: <Widget>[
-                    _buildButton(context, "FORUM", "forum", true),
+                    _buildButton(context, "MON PROFIL", "profil", true),
                     _buildButton(context, "MES ANNONCES", "annonces", false),
                     _buildButton(context, "MES AROSA-JE", "arosa-je", false),
-                    _buildButton(context, "CONSEILS", "conseils", true),
+                    _buildButton(context, "CONSEILS", "catalog", true),
                   ],
                 ),
               ),
@@ -52,13 +52,16 @@ class HomePage extends StatelessWidget {
           ),
         ),
         backgroundColor: Colors.black,
-        bottomNavigationBar: BottomAppBarMenu(),
+        bottomNavigationBar: const BottomAppBarMenu(),
       ),
     );
   }
   Widget _buildButton(BuildContext context, String text, String route, bool isLight) {
     return Card(
       color: isLight ? Colors.white : Colors.green.shade400,
+      shape: RoundedRectangleBorder(
+        borderRadius: BorderRadius.circular(15),
+      ),
       child: InkWell(
         onTap: () => context.go("/$route"),
         child: Center(
@@ -71,9 +74,6 @@ class HomePage extends StatelessWidget {
             ),
           ),
         ),
-      ),
-      shape: RoundedRectangleBorder(
-        borderRadius: BorderRadius.circular(15),
       ),
     );
   }
