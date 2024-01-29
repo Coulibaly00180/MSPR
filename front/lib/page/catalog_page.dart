@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:front/widgets/searchBar/search_bar.dart';
 import '../widgets/appbar/bottom_appbar_menu.dart';
 
 class CatalogPage extends StatefulWidget {
@@ -19,7 +20,7 @@ class _CatalogPage extends State<CatalogPage> {
           children: <Widget>[
             Padding(
               padding: EdgeInsets.all(8.0),
-              child: SearchBar(),
+              child: SearchBox(),
             ),
             Text('Résultats de la recherche :'),
             Text('Derniers sujets ajoutés :'),

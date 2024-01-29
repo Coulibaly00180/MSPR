@@ -1,27 +1,27 @@
 import 'package:flutter/material.dart';
 
-class SearchBar extends StatefulWidget {
+class SearchBox extends StatefulWidget {
+  const SearchBox({super.key});
+
   @override
-  _SearchBarState createState() => _SearchBarState();
+  _SearchBoxState createState() => _SearchBoxState();
 }
 
-class _SearchBarState extends State<SearchBar> {
+class _SearchBoxState extends State<SearchBox> {
   final TextEditingController _controller = TextEditingController();
   @override
   Widget build(BuildContext context) {
     return TextField(
-      controller: _controller,
       decoration: InputDecoration(
-        hintText: 'Recherchez ici...',
-        prefixIcon: const Icon(Icons.search),
+        hintText: 'Search...',
+        prefixIcon: Icon(Icons.search),
         border: OutlineInputBorder(
-          borderRadius: BorderRadius.circular(8),
-          borderSide: const BorderSide(color: Colors.white),
+          borderRadius: BorderRadius.circular(10),
+          borderSide: BorderSide.none,
         ),
+        filled: true,
+        fillColor: Colors.blueGrey.shade200,
       ),
-      onChanged: (value) {
-        // Implémentez votre logique de recherche ici
-        // Par exemple, filtrer une liste ou appeler une API de recherche
-      });
+    );
   }
 }

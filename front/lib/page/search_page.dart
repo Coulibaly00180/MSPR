@@ -4,6 +4,7 @@ import 'package:flutter_map/flutter_map.dart';
 import 'package:latlong2/latlong.dart';
 
 import '../widgets/appbar/bottom_appbar_menu.dart';
+import '../widgets/searchBar/search_bar.dart';
 
 class SearchPage extends StatelessWidget {
   SearchPage({super.key});
@@ -36,32 +37,12 @@ class SearchPage extends StatelessWidget {
                 ),
               ]
           ),
-          Positioned(
+          const Positioned(
             top: 10,
             right: 15,
             left: 15,
-            child: Container(
-              padding: EdgeInsets.symmetric(horizontal: 15),
-              decoration: BoxDecoration(
-                color: Colors.white,
-                borderRadius: BorderRadius.circular(10),
-                boxShadow: [
-                  BoxShadow(
-                    color: Colors.grey.withOpacity(0.5),
-                    spreadRadius: 2,
-                    blurRadius: 7,
-                    offset: Offset(0, 3),
-                  ),
-                ],
-              ),
-              child: const TextField(
-                decoration: InputDecoration(
-                  hintText: 'Search here...',
-                  border: InputBorder.none,
-                  icon: Icon(Icons.search),
-                ),
-              ),
-            ),
+
+              child: SearchBox(),
           ),
         ],
       ),
