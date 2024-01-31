@@ -1,7 +1,7 @@
 package com.mspr.back.services;
 
-import com.mspr.back.entities.Catalogue;
-import com.mspr.back.repositories.CatalogueRepository;
+import com.mspr.back.entities.Plante;
+import com.mspr.back.repositories.PlanteRepository;
 import lombok.Data;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -12,22 +12,22 @@ import java.util.Optional;
 @Service
 public class CatalogueService {
     @Autowired
-    private CatalogueRepository catalogueRepository;
+    private PlanteRepository planteRepository;
 
-    public Optional<Catalogue> getCatalogue(final Long id) {
-        return catalogueRepository.findById(id);
+    public Optional<Plante> getPlante(final Long id) {
+        return planteRepository.findById(id);
     }
 
-    public Iterable<Catalogue> getCatalogues() {
-        return catalogueRepository.findAll();
+    public Iterable<Plante> getPlantes() {
+        return planteRepository.findAll();
     }
 
-    public void deleteCatalogue(final Long id) {
-        catalogueRepository.deleteById(id);
+    public void deletePlante(final Long id) {
+        planteRepository.deleteById(id);
     }
 
-    public Catalogue saveCatalogue(Catalogue catalogue) {
-        Catalogue savedCatalogue = catalogueRepository.save(catalogue);
-        return savedCatalogue;
+    public Plante savePlante(Plante plante) {
+        Plante savedPlante = planteRepository.save(plante);
+        return savedPlante;
     }
 }

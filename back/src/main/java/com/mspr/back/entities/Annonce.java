@@ -1,18 +1,14 @@
 package com.mspr.back.entities;
 
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
-import jakarta.persistence.Table;
+import jakarta.persistence.*;
 import lombok.Data;
 import java.time.LocalDate;
+import java.util.Set;
 
 
 @Data
 @Entity
-@Table(name = "Annonces")
+@Table(name = "Annonce")
 public class Annonce {
     
     @Id
@@ -27,5 +23,18 @@ public class Annonce {
 
     @Column(name = "date_fin", nullable = false)
     private LocalDate dateFin;
+
+    @ManyToMany(mappedBy = "annonces")
+    private Set<Utilisateur> utilisateurs_repondants;
+
+    @OneToMany(mappedBy = "annonce_publiee")
+    private Set<Utilisateur> utilisateurs_publiant;
+
+    @ManyToMany
+    @JoinTable(name = "presenter",
+            joinColumns = @JoinColumn(name = "id_annonce", referencedColumnName = "id"),
+            inverseJoinColumns = @JoinColumn(name = "id_plante", referencedColumnName = "id")
+    )
+    private Set<Plante> plantes;
 
 }

@@ -1,12 +1,9 @@
 package com.mspr.back.entities;
 
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
-import jakarta.persistence.Table;
+import jakarta.persistence.*;
 import lombok.Data;
+
+import java.util.Set;
 
 @Data
 @Entity
@@ -37,4 +34,17 @@ public class Utilisateur {
 
     @Column(name = "adresse_utilisateur", nullable = false)
     private String adresse;
+
+    @ManyToMany
+    @JoinTable(name = "repondre",
+            joinColumns = @JoinColumn(name = "id_utilisateur", referencedColumnName = "id"),
+            inverseJoinColumns = @JoinColumn(name = "id_annonce", referencedColumnName = "id")
+    )
+    private Set<Annonce> annonces_repondues;
+
+    @ManyToOne
+    @JoinColumn(name = "id_annonce")
+    private Annonce annonce_publiee;
+
+
 }

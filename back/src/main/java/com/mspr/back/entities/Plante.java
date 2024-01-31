@@ -1,17 +1,14 @@
 package com.mspr.back.entities;
 
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
-import jakarta.persistence.Table;
+import jakarta.persistence.*;
 import lombok.Data;
+
+import java.util.Set;
 
 @Data
 @Entity
-@Table(name = "Catalogues")
-public class Catalogue {
+@Table(name = "Plante")
+public class Plante {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -28,4 +25,10 @@ public class Catalogue {
 
     @Column(name = "categorie_plante", nullable = true)
     private String categorie;
+
+    @ManyToMany(mappedBy = "plantes")
+    private Set<Annonce> annonces;
+
 }
+
+
