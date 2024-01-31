@@ -2,10 +2,15 @@ package com.mspr.back.services;
 
 import com.mspr.back.entities.Botaniste;
 import com.mspr.back.entities.Utilisateur;
+import com.mspr.back.repositories.UtilisateurRepository;
+import lombok.Data;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import java.util.Optional;
 
+@Data
+@Service
 public class UtilisateurService {
 
     @Autowired
@@ -15,7 +20,7 @@ public class UtilisateurService {
         return utilisateurRepository.findById(id);
     }
 
-    public Iterable<Utilisateur> getUtilisateur() {
+    public Iterable<Utilisateur> getUtilisateurs() {
         return utilisateurRepository.findAll();
     }
 

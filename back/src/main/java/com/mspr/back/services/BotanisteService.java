@@ -2,10 +2,15 @@ package com.mspr.back.services;
 
 import com.mspr.back.entities.Annonce;
 import com.mspr.back.entities.Botaniste;
+import com.mspr.back.repositories.BotanisteRepository;
+import lombok.Data;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import java.util.Optional;
 
+@Data
+@Service
 public class BotanisteService {
 
     @Autowired
@@ -15,7 +20,7 @@ public class BotanisteService {
         return botanisteRepository.findById(id);
     }
 
-    public Iterable<Botaniste> getBotaniste() {
+    public Iterable<Botaniste> getBotanistes() {
         return botanisteRepository.findAll();
     }
 

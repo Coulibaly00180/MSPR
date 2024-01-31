@@ -1,11 +1,17 @@
 package com.mspr.back.services;
 
 import com.mspr.back.entities.Annonce;
+import com.mspr.back.repositories.AnnonceRepository;
+import lombok.Data;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import java.util.Optional;
 
+@Data
+@Service
 public class AnnonceService {
+
     @Autowired
     private AnnonceRepository annonceRepository;
 
@@ -13,7 +19,7 @@ public class AnnonceService {
         return annonceRepository.findById(id);
     }
 
-    public Iterable<Annonce> getAnnonce() {
+    public Iterable<Annonce> getAnnonces() {
         return annonceRepository.findAll();
     }
 

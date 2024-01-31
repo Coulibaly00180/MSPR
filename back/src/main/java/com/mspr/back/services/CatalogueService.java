@@ -2,12 +2,14 @@ package com.mspr.back.services;
 
 import com.mspr.back.entities.Catalogue;
 import com.mspr.back.repositories.CatalogueRepository;
+import lombok.Data;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Component;
+import org.springframework.stereotype.Service;
 
 import java.util.Optional;
 
-@Component
+@Data
+@Service
 public class CatalogueService {
     @Autowired
     private CatalogueRepository catalogueRepository;
@@ -16,7 +18,7 @@ public class CatalogueService {
         return catalogueRepository.findById(id);
     }
 
-    public Iterable<Catalogue> getCatalogue() {
+    public Iterable<Catalogue> getCatalogues() {
         return catalogueRepository.findAll();
     }
 
