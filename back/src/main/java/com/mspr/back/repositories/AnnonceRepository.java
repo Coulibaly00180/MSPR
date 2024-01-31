@@ -10,13 +10,13 @@ import java.util.List;
 @RepositoryRestResource(collectionResourceRel = "records", path = "annonces")
 public interface AnnonceRepository extends CrudRepository<Annonce, Long> {
 
-    List<Annonce> findByDateDebut(LocalDate date);
-
-    List<Annonce> getAnnonceByDateDebut(LocalDate date);
-
-    <Optional>Annonce findById(Long id);
-
-    //Annonce save(Annonce annonce);
+//    List<Annonce> findByDateDebut(LocalDate date);
+//
+//    List<Annonce> getAnnonceByDateDebut(LocalDate date);
+//
+//    <Optional>Annonce findById(Long id);
+//
+//    //Annonce save(Annonce annonce);
 
 
 }
