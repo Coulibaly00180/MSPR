@@ -1,12 +1,9 @@
 package com.mspr.back.entities;
 
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
-import jakarta.persistence.Table;
+import jakarta.persistence.*;
 import lombok.Data;
+
+import java.util.Set;
 
 @Data
 @Entity
@@ -34,4 +31,11 @@ public class Botaniste {
 
     @Column(name = "adresse_botaniste", nullable = false)
     private String adresse;
+
+    // Plantes ajoutees par le botaniste
+    @OneToMany(mappedBy = "botaniste_ajout")
+    private Set<Plante> plantes_ajoutees;
+
+    @OneToMany(mappedBy = "botaniste")
+    Set <Commentaire> commentaires;
 }

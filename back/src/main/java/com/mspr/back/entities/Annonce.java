@@ -24,17 +24,19 @@ public class Annonce {
     @Column(name = "date_fin", nullable = false)
     private LocalDate dateFin;
 
-    @ManyToMany(mappedBy = "annonces")
+    //Utilisateurs repondants aux annonces
+    @ManyToMany(mappedBy = "annonces-repondues")
     private Set<Utilisateur> utilisateurs_repondants;
 
+    //Utilisateurs publiant une annonce
     @OneToMany(mappedBy = "annonce_publiee")
     private Set<Utilisateur> utilisateurs_publiant;
 
-    @ManyToMany
-    @JoinTable(name = "presenter",
-            joinColumns = @JoinColumn(name = "id_annonce", referencedColumnName = "id"),
-            inverseJoinColumns = @JoinColumn(name = "id_plante", referencedColumnName = "id")
-    )
+    // les plantes concernant une annonce
+    @OneToMany(mappedBy = "annonces")
     private Set<Plante> plantes;
+
+    @OneToMany(mappedBy = "annonce")
+    Set <Commentaire> commentaires;
 
 }

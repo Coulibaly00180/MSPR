@@ -2,6 +2,7 @@ package com.mspr.back.entities;
 
 import jakarta.persistence.*;
 import lombok.Data;
+import  com.mspr.back.entities.Botaniste;
 
 import java.util.Set;
 
@@ -26,8 +27,14 @@ public class Plante {
     @Column(name = "categorie_plante", nullable = true)
     private String categorie;
 
-    @ManyToMany(mappedBy = "plantes")
-    private Set<Annonce> annonces;
+    @ManyToOne
+    @JoinColumn(name = "id_annonce")
+    private Annonce  annonces;
+
+    //Le botaniste qui ajoute la plante
+    @ManyToOne
+    @JoinColumn(name = "id_botaniste")
+    private Botaniste botaniste_ajout;
 
 }
 
