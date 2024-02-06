@@ -44,7 +44,6 @@ class HomePage extends StatelessWidget {
           ],
         ),
       ),
-      bottomNavigationBar: const BottomAppBarMenu(),
     );
   }
   Widget _buildButton(BuildContext context, String text, String route, bool isLight) {
