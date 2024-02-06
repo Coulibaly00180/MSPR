@@ -49,7 +49,6 @@ class MyProfilPage extends StatelessWidget {
           ],
         ),
       ),
-      bottomNavigationBar: BottomAppBarMenu(),
     );
   }
 
