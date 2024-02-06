@@ -31,7 +31,6 @@ class _CatalogPage extends State<CatalogPage> {
           ],
         ),
       ),
-      bottomNavigationBar: const BottomAppBarMenu(),
     );
   }
 }
