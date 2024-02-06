@@ -61,7 +61,64 @@ class MyApp extends StatelessWidget {
     return MaterialApp.router(
       debugShowCheckedModeBanner: false,
       title: 'ARosa-je',
-      routerConfig: _router,
+      //routerConfig: _router,
+      home: BottomMenu(),
+    );
+  }
+}
+
+class BottomMenu extends StatefullWidget {
+  @override
+  _BottomMenuState createState() => _BottomMenuState();
+}
+
+class _BottomMenuState extends State<BottomMenu>{
+  int _selectedIndex = 0;
+  static List<Widget> pages = <Widget>[
+    HomePage(),
+    CatalogPage(),
+    MyProfilPage(),
+    MyProfilPage(),
+  ];
+
+  void _onItemTapped(int index) {
+    setState(() {
+      _selectedIndex = index;
+    });
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(
+        title: Text('Application'),
+      ),
+      body: pages[_selectedIndex],
+      bottomNavigationBar: BottomNavigationBar(
+        backgroundColor: Colors.red,
+        selectedItemColor: Colors.blue,
+        unselectedItemColor: Colors.white,
+        items: [
+          BottomNavigationBarItem(
+            icon: Icon(Icons.home),
+            label: 'Home',
+          ),
+          BottomNavigationBarItem(
+            icon: Icon(Icons.star),
+            label: 'Ranking',
+          ),
+          BottomNavigationBarItem(
+            icon: Icon(Icons.bar_chart),
+            label: 'Stats',
+          ),
+          BottomNavigationBarItem(
+            icon: Icon(Icons.person),
+            label: 'Profile',
+          ),
+        ],
+        currentIndex: _selectedIndex,
+        onTap: _onItemTapped,
+      ),
     );
   }
 }
