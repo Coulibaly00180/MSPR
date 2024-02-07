@@ -58,7 +58,7 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp.router(
+    return MaterialApp(
       debugShowCheckedModeBanner: false,
       title: 'ARosa-je',
       //routerConfig: _router,
@@ -67,7 +67,7 @@ class MyApp extends StatelessWidget {
   }
 }
 
-class BottomMenu extends StatefullWidget {
+class BottomMenu extends StatefulWidget {
   @override
   _BottomMenuState createState() => _BottomMenuState();
 }
