@@ -1,6 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
+import '../constant/css.dart';
 import '../widgets/appbar/bottom_appbar_menu.dart';
 
 class MyProfilPage extends StatelessWidget {
@@ -15,7 +16,8 @@ class MyProfilPage extends StatelessWidget {
 
     return Scaffold(
       appBar: AppBar(
-        title: const Text("Mon Profil")),
+        title: const Text("Mon Profil"),
+        backgroundColor: greenBar,),
       body: Padding(
         padding: const EdgeInsets.all(16.0),
         child: Column(

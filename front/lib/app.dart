@@ -9,6 +9,7 @@ import 'package:front/page/my_profil.dart';
 import 'package:front/page/search_page.dart';
 import 'package:go_router/go_router.dart';
 
+import 'constant/css.dart';
 
 final _router = GoRouter(
   routes: [
@@ -32,7 +33,6 @@ final _router = GoRouter(
           path: 'profil',
           builder: (BuildContext context, GoRouterState state) => const MyProfilPage(),
         ),
-
         GoRoute(
           path: 'annonces',
           builder: (BuildContext context, GoRouterState state) =>  const MyAdsPage(),
@@ -45,12 +45,8 @@ final _router = GoRouter(
               path: ':id/details',
               builder: (BuildContext context, GoRouterState state) => const PlantDetailsPage(),
             ),
-          ],
-        ),
-
-      ],
-    ),
-  ],
+          ])],
+    )]
 );
 
 class MyApp extends StatelessWidget {
@@ -91,29 +87,29 @@ class _BottomMenuState extends State<BottomMenu>{
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Application'),
+        title: const Text('ARosa-Je'),
       ),
       body: pages[_selectedIndex],
       bottomNavigationBar: BottomNavigationBar(
         backgroundColor: Colors.red,
-        selectedItemColor: Colors.blue,
-        unselectedItemColor: Colors.white,
-        items: [
+        selectedItemColor: greenBar,
+        unselectedItemColor: Colors.grey.shade300,
+        items: const [
           BottomNavigationBarItem(
             icon: Icon(Icons.home),
             label: 'Home',
           ),
           BottomNavigationBarItem(
-            icon: Icon(Icons.star),
-            label: 'Ranking',
+            icon: Icon(Icons.menu_book),
+            label: 'Catalogue',
           ),
           BottomNavigationBarItem(
-            icon: Icon(Icons.bar_chart),
-            label: 'Stats',
+            icon: Icon(Icons.add_a_photo_outlined),
+            label: 'Mes Annonces',
           ),
           BottomNavigationBarItem(
             icon: Icon(Icons.person),
-            label: 'Profile',
+            label: 'Profil',
           ),
         ],
         currentIndex: _selectedIndex,
