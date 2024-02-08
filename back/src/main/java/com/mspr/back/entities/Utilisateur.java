@@ -14,8 +14,8 @@ public class Utilisateur {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @Column(name = "username_utilisateur", nullable = false, unique = true)
-    private String username;
+    @Column(name = "pseudo_utilisateur", nullable = false, unique = true)
+    private String pseudo;
 
     @Column(name = "password_utilisateur", nullable = false)
     private String password;
@@ -29,8 +29,6 @@ public class Utilisateur {
     @Column(name = "prenom_utilisateur", nullable = false)
     private String prenom;
 
-    @Column(name = "role_utilisateur", nullable = false)
-    private String role;
 
     @Column(name = "adresse_utilisateur", nullable = false)
     private String adresse;
@@ -42,9 +40,10 @@ public class Utilisateur {
     )
     private Set<Annonce> annonces_repondues;
 
-    @ManyToOne
-    @JoinColumn(name = "id_annonce")
-    private Annonce annonce_publiee;
+
+    @OneToMany(mappedBy = "utilisateur_publiant")
+    private Set<Annonce> annonces_publiees;
+
 
     @OneToMany(mappedBy = "utilisateur")
     Set <Commentaire> commentaires;

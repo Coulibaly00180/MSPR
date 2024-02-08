@@ -27,14 +27,13 @@ public class Plante {
     @Column(name = "categorie_plante", nullable = true)
     private String categorie;
 
-    @ManyToOne
-    @JoinColumn(name = "id_annonce")
-    private Annonce  annonces;
+    // la ou les annonces concernant la plantes
+    @ManyToMany(mappedBy = "plantes_annonce")
+    private Set<Annonce> annonces;
 
     //Le botaniste qui ajoute la plante
-    @ManyToOne
-    @JoinColumn(name = "id_botaniste")
-    private Botaniste botaniste_ajout;
+    @ManyToMany(mappedBy = "plantes_ajoutees")
+    private Set<Botaniste> botaniste_ajout;
 
 }
 
