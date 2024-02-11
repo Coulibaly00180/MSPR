@@ -50,7 +50,7 @@ class HomePage extends StatelessWidget {
                 iconData,
                 color: isLight ? Colors.green.shade400 : Colors.white,
               ),
-              SizedBox(height: 8), // Espacement entre l'icône et le texte
+              const SizedBox(height: 8), // Espacement entre l'icône et le texte
               Text(
                 text,
                 textAlign: TextAlign.center,
@@ -58,9 +58,8 @@ class HomePage extends StatelessWidget {
                   color: isLight ? Colors.green.shade400 : Colors.white,
                   fontWeight: FontWeight.bold,
                 ),
-              ),
-            ],
-          ),
+              )
+            ]),
         ),
       ),
     );

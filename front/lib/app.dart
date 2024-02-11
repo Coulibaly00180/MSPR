@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:front/page/add_announcements.dart';
 import 'package:front/page/announce_details.dart';
+import 'package:front/page/announcement_menu.dart';
 import 'package:front/page/catalog_page.dart';
 import 'package:front/page/connection.dart';
 import 'package:front/page/home_page.dart';
@@ -34,18 +35,26 @@ final _router = GoRouter(
           builder: (BuildContext context, GoRouterState state) => const MyProfilPage(),
         ),
         GoRoute(
-          path: 'annonces',
-          builder: (BuildContext context, GoRouterState state) =>  const MyAdsPage(),
+          path: 'annoncesMenu',
+          builder: (BuildContext context, GoRouterState state) =>  const AnnouncementPageMenu(),
           routes: [
             GoRoute(
-              path: 'add',
-              builder: (BuildContext context, GoRouterState state) =>  const AddAnnouncementPage(),
+              path: 'mesAnnonces',
+              builder: (BuildContext context, GoRouterState state) =>  const MyAdsPage(),
+                routes: [
+                  GoRoute(
+                    path: 'add',
+                    builder: (BuildContext context, GoRouterState state) =>  const AddAnnouncementPage(),
+                  ),
+                  GoRoute(
+                    path: ':id/details',
+                    builder: (BuildContext context, GoRouterState state) => const PlantDetailsPage(),
+                  ),
+                ]
             ),
-            GoRoute(
-              path: ':id/details',
-              builder: (BuildContext context, GoRouterState state) => const PlantDetailsPage(),
-            ),
-          ])],
+          ]
+        )
+      ],
     )]
 );
 
@@ -73,7 +82,7 @@ class _BottomMenuState extends State<BottomMenu>{
   static List<Widget> pages = <Widget>[
     HomePage(),
     CatalogPage(),
-    MyProfilPage(),
+    AnnouncementPageMenu(),
     MyProfilPage(),
   ];
 
@@ -91,7 +100,7 @@ class _BottomMenuState extends State<BottomMenu>{
       ),
       body: pages[_selectedIndex],
       bottomNavigationBar: BottomNavigationBar(
-        backgroundColor: Colors.red,
+        backgroundColor: Colors.black,
         selectedItemColor: greenBar,
         unselectedItemColor: Colors.grey.shade300,
         items: const [

@@ -44,7 +44,7 @@ class AnnouncementPageMenu extends StatelessWidget {
             text,
             textAlign: TextAlign.center,
             style: TextStyle(
-              color: isLight ? Colors.green.shade400 : Colors.white,
+              color: Colors.green.shade400,
               fontWeight: FontWeight.bold,
             ),
           ),
