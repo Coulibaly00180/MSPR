@@ -28,8 +28,6 @@ public class Commentaire {
     private Annonce annonce;
 
     private Integer numEntretien;
-    private LocalDateTime dateTimeEntretien;
-
-    private URL image;
+    private String texte;
 
 }
