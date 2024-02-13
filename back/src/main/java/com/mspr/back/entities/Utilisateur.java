@@ -1,12 +1,9 @@
 package com.mspr.back.entities;
 
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
-import jakarta.persistence.Table;
+import jakarta.persistence.*;
 import lombok.Data;
+
+import java.util.Set;
 
 @Data
 @Entity
@@ -17,8 +14,8 @@ public class Utilisateur {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @Column(name = "username_utilisateur", nullable = false, unique = true)
-    private String username;
+    @Column(name = "pseudo_utilisateur", nullable = false, unique = true)
+    private String pseudo;
 
     @Column(name = "password_utilisateur", nullable = false)
     private String password;
@@ -32,9 +29,24 @@ public class Utilisateur {
     @Column(name = "prenom_utilisateur", nullable = false)
     private String prenom;
 
-    @Column(name = "role_utilisateur", nullable = false)
-    private String role;
 
     @Column(name = "adresse_utilisateur", nullable = false)
     private String adresse;
+
+    @ManyToMany(fetch = FetchType.EAGER)
+    @JoinTable(name = "repondre",
+            joinColumns = @JoinColumn(name = "id_utilisateur", referencedColumnName = "id"),
+            inverseJoinColumns = @JoinColumn(name = "id_annonce", referencedColumnName = "id")
+    )
+    private Set<Annonce> annonces_repondues;
+
+
+    @OneToMany(mappedBy = "utilisateur_publiant")
+    private Set<Annonce> annonces_publiees;
+
+
+    @OneToMany(mappedBy = "utilisateur")
+    Set <Commentaire> commentaires;
+
+
 }

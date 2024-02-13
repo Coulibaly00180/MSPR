@@ -1,17 +1,15 @@
 package com.mspr.back.entities;
 
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
-import jakarta.persistence.Table;
+import jakarta.persistence.*;
 import lombok.Data;
+import  com.mspr.back.entities.Botaniste;
+
+import java.util.Set;
 
 @Data
 @Entity
-@Table(name = "Catalogues")
-public class Catalogue {
+@Table(name = "Plante")
+public class Plante {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -28,4 +26,15 @@ public class Catalogue {
 
     @Column(name = "categorie_plante", nullable = true)
     private String categorie;
+
+    // la ou les annonces concernant la plantes
+    @ManyToMany(mappedBy = "plantes_annonce")
+    private Set<Annonce> annonces;
+
+    //Le botaniste qui ajoute la plante
+    @ManyToMany(mappedBy = "plantes_ajoutees")
+    private Set<Botaniste> botaniste_ajout;
+
 }
+
+
