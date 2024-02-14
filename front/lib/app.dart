@@ -5,6 +5,7 @@ import 'package:front/page/announcement_menu.dart';
 import 'package:front/page/catalog_page.dart';
 import 'package:front/page/connection.dart';
 import 'package:front/page/home_page.dart';
+import 'package:front/page/mes_gardes.dart';
 import 'package:front/page/my_announcements.dart';
 import 'package:front/page/my_profil.dart';
 import 'package:front/page/search_page.dart';
@@ -38,6 +39,10 @@ final _router = GoRouter(
           path: 'annoncesMenu',
           builder: (BuildContext context, GoRouterState state) =>  const AnnouncementPageMenu(),
           routes: [
+            GoRoute(
+              path: 'mesGardes',
+              builder: (BuildContext context, GoRouterState state) =>  const MyGardesPage(),
+            ),
             GoRoute(
               path: 'mesAnnonces',
               builder: (BuildContext context, GoRouterState state) =>  const MyAdsPage(),

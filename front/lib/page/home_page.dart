@@ -22,7 +22,7 @@ class HomePage extends StatelessWidget {
                 crossAxisCount: 2,
                 children: <Widget>[
                   _buildButton(context, "MON PROFIL", FontAwesomeIcons.user,  "profil", true),
-                  _buildButton(context, "MES ANNONCES", FontAwesomeIcons.pagelines, "annonces", false),
+                  _buildButton(context, "MES ANNONCES", FontAwesomeIcons.pagelines, "annoncesMenu/annonces", false),
                   _buildButton(context, "MES AROSA-JE", FontAwesomeIcons.droplet, "arosa-je", false),
                   _buildButton(context, "CONSEILS", FontAwesomeIcons.book ,"catalog", true),
                 ],
