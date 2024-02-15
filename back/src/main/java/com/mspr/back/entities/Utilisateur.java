@@ -34,19 +34,20 @@ public class Utilisateur {
     private String adresse;
 
     @ManyToMany(fetch = FetchType.EAGER)
-    @JoinTable(name = "repondre",
+    @JoinTable(name = "accepte",
             joinColumns = @JoinColumn(name = "id_utilisateur", referencedColumnName = "id"),
             inverseJoinColumns = @JoinColumn(name = "id_annonce", referencedColumnName = "id")
     )
     private Set<Annonce> annonces_repondues;
 
+    @OneToMany(mappedBy = "utilisateur")
+    private Set<Plante> plantes;
 
-    @OneToMany(mappedBy = "utilisateur_publiant")
-    private Set<Annonce> annonces_publiees;
-
+    /*@OneToMany(mappedBy = "utilisateur_publiant")
+    *private Set<Annonce> annonces_publiees;
+    *
+    */
 
     @OneToMany(mappedBy = "utilisateur")
-    Set <Commentaire> commentaires;
-
-
+    private Set<Reponse> reponses;
 }

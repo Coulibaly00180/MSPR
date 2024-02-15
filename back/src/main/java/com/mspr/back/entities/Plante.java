@@ -32,8 +32,17 @@ public class Plante {
     private Set<Annonce> annonces;
 
     //Le botaniste qui ajoute la plante
-    @ManyToMany(mappedBy = "plantes_ajoutees")
-    private Set<Botaniste> botaniste_ajout;
+    /*@ManyToMany(mappedBy = "plantes_ajoutees")
+    * private Set<Botaniste> botaniste_ajout;
+    *
+     */
+
+    @OneToMany(mappedBy = "plante")
+    private Set<Commentaire> commentaires;
+
+    @ManyToOne
+    @JoinColumn(name="utilisateur_id")
+    private Utilisateur utilisateur;
 
 }
 
