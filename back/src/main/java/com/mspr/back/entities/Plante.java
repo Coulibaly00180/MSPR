@@ -19,7 +19,7 @@ public class Plante {
     private String nom;
 
     @Column(name = "photo_plante", nullable = false)
-    private String photo;
+    private String url_image;
 
     @Column(name = "description_plante", nullable = false)
     private String description;
@@ -32,8 +32,8 @@ public class Plante {
     private Set<Annonce> annonces;
 
     //Le botaniste qui ajoute la plante
-    @ManyToMany(mappedBy = "plantes_ajoutees")
-    private Set<Botaniste> botaniste_ajout;
+    //@ManyToMany(mappedBy = "plantes_ajoutees")
+    //private Set<Botaniste> botaniste_ajout;
 
 }
 

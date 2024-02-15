@@ -13,5 +13,4 @@ public class Config {
         configurer.setLocation(new FileSystemResource(".env"));
         return configurer;
     }
-
 }

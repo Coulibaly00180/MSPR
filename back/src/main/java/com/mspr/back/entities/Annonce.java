@@ -25,13 +25,13 @@ public class Annonce {
     private LocalDate dateFin;
 
     //Utilisateurs repondants aux annonces
-    @ManyToMany(mappedBy = "annonces_repondues")
-    private Set<Utilisateur> utilisateurs_repondants;
+    //@ManyToMany(mappedBy = "annonces_repondues")
+    //private Set<Utilisateur> utilisateurs_repondants;
 
     //Utilisateurs publiant une annonce
-    @ManyToOne
-    @JoinColumn(name = "id_utilisateur")
-    private Utilisateur utilisateur_publiant;
+    //@ManyToOne
+    //@JoinColumn(name = "id_utilisateur")
+    //private Utilisateur utilisateur_publiant;
 
 
     // La ou les plantes présentent dans une annonce
