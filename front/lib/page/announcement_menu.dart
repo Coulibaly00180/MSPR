@@ -9,18 +9,12 @@ class AnnouncementPageMenu extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        title: const Text('Mes Plantes'),
-        backgroundColor: greenBar,
-      ),
-      body: Center(
-        child: Column(
+    return Center(
+      child: Column(
           children : [
             _buildButton(context, "MES GARDES", "annonces", true),
             _buildButton(context, "MES ANNONCES", "annoncesMenu/mesAnnonces", false)
           ]),
-      )
     );
   }
 

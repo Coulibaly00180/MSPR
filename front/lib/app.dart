@@ -14,121 +14,108 @@ import 'package:go_router/go_router.dart';
 import 'constant/css.dart';
 
 final _router = GoRouter(
-  routes: [
-    GoRoute(
-      path: '/',
-      builder: (BuildContext context, GoRouterState state) => ConnectionPage(),
-      routes: [
-        GoRoute(
-          path: 'home',
-          builder: (BuildContext context, GoRouterState state) => HomePage(),
-        ),
-        GoRoute(
-          path: 'search',
-          builder: (BuildContext context, GoRouterState state) => SearchPage(),
-        ),
-        GoRoute(
-          path: 'catalog',
-          builder: (BuildContext context, GoRouterState state) => const CatalogPage(),
-        ),
-        GoRoute(
-          path: 'profil',
-          builder: (BuildContext context, GoRouterState state) => const MyProfilPage(),
-        ),
-        GoRoute(
-          path: 'annoncesMenu',
-          builder: (BuildContext context, GoRouterState state) =>  const AnnouncementPageMenu(),
-          routes: [
-            GoRoute(
-              path: 'mesGardes',
-              builder: (BuildContext context, GoRouterState state) =>  const MyGardesPage(),
-            ),
-            GoRoute(
-              path: 'mesAnnonces',
-              builder: (BuildContext context, GoRouterState state) =>  const MyAdsPage(),
-                routes: [
-                  GoRoute(
-                    path: 'add',
-                    builder: (BuildContext context, GoRouterState state) =>  const AddAnnouncementPage(),
-                  ),
-                  GoRoute(
-                    path: ':id/details',
-                    builder: (BuildContext context, GoRouterState state) => const PlantDetailsPage(),
-                  ),
-                ]
-            ),
-          ]
-        )
-      ],
-    )]
+    routes: [
+      GoRoute(
+        path: '/',
+        builder: (BuildContext context, GoRouterState state) => ConnectionPage(),
+        routes: [
+          GoRoute(
+            path: 'home',
+            builder: (BuildContext context, GoRouterState state) => HomePage(),
+          ),
+          GoRoute(
+            path: 'search',
+            builder: (BuildContext context, GoRouterState state) => SearchPage(),
+          ),
+          GoRoute(
+            path: 'catalog',
+            builder: (BuildContext context, GoRouterState state) => const CatalogPage(),
+          ),
+          GoRoute(
+            path: 'profil',
+            builder: (BuildContext context, GoRouterState state) => const MyProfilPage(),
+          ),
+          GoRoute(
+              path: 'annoncesMenu',
+              builder: (BuildContext context, GoRouterState state) =>  const AnnouncementPageMenu(),
+              routes: [
+                GoRoute(
+                  path: 'mesGardes',
+                  builder: (BuildContext context, GoRouterState state) =>  const MyGardesPage(),
+                ),
+                GoRoute(
+                    path: 'mesAnnonces',
+                    builder: (BuildContext context, GoRouterState state) =>  const MyAdsPage(),
+                    routes: [
+                      GoRoute(
+                        path: 'add',
+                        builder: (BuildContext context, GoRouterState state) =>  const AddAnnouncementPage(),
+                      ),
+                      GoRoute(
+                        path: ':id/details',
+                        builder: (BuildContext context, GoRouterState state) => const PlantDetailsPage(),
+                      ),
+                    ]
+                ),
+              ]
+          )
+        ],
+      )]
 );
 
-class MyApp extends StatelessWidget {
-  const MyApp({super.key});
+class MyApp extends StatefulWidget {
+  const MyApp({Key? key}) : super(key: key);
 
+  @override
+  State<MyApp> createState() => _MyAppState();
+}
+class _MyAppState extends State<MyApp> {
+  int _currentIndex = 0;
+  SetCurrentIndex(int index){
+    setState(() {
+      _currentIndex = index;
+    });
+  }
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      debugShowCheckedModeBanner: false,
-      title: 'ARosa-je',
-      //routerConfig: _router,
-      home: BottomMenu(),
-    );
-  }
-}
-
-class BottomMenu extends StatefulWidget {
-  @override
-  _BottomMenuState createState() => _BottomMenuState();
-}
-
-class _BottomMenuState extends State<BottomMenu>{
-  int _selectedIndex = 0;
-  static List<Widget> pages = <Widget>[
-    HomePage(),
-    CatalogPage(),
-    AnnouncementPageMenu(),
-    MyProfilPage(),
-  ];
-
-  void _onItemTapped(int index) {
-    setState(() {
-      _selectedIndex = index;
-    });
-  }
-
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        title: const Text('ARosa-Je'),
-      ),
-      body: pages[_selectedIndex],
-      bottomNavigationBar: BottomNavigationBar(
-        backgroundColor: Colors.black,
-        selectedItemColor: greenBar,
-        unselectedItemColor: Colors.grey.shade300,
-        items: const [
-          BottomNavigationBarItem(
-            icon: Icon(Icons.home),
-            label: 'Home',
-          ),
-          BottomNavigationBarItem(
-            icon: Icon(Icons.menu_book),
-            label: 'Catalogue',
-          ),
-          BottomNavigationBarItem(
-            icon: Icon(Icons.add_a_photo_outlined),
-            label: 'Mes Annonces',
-          ),
-          BottomNavigationBarItem(
-            icon: Icon(Icons.person),
-            label: 'Profil',
-          ),
-        ],
-        currentIndex: _selectedIndex,
-        onTap: _onItemTapped,
-      ),
+        debugShowCheckedModeBanner: false, //routerConfig: _router,
+        home: Scaffold(
+            appBar: AppBar(
+              title: Text("ARosa-Je"),
+            ),
+            body: [
+              const HomePage(),
+              SearchPage(),
+              const AnnouncementPageMenu(),
+              const MyProfilPage()
+            ][_currentIndex],
+            bottomNavigationBar: BottomNavigationBar(
+                backgroundColor: Colors.black,
+                selectedItemColor: greenBar,
+                elevation: 10,
+                currentIndex: _currentIndex,
+                onTap: (index) => SetCurrentIndex(index),
+                unselectedItemColor: Colors.grey.shade300,
+                items: const [
+                  BottomNavigationBarItem(
+                    icon: Icon(Icons.home),
+                    label: 'Home',
+                  ),
+                  BottomNavigationBarItem(
+                    icon: Icon(Icons.map),
+                    label: 'Recherche',
+                  ),
+                  BottomNavigationBarItem(
+                    icon: Icon(Icons.add_a_photo_outlined),
+                    label: 'Mes Annonces',
+                  ),
+                  BottomNavigationBarItem(
+                    icon: Icon(Icons.person),
+                    label: 'Profil',
+                  ),
+                ])
+        )
     );
   }
 }
