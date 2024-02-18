@@ -1,7 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
-import '../constant/css.dart';
+import '../../constant/css.dart';
 
 class MyGardesPage extends StatelessWidget {
   const MyGardesPage({super.key});

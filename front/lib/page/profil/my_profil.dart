@@ -1,8 +1,8 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
-import '../constant/css.dart';
-import '../widgets/appbar/bottom_appbar_menu.dart';
+import '../../constant/css.dart';
+import '../../widgets/appbar/bottom_appbar_menu.dart';
 
 class MyProfilPage extends StatelessWidget {
   const MyProfilPage({super.key});

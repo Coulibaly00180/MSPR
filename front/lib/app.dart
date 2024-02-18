@@ -1,14 +1,14 @@
 import 'package:flutter/material.dart';
-import 'package:front/page/add_announcements.dart';
-import 'package:front/page/announce_details.dart';
-import 'package:front/page/announcement_menu.dart';
-import 'package:front/page/catalog_page.dart';
+import 'package:front/page/annonces/add_announcements.dart';
+import 'package:front/page/annonces/announce_details.dart';
+import 'package:front/page/annonces/announcement_menu.dart';
+import 'package:front/page/catalogue/catalog_page.dart';
 import 'package:front/page/connection.dart';
-import 'package:front/page/home_page.dart';
-import 'package:front/page/mes_gardes.dart';
-import 'package:front/page/my_announcements.dart';
-import 'package:front/page/my_profil.dart';
-import 'package:front/page/search_page.dart';
+import 'package:front/page/home/home_page.dart';
+import 'package:front/page/annonces/mes_gardes.dart';
+import 'package:front/page/annonces/my_announcements.dart';
+import 'package:front/page/profil/my_profil.dart';
+import 'package:front/page/search/search_page.dart';
 import 'package:go_router/go_router.dart';
 
 import 'constant/css.dart';

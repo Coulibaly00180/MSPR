@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import '../widgets/appbar/bottom_appbar_menu.dart';
+import '../../widgets/appbar/bottom_appbar_menu.dart';
 
 
 class PlantDetailsPage extends StatelessWidget {
