@@ -14,7 +14,7 @@ class SearchPage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text("Annonces à proximité"),
+        title: const Text("Rechercher une annonce"),
       ),
       body: Stack(
         children: [
