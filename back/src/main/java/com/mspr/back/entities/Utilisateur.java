@@ -5,11 +5,18 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import org.springframework.security.core.GrantedAuthority;
+import org.springframework.security.core.userdetails.UserDetails;
+
+
 import javax.validation.constraints.Email;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.Size;
 
+import java.util.Collection;
+
 import java.util.Objects;
+
 import java.util.Set;
 
 @Data
@@ -17,7 +24,7 @@ import java.util.Set;
 @AllArgsConstructor
 @NoArgsConstructor
 @Table(name = "Utilisateur")
-public class Utilisateur {
+public class Utilisateur implements UserDetails {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -57,9 +64,10 @@ public class Utilisateur {
     private Set<Plante> plantes;
 
     /*@OneToMany(mappedBy = "utilisateur_publiant")
-    *private Set<Annonce> annonces_publiees;
-    *
-    */
+     *private Set<Annonce> annonces_publiees;
+     *
+     */
+
 
     @OneToMany(mappedBy = "utilisateur")
     private Set<Reponse> reponses;
@@ -68,6 +76,113 @@ public class Utilisateur {
     public Long getId() {
         return id;
     }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
+
+    public String getPseudo() {
+        return pseudo;
+    }
+
+    public void setPseudo(String pseudo) {
+        this.pseudo = pseudo;
+    }
+
+    @Override
+    public Collection<? extends GrantedAuthority> getAuthorities() {
+        return null;
+    }
+
+    public String getPassword() {
+        return password;
+    }
+
+    @Override
+    public String getUsername() {
+        return null;
+    }
+
+    @Override
+    public boolean isAccountNonExpired() {
+        return false;
+    }
+
+    @Override
+    public boolean isAccountNonLocked() {
+        return false;
+    }
+
+    @Override
+    public boolean isCredentialsNonExpired() {
+        return false;
+    }
+
+    @Override
+    public boolean isEnabled() {
+        return false;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
+    }
+
+    public String getNom() {
+        return nom;
+    }
+
+    public void setNom(String nom) {
+        this.nom = nom;
+    }
+
+    public String getPrenom() {
+        return prenom;
+    }
+
+    public void setPrenom(String prenom) {
+        this.prenom = prenom;
+    }
+
+    public String getAdresse() {
+        return adresse;
+    }
+
+    public void setAdresse(String adresse) {
+        this.adresse = adresse;
+    }
+
+    public Set<Annonce> getAnnonces_repondues() {
+        return annonces_repondues;
+    }
+
+    public void setAnnonces_repondues(Set<Annonce> annonces_repondues) {
+        this.annonces_repondues = annonces_repondues;
+    }
+
+    public Set<Plante> getPlantes() {
+        return plantes;
+    }
+
+    public void setPlantes(Set<Plante> plantes) {
+        this.plantes = plantes;
+    }
+
+    public Set<Reponse> getReponses() {
+        return reponses;
+    }
+
+    public void setReponses(Set<Reponse> reponses) {
+        this.reponses = reponses;
+    }
+}
 
     public void setId(Long id) {
         this.id = id;
@@ -158,3 +273,4 @@ public class Utilisateur {
         return Objects.hash(id, password, email);
     }
 }
+

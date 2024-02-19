@@ -11,7 +11,6 @@ public interface PlanteRepository extends CrudRepository<Plante, Long> {
     List<Catalogue> findAllBy(String categorie);
 
     Optional<Catalogue> findById(Long id);
-
      */
 
 }

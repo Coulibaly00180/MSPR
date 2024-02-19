@@ -24,9 +24,10 @@ public class Annonce {
     @Column(name = "date_fin", nullable = false)
     private LocalDate dateFin;
 
-    //Utilisateurs repondants aux annonces
+    // Utilisateurs repondants aux annonces
     @ManyToMany(mappedBy = "annonces_repondues")
     private Set<Utilisateur> utilisateurs_repondants;
+
 
     //Utilisateurs publiant une annonce
    /* @ManyToOne
@@ -46,6 +47,5 @@ public class Annonce {
 
     @OneToMany(mappedBy = "annonce")
     private Set<Reponse> reponses;
-
 
 }
