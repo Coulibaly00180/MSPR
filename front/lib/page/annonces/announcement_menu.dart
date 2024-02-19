@@ -27,7 +27,7 @@ class AnnouncementPageMenu extends StatelessWidget {
           borderRadius: BorderRadius.circular(15),
         ),
         child: InkWell(
-          onTap: () => context.go("/$route"),
+          onTap: () => Navigator.pushNamed(context, "/$route"),
           child: Center(
             child: Text(
               text,

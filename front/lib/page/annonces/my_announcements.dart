@@ -1,6 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 
+import 'add_announcements.dart';
+import 'announce_details.dart';
+
 
 class MyAdsPage extends StatelessWidget {
   const MyAdsPage({Key? key}) : super(key: key);
@@ -32,7 +35,10 @@ class MyAdsPage extends StatelessWidget {
               subtitle: const Text('15/06/24 au 30/06/24'),
               trailing: ElevatedButton(
                 onPressed: () {
-                  context.go('/annonces/$index/details');
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(builder: (context) => const PlantDetailsPage()), // Utilisation de PlantDetailsPage
+                  );
                 },
                 child: const Text('DETAILS'),
                 style: ElevatedButton.styleFrom(
@@ -46,8 +52,12 @@ class MyAdsPage extends StatelessWidget {
       ),
 
       floatingActionButton: FloatingActionButton.extended(
-        onPressed: ()=>
-          context.go("/annoncesMenu/mesAnnonces/add"),
+        onPressed: () {
+          Navigator.push(
+            context,
+            MaterialPageRoute(builder: (context) => const AddAnnouncementPage()),
+          );
+        },
         icon: const Icon(Icons.add),
         label: const Text('Ajouter une Annonce'),
         backgroundColor: Colors.green,
