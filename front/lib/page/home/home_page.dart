@@ -2,8 +2,32 @@ import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:navigator/navigator.dart';
 
-class HomePage extends StatelessWidget {
+class HomePage extends StatefulWidget {
   const HomePage({Key? key}) : super(key: key);
+
+  @override
+  State<HomePage> createState() => _HomePageState();
+}
+
+class _HomePageState extends State<HomePage> {
+  // Track the pressed state of each button
+  Map<String, bool> _isPressed = {};
+
+  @override
+  void initState() {
+    super.initState();
+    // Schedule the welcome message to show after the build method is complete
+    WidgetsBinding.instance.addPostFrameCallback((_) => _showWelcomeMessage());
+  }
+
+  void _showWelcomeMessage() {
+    final snackBar = SnackBar(
+      content: Text('Welcome to the App!', textAlign: TextAlign.center),
+      duration: Duration(seconds: 2),
+      backgroundColor: Theme.of(context).primaryColor,
+    );
+    ScaffoldMessenger.of(context).showSnackBar(snackBar);
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -34,32 +58,43 @@ class HomePage extends StatelessWidget {
   }
 
   Widget _buildButton(BuildContext context, String text, IconData iconData, String route) {
-    return Card(
-      shape: RoundedRectangleBorder(
-        borderRadius: BorderRadius.circular(15),
-      ),
-      child: InkWell(
-        onTap: () {
-          Navigator.of(context).pushNamed(route);
-        },
-        child: Center(
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              Icon(
-                iconData,
-                color: Theme.of(context).primaryColor,
-              ),
-              const SizedBox(height: 8), // Espacement entre l'icône et le texte
-              Text(
-                text,
-                textAlign: TextAlign.center,
-                style: TextStyle(
+    final isButtonPressed = _isPressed[route] ?? false; // Default to not pressed
+
+    return GestureDetector(
+      onTapDown: (_) => setState(() => _isPressed[route] = true),
+      onTapCancel: () => setState(() => _isPressed[route] = false),
+      onTapUp: (_) => setState(() => _isPressed[route] = false),
+      onTap: () {
+        Navigator.of(context).pushNamed(route);
+        setState(() => _isPressed[route] = false); // Reset the state when the button is tapped
+      },
+      child: AnimatedContainer(
+        duration: const Duration(milliseconds: 100),
+        curve: Curves.easeInOut,
+        transform: Matrix4.diagonal3Values(isButtonPressed ? 0.95 : 1.0, isButtonPressed ? 0.95 : 1.0, 1),
+        child: Card(
+          shape: RoundedRectangleBorder(
+            borderRadius: BorderRadius.circular(15),
+          ),
+          child: Center(
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                Icon(
+                  iconData,
                   color: Theme.of(context).primaryColor,
-                  fontWeight: FontWeight.bold,
                 ),
-              ),
-            ],
+                const SizedBox(height: 8),
+                Text(
+                  text,
+                  textAlign: TextAlign.center,
+                  style: TextStyle(
+                    color: Theme.of(context).primaryColor,
+                    fontWeight: FontWeight.bold,
+                  ),
+                ),
+              ],
+            ),
           ),
         ),
       ),
