@@ -20,6 +20,7 @@ import java.util.Set;
 public class Utilisateur {
 
     @Id
+    @Column(name="id")
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 

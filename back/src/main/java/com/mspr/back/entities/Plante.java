@@ -12,6 +12,7 @@ import java.util.Set;
 public class Plante {
 
     @Id
+    @Column(name="id")
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
@@ -37,6 +38,7 @@ public class Plante {
     *
      */
 
+    // Les commentaires des botanistes
     @OneToMany(mappedBy = "plante")
     private Set<Commentaire> commentaires;
 

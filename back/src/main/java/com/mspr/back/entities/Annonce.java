@@ -12,6 +12,7 @@ import java.util.Set;
 public class Annonce {
     
     @Id
+    @Column(name="id")
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
@@ -37,7 +38,7 @@ public class Annonce {
 
 
     // La ou les plantes présentent dans une annonce
-    @ManyToMany(fetch = FetchType.EAGER)
+    @ManyToMany
     @JoinTable(name = "mise_en_annonce",
             joinColumns = @JoinColumn(name = "id_annonce", referencedColumnName = "id"),
             inverseJoinColumns = @JoinColumn(name = "id_plante", referencedColumnName = "id")
