@@ -5,6 +5,7 @@ import lombok.Data;
 
 import java.net.URL;
 import java.time.LocalDateTime;
+import java.util.Set;
 
 @Data
 @Entity
@@ -22,6 +23,12 @@ public class Entretien {
 
     @Column(name = "urlphoto_entretien", nullable = false)
     private URL photo;
+
+    @OneToMany(mappedBy = "entretien")
+    private Set<Commentaire> commentaires;
+
+    @OneToOne
+    private Annonce annonce;
 
 
 }

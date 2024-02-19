@@ -24,26 +24,20 @@ public class Annonce {
     @Column(name = "date_fin", nullable = false)
     private LocalDate dateFin;
 
-    //Utilisateurs repondants aux annonces
-    //@ManyToMany(mappedBy = "annonces_repondues")
-    //private Set<Utilisateur> utilisateurs_repondants;
-
-    //Utilisateurs publiant une annonce
-    //@ManyToOne
-    //@JoinColumn(name = "id_utilisateur")
-    //private Utilisateur utilisateur_publiant;
+    // Utilisateurs repondants aux annonces
+    @ManyToMany(mappedBy = "annonces_repondues")
+    private Set<Utilisateur> utilisateurs_repondants;
 
 
     // La ou les plantes présentent dans une annonce
     @ManyToMany(fetch = FetchType.EAGER)
-    @JoinTable(name = "presente",
+    @JoinTable(name = "mise_en_annonce",
             joinColumns = @JoinColumn(name = "id_annonce", referencedColumnName = "id"),
             inverseJoinColumns = @JoinColumn(name = "id_plante", referencedColumnName = "id")
     )
     private Set<Plante> plantes_annonce;
 
-
     @OneToMany(mappedBy = "annonce")
-    private Set <Commentaire> commentaires;
+    private Set<Reponse> reponses;
 
 }

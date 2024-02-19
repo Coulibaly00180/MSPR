@@ -10,7 +10,7 @@ import java.util.Optional;
 
 @Data
 @Service
-public class CatalogueService {
+public class PlanteService {
     @Autowired
     private PlanteRepository planteRepository;
 

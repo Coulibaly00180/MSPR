@@ -10,15 +10,23 @@ import org.springframework.web.bind.annotation.*;
 
 
 @AllArgsConstructor
-@RequestMapping("/users")
+@RequestMapping("/")
 @RestController
 public class UtilisateurController {
 
     public UtilisateurService utilisateurService;
 
     @ResponseStatus(HttpStatus.CREATED)
-    @PostMapping("/login")
-    public void inscrire(@RequestBody Utilisateur utilisateur) throws EntityAlreadyExistsException {
-        this.utilisateurService.saveUtilisateur(utilisateur);
+    @GetMapping("/login")
+    //public void login(@RequestBody String email, String password) throws EntityAlreadyExistsException {
+    public void login(@RequestParam(name = "id") String email, @RequestParam String password )  {
+        System.out.println(email + " " + password);
+        this.utilisateurService.login(email, password);
+    }
+
+    @ResponseStatus(HttpStatus.CREATED)
+    @PostMapping("/register")
+    public void register(@RequestBody Utilisateur utilisateur) throws EntityAlreadyExistsException {
+        this.utilisateurService.register(utilisateur);
     }
 }

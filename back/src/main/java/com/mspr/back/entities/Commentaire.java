@@ -1,6 +1,7 @@
 package com.mspr.back.entities;
 
 import jakarta.persistence.*;
+import org.springframework.format.annotation.DateTimeFormat;
 
 import java.awt.*;
 import java.net.URL;
@@ -13,9 +14,9 @@ public class Commentaire {
     CommentaireKey id;
 
     @ManyToOne
-    @MapsId("utilisateur_id")
-    @JoinColumn(name = "utilisateur_id")
-    private Utilisateur utilisateur;
+    @MapsId("plante_id")
+    @JoinColumn(name = "plante_id")
+    private Plante plante;
 
     @ManyToOne
     @MapsId("botaniste_id")
@@ -23,11 +24,11 @@ public class Commentaire {
     private Botaniste botaniste;
 
     @ManyToOne
-    @MapsId("annonce_id")
-    @JoinColumn(name = "annonce_id")
-    private Annonce annonce;
+    @MapsId("entretien_id")
+    @JoinColumn(name = "entretien_id")
+    private Entretien entretien;
 
-    private Integer numEntretien;
     private String texte;
+    private LocalDateTime dateTime;
 
 }

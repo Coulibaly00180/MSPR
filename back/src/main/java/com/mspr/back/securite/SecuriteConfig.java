@@ -22,7 +22,7 @@ public class SecuriteConfig {
     public SecurityFilterChain securityFilterChain(HttpSecurity httpSecurity) throws Exception {
         return httpSecurity.csrf(AbstractHttpConfigurer::disable)
                 .authorizeHttpRequests (
-                        authorize-> authorize.requestMatchers(HttpMethod.POST, "/users/login", "users/register")
+                        authorize-> authorize.requestMatchers(HttpMethod.POST, "login", "register")
                                 .permitAll().anyRequest().authenticated())
                 .build();
     }
