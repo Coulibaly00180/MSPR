@@ -9,6 +9,7 @@ import javax.validation.constraints.Email;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.Size;
 
+import java.util.Objects;
 import java.util.Set;
 
 @Data
@@ -142,5 +143,18 @@ public class Utilisateur {
 
     public void setReponses(Set<Reponse> reponses) {
         this.reponses = reponses;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Utilisateur that = (Utilisateur) o;
+        return Objects.equals(id, that.id) && Objects.equals(password, that.password) && Objects.equals(email, that.email);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(id, password, email);
     }
 }

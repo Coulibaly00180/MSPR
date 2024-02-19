@@ -1,5 +1,6 @@
 package com.mspr.back.controllers;
 
+import com.mspr.back.entities.Utilisateur;
 import com.mspr.back.services.AuthentificationService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.DataIntegrityViolationException;
@@ -33,32 +34,40 @@ public class AuthentificationController {
             return ResponseEntity.ok("Utilisateur bien authentifie");
         }
         else {
-            return ResponseEntity.badRequest().body("Invalid credentials");
+            return ResponseEntity.badRequest().body("Invalid credentials"+ " " + email + " "+ password);
         }
     }
 
     // Pour gerer l'inscription
     @PostMapping("/signup")
-    public ResponseEntity<String> signup(@RequestBody Map<String, String> request){
+    public ResponseEntity<String> signup(@RequestBody Utilisateur utilisateur){
+       /*
         try {
             String email = request.get("email");
             String password = request.get("password");
 
             // Verification des entrées
-            validateInput(email,password);
+            //
+            // validateInput(email,password);
 
-            if (authentificationService.utilisateurEstInscrit(email, password)){
+            if (authentificationService.inscriptionUtilisateur(email, password)){
                 return ResponseEntity.ok("L'utilisateur bien enregistré");
             }
             else {
                 return ResponseEntity.badRequest().body("L'utilisateur existe déjà");
             }
         }
+
+
         catch (IllegalArgumentException e) {
             return ResponseEntity.badRequest().body(e.getMessage());
         } catch (DataIntegrityViolationException e) {
             return ResponseEntity.badRequest().body("L'email est déjà utilisé");
         }
+
+        */
+        authentificationService.inscriptionUtilisateur(utilisateur);
+        return ResponseEntity.badRequest().body("L'email est déjà utilisé");
 
     }
 
@@ -66,12 +75,12 @@ public class AuthentificationController {
         if (email == null || !email.matches("\\S+@\\S+\\.\\S+")) {
             throw new IllegalArgumentException("Invalid email format");
         }
-
         if (password == null || password.length() < 2) {
             throw new IllegalArgumentException("Le mot de passe doit contenir au moins 3 caractères");
         }
-
     }
+
+
 
 
 }
