@@ -29,6 +29,14 @@ public class Annonce {
     private Set<Utilisateur> utilisateurs_repondants;
 
 
+    //Utilisateurs publiant une annonce
+   /* @ManyToOne
+    *@JoinColumn(name = "id_utilisateur")
+    *private Utilisateur utilisateur_publiant;
+    *
+    */
+
+
     // La ou les plantes présentent dans une annonce
     @ManyToMany(fetch = FetchType.EAGER)
     @JoinTable(name = "mise_en_annonce",

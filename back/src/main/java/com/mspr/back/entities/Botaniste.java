@@ -33,13 +33,14 @@ public class Botaniste {
     private String adresse;
 
     // Plantes ajoutees par le botaniste
-    @ManyToMany(fetch = FetchType.EAGER)
-    @JoinTable(name = "ajouter",
-            joinColumns = @JoinColumn(name = "id_botaniste", referencedColumnName = "id"),
-            inverseJoinColumns = @JoinColumn(name = "id_plante", referencedColumnName = "id")
-    )
-    private Set<Plante> plantes_ajoutees;
-
+    /*@ManyToMany(fetch = FetchType.EAGER)
+    *@JoinTable(name = "ajouter",
+    *        joinColumns = @JoinColumn(name = "id_botaniste", referencedColumnName = "id"),
+    *        inverseJoinColumns = @JoinColumn(name = "id_plante", referencedColumnName = "id")
+    *)
+    *private Set<Plante> plantes_ajoutees;
+    *
+     */
 
     @OneToMany(mappedBy = "botaniste")
     Set <Commentaire> commentaires;

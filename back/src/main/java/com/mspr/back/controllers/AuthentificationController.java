@@ -1,4 +1,5 @@
 package com.mspr.back.controllers;
+import com.mspr.back.entities.Utilisateur;
 
 import com.mspr.back.services.AuthentificationService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -14,7 +15,7 @@ import java.util.Map;
 //@RestController
 //@RequestMapping("/authentification")
 public class AuthentificationController {
-/*
+
     private final AuthentificationService authentificationService;
 
 
@@ -40,6 +41,7 @@ public class AuthentificationController {
     // Pour gerer l'inscription
     @PostMapping("/signup")
     public ResponseEntity<String> signup(@RequestBody Map<String, String> request){
+
         try {
             String email = request.get("email");
             String password = request.get("password");
@@ -48,6 +50,7 @@ public class AuthentificationController {
             validateInput(email,password);
 
             if (authentificationService.utilisateurEstInscrit(email, password)){
+
                 return ResponseEntity.ok("L'utilisateur bien enregistré");
             }
             else {
@@ -60,6 +63,8 @@ public class AuthentificationController {
             return ResponseEntity.badRequest().body("L'email est déjà utilisé");
         }
 
+        authentificationService.inscriptionUtilisateur(utilisateur);
+        return ResponseEntity.badRequest().body("L'email est déjà utilisé");
     }
 
     private void validateInput(String email, String password) {
@@ -72,8 +77,8 @@ public class AuthentificationController {
         }
 
     }
-
-
- */
-
+        if (password == null || password.length() < 2) {
+            throw new IllegalArgumentException("Le mot de passe doit contenir au moins 3 caractères");
+        }
+    }
 }

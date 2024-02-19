@@ -14,6 +14,10 @@ public class Config {
         configurer.setLocation(new FileSystemResource(".env"));
         return configurer;
     }
+    @Bean
+    public BCryptPasswordEncoder passwordEncoder(){
+        return new BCryptPasswordEncoder();
+    }
 
     /*
 
