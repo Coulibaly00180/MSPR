@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import '../../widgets/appbar/bottom_appbar_menu.dart';
-
-
+import '../../widgets/date_picker.dart';
 
 class AddAnnouncementPage extends StatelessWidget {
   const AddAnnouncementPage({Key? key}) : super(key: key);
@@ -58,10 +57,13 @@ class AddAnnouncementPage extends StatelessWidget {
                       // const SizedBox(height: 10),
                       // _buildTextField(labelText: 'Nom de ma plante'),
                       const SizedBox(height: 10),
-                      _buildTextField(labelText: 'Date de début de garde'),
+                      const Text('Date de début de garde', style: TextStyle(color: Colors.grey)),
+                      const DatePicker(),
+                      //const DatePicker(onDateSelected: (DateTime ) { },),
                       const SizedBox(height: 10),
-                      _buildTextField(labelText: 'Date de fin de garde'),
-                      const SizedBox(height: 10),
+                      const Text('Date de fin de garde', style: TextStyle(color: Colors.grey)),
+                      const DatePicker(),
+                      //const DatePicker(onDateSelected: (DateTime ) {  },),
                       TextFormField(
                         style: TextStyle(color: Colors.white), // Text style
                         decoration: InputDecoration(

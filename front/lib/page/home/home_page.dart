@@ -76,7 +76,7 @@ class _HomePageState extends State<HomePage> {
                 crossAxisCount: 2,
                 children: <Widget>[
                   _buildButton(context, "MON PROFIL", FontAwesomeIcons.user, "/profil"),
-                  _buildButton(context, "MES ANNONCES", FontAwesomeIcons.pagelines, "/annoncesMenu/mesAnnonces"),
+                  _buildButton(context, "MES ANNONCES", FontAwesomeIcons.pagelines, "/annoncesMenu"),
                   _buildButton(context, "MES AROSA-JE", FontAwesomeIcons.droplet, "/arosa-je"),
                   _buildButton(context, "CONSEILS", FontAwesomeIcons.book, "/catalog"),
                 ],

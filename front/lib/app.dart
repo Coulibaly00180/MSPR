@@ -24,7 +24,7 @@ class _MyAppState extends State<MyApp> {
   final List<Widget> _pages = [
     NavigationUltime(),
     SearchPage(),
-    MyAdsPage(), // Assurez-vous que c'est le widget correct pour "Mes Annonces"
+    AnnouncementPageMenu(), // Assurez-vous que c'est le widget correct pour "Mes Annonces"
     MyProfilPage(),
   ];
 
