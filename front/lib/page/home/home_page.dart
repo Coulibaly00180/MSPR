@@ -1,6 +1,37 @@
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
-import 'package:navigator/navigator.dart';
+import 'package:front/route.dart';
+
+
+
+class NavigationUltime extends StatefulWidget {
+  const NavigationUltime({Key? key}) : super(key: key);
+
+  @override
+  State<NavigationUltime> createState() => _NavigationUltimeState();
+}
+
+class _NavigationUltimeState extends State<NavigationUltime> {
+  @override
+  Widget build(BuildContext context) {
+    return MaterialApp(
+      debugShowCheckedModeBanner: false,
+      home: HomePage(),
+      onGenerateRoute: (RouteSettings settings) {
+        for (var path in navigationPaths) {
+          if (settings.name == path.pathName) {
+            return MaterialPageRoute(
+              builder: (context) => path.builder(context, settings),
+              settings: settings,
+            );
+          }
+        }
+        // Si aucune correspondance n'est trouvée, retournez null ou une route par défaut.
+        return MaterialPageRoute(builder: (context) => Scaffold());
+      },
+    );
+  }
+}
 
 class HomePage extends StatefulWidget {
   const HomePage({Key? key}) : super(key: key);

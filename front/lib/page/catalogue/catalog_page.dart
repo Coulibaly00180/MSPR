@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:front/constant/css.dart';
 import 'package:front/widgets/searchBar/search_bar.dart';
-import '../../widgets/appbar/bottom_appbar_menu.dart';
 
 class CatalogPage extends StatefulWidget {
   const CatalogPage({super.key});

@@ -1,6 +1,4 @@
 import 'package:flutter/material.dart';
-import '../../widgets/appbar/bottom_appbar_menu.dart';
-
 
 class PlantDetailsPage extends StatelessWidget {
   const PlantDetailsPage({Key? key}) : super(key: key);
@@ -65,7 +63,6 @@ class PlantDetailsPage extends StatelessWidget {
         ),
       ),
       floatingActionButtonLocation: FloatingActionButtonLocation.centerFloat,
-      bottomNavigationBar: const BottomAppBarMenu(),
     );
   }
 }
