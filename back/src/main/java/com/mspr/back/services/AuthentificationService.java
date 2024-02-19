@@ -5,7 +5,6 @@ import com.mspr.back.repositories.UtilisateurRepository;
 import lombok.Data;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 
 @Service
@@ -22,14 +21,11 @@ public class AuthentificationService {
     }
 
     // Verifie la connexion
-    public boolean authentificationUtilisateur(String email, String password){
+    public boolean connecteUtilisateur(String email, String password){
         Utilisateur utilisateur = utilisateurRepository.findByEmail(email);
         String emailUser = utilisateur.getEmail();
         String passwordUser = utilisateur.getPassword();
-        if(passwordUser.equals(password) && emailUser.equals(email)){
-            return true;
-        }
-        return false;
+        return (passwordUser.equals(password) && emailUser.equals(email));
         //return emailUser != null && passwordEncoder.matches(password, utilisateur.getPassword());
     }
 
@@ -55,7 +51,19 @@ public class AuthentificationService {
     // Verifie si l'utilisateur est inscrit
     // Sinon le creer
     public boolean inscriptionUtilisateur(Utilisateur utilisateur) {
-       // String passwordEncode = passwordEncoder.encode(utilisateur.getPassword());
+        Utilisateur utiilisateurInBDD = utilisateurRepository.findByEmail(utilisateur.getEmail());
+
+        String email = utilisateur.getEmail();
+        String emailInBDD = utiilisateurInBDD.getEmail();
+
+        if (email.equals(emailInBDD)){
+            return false;
+        }
+        utilisateurRepository.save(utilisateur);
+        return true;
+
+
+        // String passwordEncode = passwordEncoder.encode(utilisateur.getPassword());
        // utilisateur.setPassword(passwordEncode);       // Si l'utilisateur existe déjà
 
 
@@ -68,8 +76,8 @@ public class AuthentificationService {
         //newUtilisateur.setEmail(email);
         //newUtilisateur.setPassword(passwordEncoder.encode(password)); // Hash le mot de passe
 
-        utilisateurRepository.save(utilisateur);
+
         //log.info(" =============== " +passwordEncode);
-        return true;
+
     }
 }

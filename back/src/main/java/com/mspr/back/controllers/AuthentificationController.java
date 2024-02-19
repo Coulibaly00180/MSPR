@@ -5,10 +5,7 @@ import com.mspr.back.services.AuthentificationService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.Map;
 
@@ -26,31 +23,30 @@ public class AuthentificationController {
 
     // Pour gerer la connexion
     @PostMapping("/signin")
-    public ResponseEntity<String> signIn(@RequestBody Map<String, String> request) {
+    public ResponseEntity<String> signIn(@RequestBody Map<String,String> request) {
+
         String email = request.get("email");
         String password = request.get("password");
 
-        if (authentificationService.authentificationUtilisateur(email,password)){
+        if (authentificationService.connecteUtilisateur(email,password)){
             return ResponseEntity.ok("Utilisateur bien authentifie");
         }
         else {
-            return ResponseEntity.badRequest().body("Invalid credentials"+ " " + email + " "+ password);
+            return ResponseEntity.badRequest().body("Invalid credentials");
         }
     }
 
     // Pour gerer l'inscription
     @PostMapping("/signup")
     public ResponseEntity<String> signup(@RequestBody Utilisateur utilisateur){
-       /*
+
         try {
-            String email = request.get("email");
-            String password = request.get("password");
 
             // Verification des entrées
             //
             // validateInput(email,password);
 
-            if (authentificationService.inscriptionUtilisateur(email, password)){
+            if (authentificationService.inscriptionUtilisateur(utilisateur)){
                 return ResponseEntity.ok("L'utilisateur bien enregistré");
             }
             else {
@@ -65,9 +61,9 @@ public class AuthentificationController {
             return ResponseEntity.badRequest().body("L'email est déjà utilisé");
         }
 
-        */
-        authentificationService.inscriptionUtilisateur(utilisateur);
-        return ResponseEntity.badRequest().body("L'email est déjà utilisé");
+
+        //authentificationService.inscriptionUtilisateur(utilisateur);
+
 
     }
 
