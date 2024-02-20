@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import '../../../constant/css.dart';
 import '../../../widgets/appbar/bottom_appbar_menu.dart';
 import '../../../widgets/date_picker.dart';
 
@@ -10,6 +11,7 @@ class AddAnnouncementPage extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         title: const Text('Déposer une annonce'),
+        backgroundColor: greenBar,
         centerTitle: true,
       ),
       body: SingleChildScrollView(
@@ -104,7 +106,6 @@ class AddAnnouncementPage extends StatelessWidget {
         ),
       ),
       floatingActionButtonLocation: FloatingActionButtonLocation.centerFloat,
-      bottomNavigationBar: BottomAppBarMenu(),
     );
   }
 

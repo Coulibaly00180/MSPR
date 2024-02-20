@@ -93,7 +93,7 @@ class _HomePageState extends State<HomePage> {
                       children: <Widget>[
                         AnimatedButton(text: "MON PROFIL", iconData: FontAwesomeIcons.user, route: "/profil", isLight: true),
                         AnimatedButton(text: "MES ANNONCES", iconData: FontAwesomeIcons.pagelines, route: "/annoncesMenu", isLight: false),
-                        AnimatedButton(text: "MES AROSA-JE", iconData: FontAwesomeIcons.droplet, route: "/arosa-je", isLight: false),
+                        AnimatedButton(text: "MES AROSA-JE", iconData: FontAwesomeIcons.droplet, route: "/annoncesMenu/mesGardes", isLight: false),
                         AnimatedButton(text: "CONSEILS", iconData: FontAwesomeIcons.book, route: "/catalog", isLight: true),
                       ],
                     ),
