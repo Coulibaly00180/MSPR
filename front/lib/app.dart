@@ -1,13 +1,10 @@
 import 'package:flutter/material.dart';
-import 'package:front/page/annonces/mesAnnonces/add_announcements.dart';
-import 'package:front/page/annonces/mesAnnonces/announce_details.dart';
 import 'package:front/page/annonces/announcement_menu.dart';
-import 'package:front/page/catalogue/catalog_page.dart';
 import 'package:front/page/home/home_page.dart';
-import 'package:front/page/annonces/mesGardes/mes_gardes.dart';
-import 'package:front/page/annonces/mesAnnonces/my_announcements.dart';
 import 'package:front/page/profil/my_profil.dart';
 import 'package:front/page/search/search_page.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+
 
 import 'constant/css.dart';
 
@@ -58,7 +55,7 @@ class _MyAppState extends State<MyApp> {
               label: 'Recherche',
             ),
             BottomNavigationBarItem(
-              icon: Icon(Icons.announcement),
+              icon: Icon(FontAwesomeIcons.pagelines),
               label: 'Mes Annonces',
             ),
             BottomNavigationBarItem(
