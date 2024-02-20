@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_map/flutter_map.dart';
 import 'package:latlong2/latlong.dart';
 
+import '../../constant/css.dart';
 import '../../widgets/searchBar/search_bar.dart';
 
 class SearchPage extends StatelessWidget {
@@ -13,7 +14,8 @@ class SearchPage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text("Rechercher une annonce"),
+        title: const Text("Rechercher une annonce de Garde"),
+        backgroundColor: greenBar,
       ),
       body: Stack(
         children: [

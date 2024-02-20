@@ -47,7 +47,7 @@ class _MyAppState extends State<MyApp> {
           elevation: 10,
           currentIndex: _currentIndex,
           onTap: setCurrentIndex, // Met à jour l'index lorsqu'un onglet est tapé
-          unselectedItemColor: Colors.grey.shade300,
+          unselectedItemColor: Colors.grey,
           items: const [
             BottomNavigationBarItem(
               icon: Icon(Icons.home),

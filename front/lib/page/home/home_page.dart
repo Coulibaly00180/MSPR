@@ -53,7 +53,7 @@ class _HomePageState extends State<HomePage> {
 
   void _showWelcomeMessage() {
     final snackBar = SnackBar(
-      content: Text('Welcome to the App!', textAlign: TextAlign.center),
+      content: const Text('Welcome to the App!', textAlign: TextAlign.center),
       duration: Duration(seconds: 2),
       backgroundColor: Theme.of(context).primaryColor,
     );
@@ -75,10 +75,10 @@ class _HomePageState extends State<HomePage> {
                 mainAxisSpacing: 0,
                 crossAxisCount: 2,
                 children: <Widget>[
-                  _buildButton(context, "MON PROFIL", FontAwesomeIcons.user, "/profil"),
-                  _buildButton(context, "MES ANNONCES", FontAwesomeIcons.pagelines, "/annoncesMenu"),
-                  _buildButton(context, "MES AROSA-JE", FontAwesomeIcons.droplet, "/arosa-je"),
-                  _buildButton(context, "CONSEILS", FontAwesomeIcons.book, "/catalog"),
+                  _buildButton(context, "MON PROFIL", FontAwesomeIcons.user, "/profil", true),
+                  _buildButton(context, "MES ANNONCES", FontAwesomeIcons.pagelines, "/annoncesMenu", false),
+                  _buildButton(context, "MES AROSA-JE", FontAwesomeIcons.droplet, "/arosa-je", false),
+                  _buildButton(context, "CONSEILS", FontAwesomeIcons.book, "/catalog", true),
                 ],
               ),
             ),
@@ -88,7 +88,7 @@ class _HomePageState extends State<HomePage> {
     );
   }
 
-  Widget _buildButton(BuildContext context, String text, IconData iconData, String route) {
+  Widget _buildButton(BuildContext context, String text, IconData iconData, String route, bool isLight) {
     final isButtonPressed = _isPressed[route] ?? false; // Default to not pressed
 
     return GestureDetector(
@@ -104,6 +104,7 @@ class _HomePageState extends State<HomePage> {
         curve: Curves.easeInOut,
         transform: Matrix4.diagonal3Values(isButtonPressed ? 0.95 : 1.0, isButtonPressed ? 0.95 : 1.0, 1),
         child: Card(
+          color: isLight ? Colors.white : Colors.green.shade400,
           shape: RoundedRectangleBorder(
             borderRadius: BorderRadius.circular(15),
           ),
@@ -113,14 +114,14 @@ class _HomePageState extends State<HomePage> {
               children: [
                 Icon(
                   iconData,
-                  color: Theme.of(context).primaryColor,
+                  color: isLight ? Colors.green.shade400 : Colors.white,
                 ),
                 const SizedBox(height: 8),
                 Text(
                   text,
                   textAlign: TextAlign.center,
                   style: TextStyle(
-                    color: Theme.of(context).primaryColor,
+                    color: isLight ? Colors.green.shade400 : Colors.white,
                     fontWeight: FontWeight.bold,
                   ),
                 ),

@@ -2,18 +2,26 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 
+import '../../constant/css.dart';
+
 
 class AnnouncementPageMenu extends StatelessWidget {
   const AnnouncementPageMenu({super.key});
 
   @override
   Widget build(BuildContext context) {
-    return Center(
-      child: Column(
-          children : [
-            _buildButton(context, "MES GARDES", "annonces", true),
-            _buildButton(context, "MES ANNONCES", "annoncesMenu/mesAnnonces", false)
-          ]),
+    return Scaffold(
+      appBar: AppBar(
+        title: const Text("Annonces"),
+        backgroundColor: greenBar,
+      ),
+      body:Center(
+        child: Column(
+            children : [
+              _buildButton(context, "MES GARDES", "annonces", true),
+              _buildButton(context, "MES ANNONCES", "annoncesMenu/mesAnnonces", false)
+            ]),
+      )
     );
   }
 
