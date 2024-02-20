@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:go_router/go_router.dart';
 
+import '../../../constant/css.dart';
 import 'add_announcements.dart';
 import 'announce_details.dart';
 
@@ -13,6 +13,7 @@ class MyAdsPage extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         title: const Text('Mes Annonces'),
+        backgroundColor: greenBar,
         centerTitle: true,
       ),
       body: Stack(
@@ -38,13 +39,7 @@ class MyAdsPage extends StatelessWidget {
                   borderRadius: BorderRadius.circular(15.0),
                 ),
                 child: ListTile(
-                  leading: Image.network(
-                    'https://via.placeholder.com/150',
-                    width: 50,
-                    height: 50,
-                    fit: BoxFit.cover,
-                  ),
-                  title: const Text('NOM DE MA PLANTE'),
+                  leading: Image.asset('assets/images/green-2567165_1280.jpg'),                  title: const Text('NOM DE MA PLANTE'),
                   subtitle: const Text('15/06/24 au 30/06/24'),
                   trailing: ElevatedButton(
                     onPressed: () {

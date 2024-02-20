@@ -30,13 +30,22 @@ class PlantDetailsPage extends StatelessWidget {
             child: Column(
               children: [
                 SizedBox(height: 20),
-                Image.network(
-                  'https://via.placeholder.com/150',
-                  width: 150,
-                  height: 150,
-                  fit: BoxFit.cover,
+                Padding(
+                  padding: const EdgeInsets.all(10.0),
+                  child: Container(
+                    decoration: BoxDecoration(
+                      borderRadius: BorderRadius.circular(10), // Définissez le rayon de bordure ici
+                      border: Border.all(color: Colors.black, width: 2), // Définissez la bordure ici
+                    ),
+                    child: ClipRRect(
+                      borderRadius: BorderRadius.circular(10), // Définissez le même rayon de bordure ici
+                      child: Image.asset(
+                        'assets/images/green-2567165_1280.jpg',
+                        width: 150,
+                      ),
+                    ),
+                  ),
                 ),
-                const SizedBox(height: 20),
                 const Text(
                   'AGATA',
                   style: TextStyle(

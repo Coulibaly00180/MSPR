@@ -1,10 +1,79 @@
+import 'dart:io';
+
 import 'package:flutter/material.dart';
 import '../../../constant/css.dart';
-import '../../../widgets/appbar/bottom_appbar_menu.dart';
 import '../../../widgets/date_picker.dart';
+import 'package:image_picker/image_picker.dart';
+import 'package:path_provider/path_provider.dart';
 
-class AddAnnouncementPage extends StatelessWidget {
+class AddAnnouncementPage extends StatefulWidget {
   const AddAnnouncementPage({Key? key}) : super(key: key);
+
+  @override
+  _AddAnnouncementPageState createState() => _AddAnnouncementPageState();
+}
+
+class _AddAnnouncementPageState extends State<AddAnnouncementPage> {
+  File? _selectedImage;
+
+  final ImagePicker _picker = ImagePicker();
+
+  Future<void> _getImage(ImageSource source) async {
+    final pickedFile = await _picker.pickImage(source: source);
+    if (pickedFile != null) {
+      final Directory appDir = await getApplicationDocumentsDirectory();
+      final String imagePath = '${appDir.path}/my_image.jpg';
+      final File newImage = File(pickedFile.path);
+      final File savedImage = await newImage.copy(imagePath);
+
+      setState(() {
+        _selectedImage = savedImage;
+      });
+    }
+  }
+
+  void _showImagePickerDialog() {
+    showDialog(
+      context: context,
+      builder: (BuildContext context) {
+        return AlertDialog(
+          shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(8)),
+          title: Text('Veuillez choisir une source'),
+          content: Container(
+            height: MediaQuery.of(context).size.height / 6,
+            child: Column(
+              children: [
+                ElevatedButton(
+                  onPressed: () {
+                    Navigator.pop(context);
+                    _getImage(ImageSource.gallery);
+                  },
+                  child: Row(
+                    children: [
+                      Icon(Icons.image),
+                      Text('Depuis la galerie'),
+                    ],
+                  ),
+                ),
+                ElevatedButton(
+                  onPressed: () {
+                    Navigator.pop(context);
+                    _getImage(ImageSource.camera);
+                  },
+                  child: Row(
+                    children: [
+                      Icon(Icons.camera),
+                      Text('Depuis la caméra'),
+                    ],
+                  ),
+                ),
+              ],
+            ),
+          ),
+        );
+      },
+    );
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -14,114 +83,94 @@ class AddAnnouncementPage extends StatelessWidget {
         backgroundColor: greenBar,
         centerTitle: true,
       ),
-      body: SingleChildScrollView(
-        child: Padding(
-          padding: const EdgeInsets.all(16.0),
-          child: Column(
-            children: [
-              Card(
-                color: Colors.grey[900],
-                child: Padding(
-                  padding: const EdgeInsets.all(16.0),
-                  child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.stretch,
-                    children: <Widget>[
-                      const Text(
-                        'Mon annonce',
-                        style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold, color: Colors.white),
-                      ),
-                      const SizedBox(height: 20),
-                      Row(
+      body: Stack(
+        children: [
+          // Background image with opacity
+          Opacity(
+            opacity: 0.5,
+            child: Container(
+              decoration: BoxDecoration(
+                image: DecorationImage(
+                  image: AssetImage('assets/images/feuilles.png'),
+                  fit: BoxFit.cover,
+                ),
+              ),
+            ),
+          ),
+          SingleChildScrollView(
+            child: Padding(
+              padding: const EdgeInsets.all(16.0),
+              child: Column(
+                children: [
+                  Card(
+                    child: Padding(
+                      padding: const EdgeInsets.all(16.0),
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.stretch,
                         children: <Widget>[
-                          Expanded(
-                            child: TextFormField(
-                              style: TextStyle(color: Colors.white), // Text style
-                              decoration: InputDecoration(
-                                labelText: 'Photo de ma plante',
-                                labelStyle: TextStyle(color: Colors.grey), // Label style
-                                enabledBorder: OutlineInputBorder(
-                                  borderSide: BorderSide(color: Colors.grey),
-                                ),
-                                focusedBorder: OutlineInputBorder(
-                                  borderSide: BorderSide(color: Colors.grey[400]!),
+                          const Text(
+                            'Mon annonce',
+                            style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold, color: Colors.black),
+                          ),
+                          const SizedBox(height: 20),
+                          Row(
+                            children: <Widget>[
+                              Expanded(
+                                child: TextButton.icon(
+                                  icon: const Icon(Icons.camera_alt),
+                                  label: const Text('Choisir une photo'),
+                                  onPressed: _showImagePickerDialog,
+                                  style: ButtonStyle(
+                                    foregroundColor: MaterialStateProperty.all<Color>(Colors.white), // Couleur du texte du bouton
+                                    backgroundColor: MaterialStateProperty.all<Color>(greenBar), // Couleur de fond du bouton
+                                  ),
                                 ),
                               ),
-                            ),
+                              if (_selectedImage != null) // Affiche la prévisualisation si une image est sélectionnée
+                                Padding(
+                                  padding: const EdgeInsets.symmetric(horizontal: 20),
+                                  child: ClipRRect(
+                                    borderRadius: BorderRadius.circular(8),
+                                    child: Image.file(
+                                      //to show image, you type like this.
+                                      File(_selectedImage!.path),
+                                      fit: BoxFit.cover,
+                                      width: MediaQuery.of(context).size.width,
+                                      height: 300,
+                                    ),
+                                  ),
+                                )
+                            ],
                           ),
-                          IconButton(
-                            icon: const Icon(Icons.camera_alt, color: Colors.grey),
+                          const SizedBox(height: 10),
+                          const Text('Date de début de garde', style: TextStyle(color: Colors.grey)),
+                          const DatePicker(),
+                          const SizedBox(height: 10),
+                          const Text('Date de fin de garde', style: TextStyle(color: Colors.grey)),
+                          const DatePicker(),
+                          const SizedBox(height: 20),
+                          ElevatedButton(
                             onPressed: () {
-                              // TODO: Implement image capture/upload functionality
+                              // TODO: Implement les fonctions pour ajouter l'annonce
                             },
+                            child: const Text('Ajouter mon annonce'),
+                            style: ElevatedButton.styleFrom(
+                              primary: Colors.green.shade400,
+                              onPrimary: Colors.white,
+                              minimumSize: const Size(double.infinity, 50),
+                            ),
                           ),
                         ],
                       ),
-                      // const SizedBox(height: 10),
-                      // _buildTextField(labelText: 'Nom de ma plante'),
-                      const SizedBox(height: 10),
-                      const Text('Date de début de garde', style: TextStyle(color: Colors.grey)),
-                      const DatePicker(),
-                      //const DatePicker(onDateSelected: (DateTime ) { },),
-                      const SizedBox(height: 10),
-                      const Text('Date de fin de garde', style: TextStyle(color: Colors.grey)),
-                      const DatePicker(),
-                      //const DatePicker(onDateSelected: (DateTime ) {  },),
-                      TextFormField(
-                        style: TextStyle(color: Colors.white), // Text style
-                        decoration: InputDecoration(
-                          labelText: 'Rechercher ma plante dans le catalogue',
-                          labelStyle: TextStyle(color: Colors.grey), // Label style
-                          suffixIcon: IconButton(
-                            icon: const Icon(Icons.search, color: Colors.grey),
-                            onPressed: () {
-                              // TODO: fonction of search button
-                            },
-                          ),
-                          enabledBorder: OutlineInputBorder(
-                            borderSide: BorderSide(color: Colors.grey),
-                          ),
-                          focusedBorder: OutlineInputBorder(
-                            borderSide: BorderSide(color: Colors.grey[400]!),
-                          ),
-                        ),
-                      ),
-                      const SizedBox(height: 20),
-                      ElevatedButton(
-                        onPressed: () {
-                          // TODO: Implement les fonctions pour ajouter l'annonce
-                        },
-                        child: const Text('Ajouter mon annonce'),
-                        style: ElevatedButton.styleFrom(
-                          primary: Colors.green,
-                          onPrimary: Colors.white,
-                          minimumSize: const Size(double.infinity, 50),
-                        ),
-                      ),
-                    ],
+                    ),
                   ),
-                ),
+                ],
               ),
-            ],
+            ),
           ),
-        ),
+        ],
       ),
       floatingActionButtonLocation: FloatingActionButtonLocation.centerFloat,
-    );
-  }
-
-  TextFormField _buildTextField({required String labelText}) {
-    return TextFormField(
-      style: TextStyle(color: Colors.white),
-      decoration: InputDecoration(
-        labelText: labelText,
-        labelStyle: TextStyle(color: Colors.grey),
-        enabledBorder: OutlineInputBorder(
-          borderSide: BorderSide(color: Colors.grey),
-        ),
-        focusedBorder: OutlineInputBorder(
-          borderSide: BorderSide(color: Colors.grey[400]!),
-        ),
-      ),
     );
   }
 }
