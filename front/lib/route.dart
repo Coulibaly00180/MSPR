@@ -3,6 +3,7 @@ import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:front/page/annonces/mesAnnonces/add_announcements.dart';
 import 'package:front/page/annonces/mesAnnonces/announce_details.dart';
 import 'package:front/page/annonces/announcement_menu.dart';
+import 'package:front/page/annonces/mesGardes/%20garde_detail_page.dart';
 import 'package:front/page/annonces/mesGardes/mes_gardes.dart';
 import 'package:front/page/annonces/mesAnnonces/my_announcements.dart';
 import 'package:front/page/catalogue/catalog_page.dart';
@@ -24,10 +25,10 @@ final navigationPaths = [
     pathName: '/search',
     builder: (BuildContext context, RouteSettings settings) => SearchPage(),
   ),
-  NamedPath(
-    pathName: '/catalog',
-    builder: (BuildContext context, RouteSettings settings) => const CatalogPage(),
-  ),
+  // NamedPath(
+  //   pathName: '/catalog',
+  //   builder: (BuildContext context, RouteSettings settings) => const CatalogPage(),
+  // ),
   NamedPath(
     pathName: '/profil',
     builder: (BuildContext context, RouteSettings settings) => const MyProfilPage(),
@@ -52,5 +53,8 @@ final navigationPaths = [
     pathName: '/annoncesMenu/mesAnnonces/:id/details',
     builder: (BuildContext context, RouteSettings settings) => const PlantDetailsPage(),
   ),
-
+  NamedPath(
+    pathName: '/catalog',
+    builder: (BuildContext context, RouteSettings settings) => const PlantCarePage(),
+  ),
 ];

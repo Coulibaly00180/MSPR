@@ -13,26 +13,31 @@ class PlantCarePage extends StatelessWidget {
             IconButton(
               icon: Icon(Icons.search),
               onPressed: () {
+                // Implement search action
               },
             ),
           ],
           backgroundColor: Colors.green,
         ),
-        body: Padding(
-          padding: const EdgeInsets.all(20.0),
-          child: Column(
-            children: [
-              Card(
+        body: Column(
+          crossAxisAlignment: CrossAxisAlignment.stretch,
+          children: [
+            Expanded(
+              child: Card(
                 shape: RoundedRectangleBorder(
                   borderRadius: BorderRadius.circular(25.0),
                 ),
+                margin: const EdgeInsets.all(20.0),
                 child: ClipRRect(
                   borderRadius: BorderRadius.circular(25.0),
                   child: Column(
                     children: [
-                      Image.asset(
-                        'assets/your-plant-image.png',
-                        fit: BoxFit.cover,
+                      Expanded(
+                        child: Image.asset(
+                          'assets/images/homeImg.png',
+                          fit: BoxFit.cover,
+                        ),
+                        flex: 2, // Adjust flex to control image height
                       ),
                       Padding(
                         padding: const EdgeInsets.all(16.0),
@@ -46,9 +51,13 @@ class PlantCarePage extends StatelessWidget {
                                 fontSize: 24,
                               ),
                             ),
+                            SizedBox(height: 8), // For spacing
                             Text('Son Nom: Monstera'),
+                            SizedBox(height: 8),
                             Text('Types: Intérieur'),
+                            SizedBox(height: 8),
                             Row(
+                              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                               children: [
                                 Icon(Icons.wb_sunny),
                                 Icon(Icons.water_drop),
@@ -56,22 +65,25 @@ class PlantCarePage extends StatelessWidget {
                                 // Add more icons as needed
                               ],
                             ),
+                            SizedBox(height: 16),
                             ElevatedButton.icon(
                               icon: Icon(Icons.camera_alt),
                               label: Text('DÉPOSER UNE PHOTO'),
                               onPressed: () {
-                                // Implement  photo upload logic
+                                // Implement photo upload logic
                               },
                               style: ElevatedButton.styleFrom(
                                 primary: Colors.green,
                                 onPrimary: Colors.white,
+                                minimumSize: Size(double.infinity, 36), // Make button wide
                               ),
                             ),
+                            SizedBox(height: 8),
                             TextButton.icon(
                               icon: Icon(Icons.check, color: Colors.green),
                               label: Text('Valider', style: TextStyle(color: Colors.green)),
                               onPressed: () {
-                                // Implement  validation logic
+                                // Implement validation logic
                               },
                             ),
                           ],
@@ -81,19 +93,9 @@ class PlantCarePage extends StatelessWidget {
                   ),
                 ),
               ),
-              Spacer(),
-              ElevatedButton(
-                child: Text('Contacter un botaniste'),
-                onPressed: () {
-                  // Implement contact functionality
-                },
-                style: ElevatedButton.styleFrom(
-                  primary: Colors.green, // Button color
-                  onPrimary: Colors.white, // Text color
-                ),
-              ),
-            ],
-          ),
+            ),
+            SizedBox(height: 20), // For bottom padding
+          ],
         ),
       ),
     );
