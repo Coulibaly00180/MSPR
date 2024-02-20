@@ -66,24 +66,57 @@ class _HomePageState extends State<HomePage> {
   Widget build(BuildContext context) {
     return Scaffold(
       body: SafeArea(
-        child: Column(
+        child: Stack(
           children: [
-            Image.asset("assets/images/logo.png", width: 150),
-            Image.asset("assets/images/homeImg.png", width: 150),
-            Expanded(
-              child: GridView.count(
-                primary: false,
-                padding: const EdgeInsets.all(20),
-                crossAxisSpacing: 3,
-                mainAxisSpacing: 0,
-                crossAxisCount: 2,
-                children: <Widget>[
-                  AnimatedButton(text: "MON PROFIL", iconData: FontAwesomeIcons.user, route: "/profil", isLight: true),
-                  AnimatedButton(text: "MES ANNONCES", iconData: FontAwesomeIcons.pagelines, route: "/annoncesMenu", isLight: false),
-                  AnimatedButton(text: "MES AROSA-JE", iconData: FontAwesomeIcons.droplet, route: "/arosa-je", isLight: false),
-                  AnimatedButton(text: "CONSEILS", iconData: FontAwesomeIcons.book, route: "/catalog", isLight: true),
-                ],
+            Opacity(
+              opacity: 0.5,
+              child: Container(
+                decoration: BoxDecoration(
+                  image: DecorationImage(
+                    image: AssetImage("assets/images/homeImg.png"),
+                    fit: BoxFit.cover,
+                  ),
+                ),
               ),
+            ),
+            Column(
+              children: [
+                Padding(
+                  padding: const EdgeInsets.only(top: 20.0, bottom: 20.0), // Add padding around the logo
+                  child: Container(
+                    decoration: BoxDecoration(
+                      color: Colors.white.withOpacity(0.8), // Light white background with opacity for the logo container
+                      borderRadius: BorderRadius.circular(10), // Rounded corners for the logo container
+                      boxShadow: [
+                        BoxShadow(
+                          color: Colors.black.withOpacity(0.25), // Shadow with a bit of transparency
+                          spreadRadius: 0,
+                          blurRadius: 10,
+                          offset: Offset(0, 4), // Position of shadow
+                        ),
+                      ],
+                    ),
+                    child: Image.asset("assets/images/logo.png", width: 150),
+                  ),
+                ),
+                Expanded(
+                  child: Center(
+                    child: GridView.count(
+                      primary: false,
+                      padding: const EdgeInsets.all(20),
+                      crossAxisSpacing: 3,
+                      mainAxisSpacing: 0,
+                      crossAxisCount: 2,
+                      children: <Widget>[
+                        AnimatedButton(text: "MON PROFIL", iconData: FontAwesomeIcons.user, route: "/profil", isLight: true),
+                        AnimatedButton(text: "MES ANNONCES", iconData: FontAwesomeIcons.pagelines, route: "/annoncesMenu", isLight: false),
+                        AnimatedButton(text: "MES AROSA-JE", iconData: FontAwesomeIcons.droplet, route: "/arosa-je", isLight: false),
+                        AnimatedButton(text: "CONSEILS", iconData: FontAwesomeIcons.book, route: "/catalog", isLight: true),
+                      ],
+                    ),
+                  ),
+                ),
+              ],
             ),
           ],
         ),
@@ -91,7 +124,8 @@ class _HomePageState extends State<HomePage> {
     );
   }
 
-  // Widget _buildButton(BuildContext context, String text, IconData iconData, String route, bool isLight) {
+
+// Widget _buildButton(BuildContext context, String text, IconData iconData, String route, bool isLight) {
   //   final isButtonPressed = _isPressed[route] ?? false; // Default to not pressed
   //
   //   return GestureDetector(
