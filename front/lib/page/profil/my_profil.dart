@@ -16,39 +16,56 @@ class MyProfilPage extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         title: const Text("Mon Profil"),
-        backgroundColor: greenBar,),
-      body: Padding(
-        padding: const EdgeInsets.all(16.0),
-        child: Column(
-          children: [
-            _buildCard(
-              title: "Mes Informations personelles",
-              contents: ["Nom", "Prénom", "Adresse"],
-              cardColor: cardColor,
-              titleTextStyle: titleTextStyle,
-              contentTextStyle: contentTextStyle,
-              cardBorderSide: cardBorderSide,
+        backgroundColor: greenBar,
+      ),
+      body: Stack(
+        children: [
+          // Background image with opacity
+          Opacity(
+            opacity: 0.5,
+            child: Container(
+              decoration: BoxDecoration(
+                image: DecorationImage(
+                  image: AssetImage('assets/images/plante-piece.png'),
+                  fit: BoxFit.cover,
+                ),
+              ),
             ),
-            SizedBox(height: 16),
-            _buildCard(
-              title: "Mes Annonces",
-              contents: ["Annonce 1", "Annonce 2","Annonce 3"],
-              cardColor: cardColor,
-              titleTextStyle: titleTextStyle,
-              contentTextStyle: contentTextStyle,
-              cardBorderSide: cardBorderSide,
+          ),
+          Padding(
+            padding: const EdgeInsets.all(16.0),
+            child: Column(
+              children: [
+                _buildCard(
+                  title: "Mes Informations personnelles",
+                  contents: ["Nom", "Prénom", "Adresse"],
+                  cardColor: cardColor,
+                  titleTextStyle: titleTextStyle,
+                  contentTextStyle: contentTextStyle,
+                  cardBorderSide: cardBorderSide,
+                ),
+                SizedBox(height: 16),
+                _buildCard(
+                  title: "Mes Annonces",
+                  contents: ["Annonce 1", "Annonce 2","Annonce 3"],
+                  cardColor: cardColor,
+                  titleTextStyle: titleTextStyle,
+                  contentTextStyle: contentTextStyle,
+                  cardBorderSide: cardBorderSide,
+                ),
+                SizedBox(height: 16),
+                _buildCard(
+                  title: "Mes Prochains ARosa-Je",
+                  contents: ["Annonce 1", "Annonce 2"],
+                  cardColor: cardColor,
+                  titleTextStyle: titleTextStyle,
+                  contentTextStyle: contentTextStyle,
+                  cardBorderSide: cardBorderSide,
+                ),
+              ],
             ),
-            SizedBox(height: 16),
-            _buildCard(
-              title: "Mes Prochains ARosa-Je",
-              contents: ["Annonce 1", "Annonce 2"],
-              cardColor: cardColor,
-              titleTextStyle: titleTextStyle,
-              contentTextStyle: contentTextStyle,
-              cardBorderSide: cardBorderSide,
-            ),
-          ],
-        ),
+          ),
+        ],
       ),
     );
   }
@@ -66,14 +83,14 @@ class MyProfilPage extends StatelessWidget {
       elevation: 0,
       shape: RoundedRectangleBorder(
         borderRadius: BorderRadius.circular(12),
-        side: cardBorderSide,
+        side: BorderSide(color: greenBar),
       ),
       child: Padding(
         padding: const EdgeInsets.all(16.0),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.stretch,
           children: [
-            Center(child: Text(title, style: titleTextStyle)),
+            Center(child: Text(title, style: titleTextStyle.copyWith(color: greenBar))),
             for (var content in contents) Text(content, style: contentTextStyle),
           ],
         ),

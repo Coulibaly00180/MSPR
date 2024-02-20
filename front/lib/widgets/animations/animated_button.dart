@@ -44,9 +44,13 @@ class _AnimatedButtonState extends State<AnimatedButton> {
             child: Column(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
-                Icon(
-                  widget.iconData,
-                  color: widget.isLight ? Colors.green.shade400 : Colors.white,
+                Padding(
+                  padding: const EdgeInsets.all(10.0),
+                  child: Icon(
+                    widget.iconData,
+                    color: widget.isLight ? Colors.green.shade400 : Colors.white,
+                    size: 30,
+                  ),
                 ),
                 const SizedBox(height: 8),
                 Text(
@@ -55,6 +59,7 @@ class _AnimatedButtonState extends State<AnimatedButton> {
                   style: TextStyle(
                     color: widget.isLight ? Colors.green.shade400 : Colors.white,
                     fontWeight: FontWeight.bold,
+                    letterSpacing: 1.5,
                   ),
                 ),
               ],

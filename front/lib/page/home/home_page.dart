@@ -81,24 +81,7 @@ class _HomePageState extends State<HomePage> {
             ),
             Column(
               children: [
-                Padding(
-                  padding: const EdgeInsets.only(top: 20.0, bottom: 20.0), // Add padding around the logo
-                  child: Container(
-                    decoration: BoxDecoration(
-                      color: Colors.white.withOpacity(0.8), // Light white background with opacity for the logo container
-                      borderRadius: BorderRadius.circular(10), // Rounded corners for the logo container
-                      boxShadow: [
-                        BoxShadow(
-                          color: Colors.black.withOpacity(0.25), // Shadow with a bit of transparency
-                          spreadRadius: 0,
-                          blurRadius: 10,
-                          offset: Offset(0, 4), // Position of shadow
-                        ),
-                      ],
-                    ),
-                    child: Image.asset("assets/images/logo.png", width: 150),
-                  ),
-                ),
+                Image.asset("assets/images/logo.png", width: 150),
                 Expanded(
                   child: Center(
                     child: GridView.count(

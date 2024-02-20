@@ -4,7 +4,6 @@ import 'package:go_router/go_router.dart';
 
 import '../../constant/css.dart';
 
-
 class AnnouncementPageMenu extends StatelessWidget {
   const AnnouncementPageMenu({super.key});
 
@@ -15,13 +14,34 @@ class AnnouncementPageMenu extends StatelessWidget {
         title: const Text("Annonces"),
         backgroundColor: greenBar,
       ),
-      body:Center(
-        child: Column(
-            children : [
-              _buildButton(context, "MES GARDES", "annoncesMenu/mesGardes", true),
-              _buildButton(context, "MES ANNONCES", "annoncesMenu/mesAnnonces", false)
-            ]),
-      )
+      body: Center(
+        child: Stack(
+          children: [
+            Opacity(
+              opacity: 0.5,
+              child: Container(
+                decoration: BoxDecoration(
+                  image: DecorationImage(
+                    image: AssetImage('assets/images/plante-salon.png'),
+                    fit: BoxFit.cover,
+                  ),
+                ),
+              ),
+            ),
+            Positioned.fill(
+              child: Center(
+                child: Column(
+                  mainAxisAlignment: MainAxisAlignment.center, // Centrage vertical et horizontal
+                  children: [
+                    _buildButton(context, "MES GARDES", "annoncesMenu/mesGardes", true),
+                    _buildButton(context, "MES ANNONCES", "annoncesMenu/mesAnnonces", false)
+                  ],
+                ),
+              ),
+            ),
+          ],
+        ),
+      ),
     );
   }
 
