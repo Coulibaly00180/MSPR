@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:front/route.dart';
 
+import '../../widgets/animations/animated_button.dart';
+
 
 
 class NavigationUltime extends StatefulWidget {
@@ -75,10 +77,10 @@ class _HomePageState extends State<HomePage> {
                 mainAxisSpacing: 0,
                 crossAxisCount: 2,
                 children: <Widget>[
-                  _buildButton(context, "MON PROFIL", FontAwesomeIcons.user, "/profil", true),
-                  _buildButton(context, "MES ANNONCES", FontAwesomeIcons.pagelines, "/annoncesMenu", false),
-                  _buildButton(context, "MES AROSA-JE", FontAwesomeIcons.droplet, "/arosa-je", false),
-                  _buildButton(context, "CONSEILS", FontAwesomeIcons.book, "/catalog", true),
+                  AnimatedButton(text: "MON PROFIL", iconData: FontAwesomeIcons.user, route: "/profil", isLight: true),
+                  AnimatedButton(text: "MES ANNONCES", iconData: FontAwesomeIcons.pagelines, route: "/annoncesMenu", isLight: false),
+                  AnimatedButton(text: "MES AROSA-JE", iconData: FontAwesomeIcons.droplet, route: "/arosa-je", isLight: false),
+                  AnimatedButton(text: "CONSEILS", iconData: FontAwesomeIcons.book, route: "/catalog", isLight: true),
                 ],
               ),
             ),
@@ -88,48 +90,48 @@ class _HomePageState extends State<HomePage> {
     );
   }
 
-  Widget _buildButton(BuildContext context, String text, IconData iconData, String route, bool isLight) {
-    final isButtonPressed = _isPressed[route] ?? false; // Default to not pressed
-
-    return GestureDetector(
-      onTapDown: (_) => setState(() => _isPressed[route] = true),
-      onTapCancel: () => setState(() => _isPressed[route] = false),
-      onTapUp: (_) => setState(() => _isPressed[route] = false),
-      onTap: () {
-        Navigator.of(context).pushNamed(route);
-        setState(() => _isPressed[route] = false); // Reset the state when the button is tapped
-      },
-      child: AnimatedContainer(
-        duration: const Duration(milliseconds: 100),
-        curve: Curves.easeInOut,
-        transform: Matrix4.diagonal3Values(isButtonPressed ? 0.95 : 1.0, isButtonPressed ? 0.95 : 1.0, 1),
-        child: Card(
-          color: isLight ? Colors.white : Colors.green.shade400,
-          shape: RoundedRectangleBorder(
-            borderRadius: BorderRadius.circular(15),
-          ),
-          child: Center(
-            child: Column(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                Icon(
-                  iconData,
-                  color: isLight ? Colors.green.shade400 : Colors.white,
-                ),
-                const SizedBox(height: 8),
-                Text(
-                  text,
-                  textAlign: TextAlign.center,
-                  style: TextStyle(
-                    color: isLight ? Colors.green.shade400 : Colors.white,
-                    fontWeight: FontWeight.bold,
-                  ),
-                ),
-              ],
-            ),
-          ),
-        ),
-      ),
-    );
-  }
+  // Widget _buildButton(BuildContext context, String text, IconData iconData, String route, bool isLight) {
+  //   final isButtonPressed = _isPressed[route] ?? false; // Default to not pressed
+  //
+  //   return GestureDetector(
+  //     onTapDown: (_) => setState(() => _isPressed[route] = true),
+  //     onTapCancel: () => setState(() => _isPressed[route] = false),
+  //     onTapUp: (_) => setState(() => _isPressed[route] = false),
+  //     onTap: () {
+  //       Navigator.of(context).pushNamed(route);
+  //       setState(() => _isPressed[route] = false); // Reset the state when the button is tapped
+  //     },
+  //     child: AnimatedContainer(
+  //       duration: const Duration(milliseconds: 100),
+  //       curve: Curves.easeInOut,
+  //       transform: Matrix4.diagonal3Values(isButtonPressed ? 0.95 : 1.0, isButtonPressed ? 0.95 : 1.0, 1),
+  //       child: Card(
+  //         color: isLight ? Colors.white : Colors.green.shade400,
+  //         shape: RoundedRectangleBorder(
+  //           borderRadius: BorderRadius.circular(15),
+  //         ),
+  //         child: Center(
+  //           child: Column(
+  //             mainAxisAlignment: MainAxisAlignment.center,
+  //             children: [
+  //               Icon(
+  //                 iconData,
+  //                 color: isLight ? Colors.green.shade400 : Colors.white,
+  //               ),
+  //               const SizedBox(height: 8),
+  //               Text(
+  //                 text,
+  //                 textAlign: TextAlign.center,
+  //                 style: TextStyle(
+  //                   color: isLight ? Colors.green.shade400 : Colors.white,
+  //                   fontWeight: FontWeight.bold,
+  //                 ),
+  //               ),
+  //             ],
+  //           ),
+  //         ),
+  //       ),
+  //     ),
+  //   );
+  // }
 }
