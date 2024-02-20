@@ -23,9 +23,7 @@ public class AuthentificationService {
     // Verifie la connexion
     public boolean connecteUtilisateur(String email, String password){
         Utilisateur utilisateur = utilisateurRepository.findByEmail(email);
-        String emailUser = utilisateur.getEmail();
-        String passwordUser = utilisateur.getPassword();
-        return (passwordUser.equals(password) && emailUser.equals(email));
+        return utilisateur != null && password.equals(utilisateur.getPassword());
         //return emailUser != null && passwordEncoder.matches(password, utilisateur.getPassword());
     }
 
@@ -51,12 +49,9 @@ public class AuthentificationService {
     // Verifie si l'utilisateur est inscrit
     // Sinon le creer
     public boolean inscriptionUtilisateur(Utilisateur utilisateur) {
-        Utilisateur utiilisateurInBDD = utilisateurRepository.findByEmail(utilisateur.getEmail());
 
-        String email = utilisateur.getEmail();
-        String emailInBDD = utiilisateurInBDD.getEmail();
 
-        if (email.equals(emailInBDD)){
+        if(utilisateurRepository.findByEmail(utilisateur.getEmail())!=null){
             return false;
         }
         utilisateurRepository.save(utilisateur);

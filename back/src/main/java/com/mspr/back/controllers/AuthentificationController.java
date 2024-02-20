@@ -29,10 +29,10 @@ public class AuthentificationController {
         String password = request.get("password");
 
         if (authentificationService.connecteUtilisateur(email,password)){
-            return ResponseEntity.ok("Utilisateur bien authentifie");
+            return ResponseEntity.ok("Utilisateur bien connecté");
         }
         else {
-            return ResponseEntity.badRequest().body("Invalid credentials");
+            return ResponseEntity.badRequest().body("Utilisateur non reconnu");
         }
     }
 
@@ -47,7 +47,7 @@ public class AuthentificationController {
             // validateInput(email,password);
 
             if (authentificationService.inscriptionUtilisateur(utilisateur)){
-                return ResponseEntity.ok("L'utilisateur bien enregistré");
+                return ResponseEntity.ok("L'utilisateur a été crée");
             }
             else {
                 return ResponseEntity.badRequest().body("L'utilisateur existe déjà");

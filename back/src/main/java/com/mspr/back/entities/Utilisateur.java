@@ -47,7 +47,7 @@ public class Utilisateur {
     @Column(name = "adresse_utilisateur", nullable = false)
     private String adresse;
 
-    @ManyToMany(fetch = FetchType.EAGER)
+    @ManyToMany
     @JoinTable(name = "accepte",
             joinColumns = @JoinColumn(name = "id_utilisateur", referencedColumnName = "id"),
             inverseJoinColumns = @JoinColumn(name = "id_annonce", referencedColumnName = "id")
