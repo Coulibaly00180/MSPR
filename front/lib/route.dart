@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
-import 'package:front/page/annonces/add_announcements.dart';
-import 'package:front/page/annonces/announce_details.dart';
+import 'package:front/page/annonces/mesAnnonces/add_announcements.dart';
+import 'package:front/page/annonces/mesAnnonces/announce_details.dart';
 import 'package:front/page/annonces/announcement_menu.dart';
-import 'package:front/page/annonces/mes_gardes.dart';
-import 'package:front/page/annonces/my_announcements.dart';
+import 'package:front/page/annonces/mesGardes/mes_gardes.dart';
+import 'package:front/page/annonces/mesAnnonces/my_announcements.dart';
 import 'package:front/page/catalogue/catalog_page.dart';
 import 'package:front/page/home/home_page.dart';
 import 'package:front/page/profil/my_profil.dart';

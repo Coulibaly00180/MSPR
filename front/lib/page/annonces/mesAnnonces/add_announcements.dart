@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import '../../widgets/appbar/bottom_appbar_menu.dart';
-import '../../widgets/date_picker.dart';
+import '../../../widgets/appbar/bottom_appbar_menu.dart';
+import '../../../widgets/date_picker.dart';
 
 class AddAnnouncementPage extends StatelessWidget {
   const AddAnnouncementPage({Key? key}) : super(key: key);
