@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 
+import '../../../constant/css.dart';
+
 class PlantCarePage extends StatelessWidget {
   const PlantCarePage({Key? key}) : super(key: key);
 
@@ -17,7 +19,7 @@ class PlantCarePage extends StatelessWidget {
               },
             ),
           ],
-          backgroundColor: Colors.green,
+          backgroundColor: greenBar,
         ),
         body: Column(
           crossAxisAlignment: CrossAxisAlignment.stretch,
