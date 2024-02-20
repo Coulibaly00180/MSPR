@@ -1,4 +1,3 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 import '../../../constant/css.dart';
@@ -10,8 +9,40 @@ class MyGardesPage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text("Mes Gardes"),
+        title: const Text("Mes prochains ARosa-je"),
         backgroundColor: greenBar,
+      ),
+      body: ListView.builder(
+        itemCount: 3,
+        itemBuilder: (context, index) {
+          return Card(
+            color: Colors.white,
+            margin: const EdgeInsets.symmetric(horizontal: 8, vertical: 4),
+            shape: RoundedRectangleBorder(
+              borderRadius: BorderRadius.circular(15.0),
+            ),
+            child: ListTile(
+              leading: Image.network(
+                'https://via.placeholder.com/150',
+                width: 50,
+                height: 50,
+                fit: BoxFit.cover,
+              ),
+              title: const Text('NOM DE LA PLANTE A GARDER'),
+              subtitle: const Text('15/06/24 au 30/06/24'),
+              trailing: ElevatedButton(
+                onPressed: () {
+
+                },
+                child: const Text('Déclarer une visiste'),
+                style: ElevatedButton.styleFrom(
+                  primary: Colors.green.shade400,
+                  onPrimary: Colors.white,
+                ),
+              ),
+            ),
+          );
+        },
       ),
     );
   }

@@ -18,7 +18,7 @@ class AnnouncementPageMenu extends StatelessWidget {
       body:Center(
         child: Column(
             children : [
-              _buildButton(context, "MES GARDES", "annonces", true),
+              _buildButton(context, "MES GARDES", "annoncesMenu/mesGardes", true),
               _buildButton(context, "MES ANNONCES", "annoncesMenu/mesAnnonces", false)
             ]),
       )

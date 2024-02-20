@@ -69,6 +69,7 @@ class _HomePageState extends State<HomePage> {
         child: Column(
           children: [
             Image.asset("assets/images/logo.png", width: 150),
+            Image.asset("assets/images/homeImg.png", width: 150),
             Expanded(
               child: GridView.count(
                 primary: false,
