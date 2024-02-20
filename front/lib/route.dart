@@ -52,4 +52,5 @@ final navigationPaths = [
     pathName: '/annoncesMenu/mesAnnonces/:id/details',
     builder: (BuildContext context, RouteSettings settings) => const PlantDetailsPage(),
   ),
+
 ];
