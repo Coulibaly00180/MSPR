@@ -1,7 +1,21 @@
 import 'package:flutter/material.dart';
+import 'package:front/functionApi/auth_service.dart';
 import 'package:front/model/address.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:front/functionApi/fetchAddress.dart';
+
+void main() {
+  runApp(MyApp());
+}
+
+class MyApp extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return MaterialApp(
+      home: const SignupPage(),
+    );
+  }
+}
 
 class SignupPage extends StatelessWidget {
   const SignupPage({super.key});
@@ -26,13 +40,14 @@ class SignupPage extends StatelessWidget {
             ],
           ),
         ),
-        child: const Column(
-          mainAxisAlignment: MainAxisAlignment.start,
-          children: [
-            TopSection(),
-            InputSection(),
-            ButtonWidget(),
-          ],
+        child: SingleChildScrollView(
+          child: const Column(
+            mainAxisAlignment: MainAxisAlignment.start,
+            children: [
+              TopSection(),
+              InputSection(),
+            ],
+          ),
         ),
       ),
     );
@@ -70,8 +85,31 @@ class TopSection extends StatelessWidget {
   }
 }
 
-class InputSection extends StatelessWidget {
-  const InputSection({super.key});
+class InputSection extends StatefulWidget {
+  const InputSection ({super.key});
+
+  @override
+  State<InputSection > createState() => _InputSectionState();
+}
+
+class _InputSectionState extends State<InputSection > {
+  final TextEditingController _pseudoController = TextEditingController();
+  final TextEditingController _emailController = TextEditingController();
+  final TextEditingController _passwordController = TextEditingController();
+  final TextEditingController _nomController = TextEditingController();
+  final TextEditingController _prenomController = TextEditingController();
+  final TextEditingController _adresseController = TextEditingController();
+
+  @override
+  void dispose() {
+    _pseudoController.dispose();
+    _emailController.dispose();
+    _passwordController.dispose();
+    _nomController.dispose();
+    _prenomController.dispose();
+    _adresseController.dispose();
+    super.dispose();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -106,6 +144,7 @@ class InputSection extends StatelessWidget {
               ),
               Expanded(
                 child: TextField(
+                  controller: _pseudoController,
                   style: GoogleFonts.comfortaa(
                     fontSize: 20,
                     color: Colors.white,
@@ -153,6 +192,7 @@ class InputSection extends StatelessWidget {
               ),
               Expanded(
                 child: TextField(
+                  controller: _emailController,
                   style: GoogleFonts.comfortaa(
                     fontSize: 20,
                     color: Colors.white,
@@ -193,6 +233,102 @@ class InputSection extends StatelessWidget {
                   borderRadius: BorderRadius.circular(30),
                 ),
                 child: Icon(
+                  Icons.abc,
+                  size: 30,
+                  color: Colors.blue.shade900,
+                ),
+              ),
+              Expanded(
+                child: TextField(
+                  controller: _nomController,
+                  style: GoogleFonts.comfortaa(
+                    fontSize: 20,
+                    color: Colors.white,
+                    fontWeight: FontWeight.bold,
+                  ),
+                  obscureText: false,
+                  decoration: InputDecoration(
+                    hintText: 'Nom',
+                    hintStyle: GoogleFonts.comfortaa(
+                      color: Colors.white,
+                    ),
+                    border: InputBorder.none,
+                  ),
+                ),
+              ),
+            ],
+          ),
+        ),
+        const SizedBox(height: 30),
+        Container(
+          height: 60,
+          decoration: BoxDecoration(
+            color: const Color.fromRGBO(255, 255, 255, 0.1),
+            border: Border.all(
+              color: Colors.white30,
+              width: 1,
+            ),
+            borderRadius: BorderRadius.circular(30),
+          ),
+          child: Row(
+            children: [
+              Container(
+                height: 60,
+                width: 60,
+                margin: const EdgeInsets.only(right: 20),
+                decoration: BoxDecoration(
+                  color: Colors.white,
+                  borderRadius: BorderRadius.circular(30),
+                ),
+                child: Icon(
+                  Icons.abc,
+                  size: 30,
+                  color: Colors.blue.shade900,
+                ),
+              ),
+              Expanded(
+                child: TextField(
+                  controller: _prenomController,
+                  style: GoogleFonts.comfortaa(
+                    fontSize: 20,
+                    color: Colors.white,
+                    fontWeight: FontWeight.bold,
+                  ),
+                  obscureText: false,
+                  decoration: InputDecoration(
+                    hintText: 'Prenom',
+                    hintStyle: GoogleFonts.comfortaa(
+                      color: Colors.white,
+                    ),
+                    border: InputBorder.none,
+                  ),
+                ),
+              ),
+            ],
+          ),
+        ),
+        const SizedBox(height: 30),
+        Container(
+          height: 60,
+          decoration: BoxDecoration(
+            color: const Color.fromRGBO(255, 255, 255, 0.1),
+            border: Border.all(
+              color: Colors.white30,
+              width: 1,
+            ),
+            borderRadius: BorderRadius.circular(30),
+          ),
+          child: Row(
+            children: [
+              Container(
+                height: 60,
+                width: 60,
+                margin: const EdgeInsets.only(right: 20),
+                decoration: BoxDecoration(
+                  color: Colors.white,
+                  borderRadius: BorderRadius.circular(30),
+                ),
+                child: Icon(
                   Icons.lock_outline,
                   size: 30,
                   color: Colors.blue.shade900,
@@ -200,6 +336,7 @@ class InputSection extends StatelessWidget {
               ),
               Expanded(
                 child: TextField(
+                  controller: _passwordController,
                   style: GoogleFonts.comfortaa(
                     fontSize: 20,
                     color: Colors.white,
@@ -240,7 +377,7 @@ class InputSection extends StatelessWidget {
                   borderRadius: BorderRadius.circular(30),
                 ),
                 child: Icon(
-                  Icons.date_range,
+                  Icons.add_home,
                   size: 30,
                   color: Colors.blue.shade900,
                 ),
@@ -257,7 +394,7 @@ class InputSection extends StatelessWidget {
                   displayStringForOption: (Address option) => option.label,
                   fieldViewBuilder: (BuildContext context, TextEditingController fieldTextEditingController, FocusNode fieldFocusNode, VoidCallback onFieldSubmitted) {
                     return TextField(
-                      controller: fieldTextEditingController,
+                      controller: _adresseController,
                       focusNode: fieldFocusNode,
                       style: GoogleFonts.comfortaa(
                         fontSize: 20,
@@ -273,18 +410,48 @@ class InputSection extends StatelessWidget {
                       ),
                     );
                   },
+                  onSelected: (Address selection) {
+                    _adresseController.text = selection.label;
+                  },
                 ),
               ),
+              
             ],
           ),
         ),
+        const SizedBox(height: 30),
+        SizedBox(height: 20),
+          ButtonWidget(
+            pseudoController: _pseudoController,
+            emailController: _emailController,
+            passwordController: _passwordController,
+            nomController: _nomController,
+            prenomController: _prenomController,
+            adresseController: _adresseController,
+          ),
       ]),
     );
   }
+
 }
 
 class ButtonWidget extends StatelessWidget {
-  const ButtonWidget({super.key});
+  final TextEditingController pseudoController;
+  final TextEditingController emailController;
+  final TextEditingController passwordController;
+  final TextEditingController nomController;
+  final TextEditingController prenomController;
+  final TextEditingController adresseController;
+
+  const ButtonWidget({
+    super.key,
+    required this.pseudoController,
+    required this.emailController,
+    required this.passwordController,
+    required this.nomController,
+    required this.prenomController,
+    required this.adresseController,
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -306,7 +473,23 @@ class ButtonWidget extends StatelessWidget {
             fontSize: 20,
           ),
         ),
-        onPressed: () {},
+        onPressed: () async {
+          final success = await AuthService.signup(
+            pseudoController.text,
+            passwordController.text,
+            emailController.text,
+            nomController.text,
+            prenomController.text,
+            adresseController.text,
+          );
+
+          if (success) {
+            ScaffoldMessenger.of(context).showSnackBar(SnackBar(content: Text('Inscription réussie')));
+            // Vous pouvez ici naviguer vers une autre page si nécessaire
+          } else {
+            ScaffoldMessenger.of(context).showSnackBar(SnackBar(content: Text('Erreur lors de l\'inscription')));
+          }
+        },
       ),
     );
   }
