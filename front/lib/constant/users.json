@@ -1,0 +1,44 @@
+{
+  "users": [
+    {
+      "id": "1",
+      "pseudo": "user",
+      "password": "1234",
+      "nom": "Doe",
+      "prenom": "John",
+      "email": "john.doe@gmail.com",
+      "adresse": "123 Rue du Général 444000 Nantes",
+      "user_photo": ""
+    },
+    {
+      "id": "2",
+      "pseudo": "user2",
+      "password": "1234",
+      "nom": "Matin",
+      "prenom": "Martin",
+      "email": "martin.matin@gmail.com",
+      "adresse": "2 Avenue de la Paix 444000 Nantes",
+      "user_photo": ""
+    }
+  ],
+  "annonces": [
+    {
+      "id": "1",
+      "titre": "MARTA",
+      "debut": "2024-04-12T00:00:00Z",
+      "fin": "2024-04-15T00:00:00Z",
+      "aroseur_id": "2",
+      "proprio_id": "1",
+      "url": "assets/images/plante-interieur.jpg"
+    },
+    {
+      "id": "2",
+      "titre": "SPIKE",
+      "debut": "2024-05-11T00:00:00Z",
+      "fin": "2024-05-16T00:00:00Z",
+      "aroseur_id": "1",
+      "proprio_id": "2",
+      "url": "assets/images/paint.jpg"
+    }
+  ]
+}
