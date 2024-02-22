@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.Map;
 
+@CrossOrigin
 @RestController
 @RequestMapping("/authentification")
 public class AuthentificationController {
@@ -75,8 +76,5 @@ public class AuthentificationController {
             throw new IllegalArgumentException("Le mot de passe doit contenir au moins 3 caractères");
         }
     }
-
-
-
 
 }
