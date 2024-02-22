@@ -25,10 +25,10 @@ final navigationPaths = [
     pathName: '/search',
     builder: (BuildContext context, RouteSettings settings) => SearchPage(),
   ),
-  // NamedPath(
-  //   pathName: '/catalog',
-  //   builder: (BuildContext context, RouteSettings settings) => const CatalogPage(),
-  // ),
+  NamedPath(
+    pathName: '/catalog',
+    builder: (BuildContext context, RouteSettings settings) => const CatalogPage(),
+  ),
   NamedPath(
     pathName: '/profil',
     builder: (BuildContext context, RouteSettings settings) => const MyProfilPage(),
@@ -42,6 +42,10 @@ final navigationPaths = [
     builder: (BuildContext context, RouteSettings settings) => const MyGardesPage(),
   ),
   NamedPath(
+    pathName: '/annoncesMenu/mesGardes/:id/details',
+    builder: (BuildContext context, RouteSettings settings) => const PlantCarePage(),
+  ),
+  NamedPath(
     pathName: '/annoncesMenu/mesAnnonces',
     builder: (BuildContext context, RouteSettings settings) => const MyAdsPage(),
   ),
@@ -53,8 +57,5 @@ final navigationPaths = [
     pathName: '/annoncesMenu/mesAnnonces/:id/details',
     builder: (BuildContext context, RouteSettings settings) => const PlantDetailsPage(),
   ),
-  NamedPath(
-    pathName: '/catalog',
-    builder: (BuildContext context, RouteSettings settings) => const PlantCarePage(),
-  ),
+
 ];

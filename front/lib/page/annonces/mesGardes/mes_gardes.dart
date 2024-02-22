@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 
+import ' garde_detail_page.dart';
 import '../../../constant/css.dart';
+import '../mesAnnonces/announce_details.dart';
 
 class MyGardesPage extends StatelessWidget {
   const MyGardesPage({Key? key}) : super(key: key);
@@ -12,16 +14,20 @@ class MyGardesPage extends StatelessWidget {
         title: const Text("Mes prochains ARosa-je"),
         backgroundColor: greenBar,
       ),
-      body: Opacity(
-        opacity:0.5,
-        child: Container(
-          decoration: BoxDecoration(
-            image: DecorationImage(
-              image: AssetImage('assets/images/gardeBck.png'),
-              fit: BoxFit.cover,
+      body: Stack(
+        children: [
+          Opacity(
+            opacity: 0.5,
+            child: Container(
+              decoration: BoxDecoration(
+                image: DecorationImage(
+                  image: AssetImage('assets/images/feuilles.png'),
+                  fit: BoxFit.cover,
+                ),
+              ),
             ),
           ),
-          child: ListView.builder(
+          ListView.builder(
             itemCount: 3,
             itemBuilder: (context, index) {
               return Card(
@@ -31,19 +37,19 @@ class MyGardesPage extends StatelessWidget {
                   borderRadius: BorderRadius.circular(15.0),
                 ),
                 child: ListTile(
-                  leading: Image.asset(
-                    'plante-interieur.jpg',
-                    width: 50,
-                    height: 50,
-                    fit: BoxFit.cover,
-                  ),
-                  title: const Text('NOM DE LA PLANTE A GARDER'),
+                  leading: Image.asset('assets/images/green-2567165_1280.jpg'),
+                  title: const Text('MARTA'),
                   subtitle: const Text('15/06/24 au 30/06/24'),
                   trailing: ElevatedButton(
-                    onPressed: () {},
-                    child: const Text('Déclarer une visite'),
+                    onPressed: () {
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(builder: (context) => const PlantCarePage()),
+                      );
+                    },
+                    child: const Text('DECLARER UNE VISITE'),
                     style: ElevatedButton.styleFrom(
-                      primary: Colors.green.shade400,
+                      primary: Colors.black,
                       onPrimary: Colors.white,
                     ),
                   ),
@@ -51,7 +57,7 @@ class MyGardesPage extends StatelessWidget {
               );
             },
           ),
-        ),
+        ],
       ),
     );
   }

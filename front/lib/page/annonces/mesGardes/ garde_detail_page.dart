@@ -7,18 +7,9 @@ class PlantCarePage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      home: Scaffold(
+    return Scaffold(
         appBar: AppBar(
           title: Text('Déclarer mes visites'),
-          actions: [
-            IconButton(
-              icon: Icon(Icons.search),
-              onPressed: () {
-                // Implement search action
-              },
-            ),
-          ],
           backgroundColor: greenBar,
         ),
         body: Column(
@@ -99,7 +90,6 @@ class PlantCarePage extends StatelessWidget {
             SizedBox(height: 20), // For bottom padding
           ],
         ),
-      ),
     );
   }
 }
