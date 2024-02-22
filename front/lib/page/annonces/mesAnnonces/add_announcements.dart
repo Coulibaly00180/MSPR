@@ -5,6 +5,7 @@ import '../../../widgets/date_picker.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:path_provider/path_provider.dart';
 
+
 class AddAnnouncementPage extends StatefulWidget {
   const AddAnnouncementPage({Key? key}) : super(key: key);
 
@@ -13,23 +14,18 @@ class AddAnnouncementPage extends StatefulWidget {
 }
 
 class _AddAnnouncementPageState extends State<AddAnnouncementPage> {
-  File? _selectedImage;
-
+  XFile? _selectedImage;
   final ImagePicker _picker = ImagePicker();
 
   Future<void> _getImage(ImageSource source) async {
-    final pickedFile = await _picker.pickImage(source: source);
-    if (pickedFile != null) {
-      final Directory appDir = await getApplicationDocumentsDirectory();
-      final String imagePath = '${appDir.path}/my_image.jpg';
-      final File newImage = File(pickedFile.path);
-      final File savedImage = await newImage.copy(imagePath);
-
-      setState(() {
-        _selectedImage = savedImage;
-      });
-    }
+  final pickedFile = await _picker.pickImage(source: source);
+  if (pickedFile != null) {
+    setState(() {
+      _selectedImage = pickedFile;
+    });
   }
+}
+
 
   void _showImagePickerDialog() {
     showDialog(
@@ -125,20 +121,19 @@ class _AddAnnouncementPageState extends State<AddAnnouncementPage> {
                                   ),
                                 ),
                               ),
-                              if (_selectedImage != null) // Affiche la prévisualisation si une image est sélectionnée
-                                Padding(
-                                  padding: const EdgeInsets.symmetric(horizontal: 20),
-                                  child: ClipRRect(
-                                    borderRadius: BorderRadius.circular(8),
-                                    child: Image.file(
-                                      //to show image, you type like this.
-                                      File(_selectedImage!.path),
-                                      fit: BoxFit.cover,
-                                      width: MediaQuery.of(context).size.width,
-                                      height: 300,
-                                    ),
+                              if (_selectedImage != null)
+                              Padding(
+                                padding: const EdgeInsets.symmetric(horizontal: 20),
+                                child: ClipRRect(
+                                  borderRadius: BorderRadius.circular(8),
+                                  child: Image.file(
+                                    File(_selectedImage!.path),
+                                    fit: BoxFit.cover,
+                                    width: 272,
+                                    height: 300,
                                   ),
-                                )
+                                ),
+                              )
                             ],
                           ),
                           const SizedBox(height: 10),
