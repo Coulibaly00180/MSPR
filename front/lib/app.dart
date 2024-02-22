@@ -8,14 +8,14 @@ import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
 import 'constant/css.dart';
 
-class MyApp extends StatefulWidget {
-  const MyApp({Key? key}) : super(key: key);
+class NavBar extends StatefulWidget {
+  const NavBar({Key? key}) : super(key: key);
 
   @override
-  State<MyApp> createState() => _MyAppState();
+  State<NavBar> createState() => _NavBarState();
 }
 
-class _MyAppState extends State<MyApp> {
+class _NavBarState extends State<NavBar> {
   int _currentIndex = 0;
 
   final List<Widget> _pages = [
