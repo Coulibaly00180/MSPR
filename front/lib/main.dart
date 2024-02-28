@@ -39,12 +39,12 @@ void main() {
   );
 
   var annonce2 = Annonces(
-    id: '2',
-    titre: 'SPIKE',
-    debut:  DateTime.utc(2024,05,11),
-    fin: DateTime.utc(2024,05,16),
-    aroseur_id: '1',
-    proprio_id: '2',
-    url: 'assets/images/paint.jpg'
+      id: '2',
+      titre: 'SPIKE',
+      debut:  DateTime.utc(2024,05,11),
+      fin: DateTime.utc(2024,05,16),
+      aroseur_id: '1',
+      proprio_id: '2',
+      url: 'assets/images/paint.jpg'
   );
 }
