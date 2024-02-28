@@ -2,6 +2,19 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 import '../../constant/css.dart';
+import '../../constant/users.dart';
+
+User user = User(
+  id: '1',
+  pseudo: 'user',
+  password: '1234',
+  nom: 'Doe',
+  prenom: 'John',
+  email: 'john.doe@gmail.com',
+  adresse: '123 Rue du Général 444000 Nantes',
+  user_photo:'',
+);
+
 
 class MyProfilPage extends StatelessWidget {
   const MyProfilPage({super.key});

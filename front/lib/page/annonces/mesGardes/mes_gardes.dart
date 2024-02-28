@@ -3,7 +3,6 @@ import 'package:flutter/material.dart';
 import ' garde_detail_page.dart';
 import '../../../constant/annonces.dart';
 import '../../../constant/css.dart';
-import '../mesAnnonces/announce_details.dart';
 
 final List<Annonces> annonces = [
   Annonces(
@@ -80,7 +79,7 @@ class MyGardesPage extends StatelessWidget {
                     onPressed: () {
                       Navigator.push(
                         context,
-                        MaterialPageRoute(builder: (context) => const PlantCarePage()),
+                        MaterialPageRoute(builder: (context) => PlantCarePage(annonceId: annonce.id)),
                       );
                     },
                     child: const Text('DECLARER UNE VISITE'),

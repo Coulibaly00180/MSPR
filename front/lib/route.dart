@@ -43,7 +43,7 @@ final navigationPaths = [
   ),
   NamedPath(
     pathName: '/annoncesMenu/mesGardes/:id/details',
-    builder: (BuildContext context, RouteSettings settings) => const PlantCarePage(),
+    builder: (BuildContext context, RouteSettings settings) => const PlantCarePage(annonceId: '',),
   ),
   NamedPath(
     pathName: '/annoncesMenu/mesAnnonces',
@@ -55,7 +55,7 @@ final navigationPaths = [
   ),
   NamedPath(
     pathName: '/annoncesMenu/mesAnnonces/:id/details',
-    builder: (BuildContext context, RouteSettings settings) => const PlantDetailsPage(),
+    builder: (BuildContext context, RouteSettings settings) => const PlantDetailsPage(annonceId: '',),
   ),
 
 ];
