@@ -70,13 +70,13 @@ class PlantCarePage extends StatelessWidget {
                     child: Column(
                       children: [
                         Expanded(
-                          child: Container(
-                            decoration: BoxDecoration(
-                              borderRadius: BorderRadius.circular(10),
-                              border: Border.all(color: Colors.black, width: 2),
-                            ),
-                            child: Padding(
-                              padding: const EdgeInsets.all(10.0),
+                          child: Padding(
+                            padding: const EdgeInsets.all(8.0),
+                            child: Container(
+                              decoration: BoxDecoration(
+                                borderRadius: BorderRadius.circular(10),
+                                border: Border.all(color: Colors.black, width: 2),
+                              ),
                               child: Image.asset(
                                 'assets/images/${annonce.url}',
                                 fit: BoxFit.cover,
