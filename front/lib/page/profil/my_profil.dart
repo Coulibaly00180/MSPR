@@ -14,7 +14,7 @@ User user = User(
   prenom: 'John',
   email: 'john.doe@gmail.com',
   adresse: '123 Rue du Général 444000 Nantes',
-  user_photo:'',
+  user_photo: 'assets/images/profile.png',
 );
 
 class MyProfilPage extends StatelessWidget {
@@ -30,7 +30,7 @@ class MyProfilPage extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         title: const Text("Mon Profil"),
-        backgroundColor: greenBar, // Ensure you have defined `greenBar` color in your CSS constants
+        backgroundColor: greenBar,
       ),
       body: Stack(
         children: [
@@ -45,10 +45,23 @@ class MyProfilPage extends StatelessWidget {
               ),
             ),
           ),
-          Padding(
+          SingleChildScrollView(
             padding: const EdgeInsets.all(16.0),
             child: Column(
               children: [
+                CircleAvatar(
+                  radius: 60,
+                  backgroundImage: AssetImage(user.user_photo),
+                ),
+                SizedBox(height: 16),
+                ElevatedButton(
+                  onPressed: () {
+                    print('Modifier mon profil');
+                  },
+                  child: Text('Modifier mon profil'),
+                  style: ElevatedButton.styleFrom(primary: greenBar),
+                ),
+                SizedBox(height: 16),
                 _buildCard(
                   title: "Mes Informations personnelles",
                   contents: [
@@ -69,6 +82,11 @@ class MyProfilPage extends StatelessWidget {
                   titleTextStyle: titleTextStyle,
                   contentTextStyle: contentTextStyle,
                   cardBorderSide: cardBorderSide,
+                  buttonText: 'Voir mes annonces',
+                  onButtonPressed: () {
+                    // Logique pour voir les annonces
+                    print('Voir mes annonces');
+                  },
                 ),
                 SizedBox(height: 16),
                 _buildCard(
@@ -78,6 +96,11 @@ class MyProfilPage extends StatelessWidget {
                   titleTextStyle: titleTextStyle,
                   contentTextStyle: contentTextStyle,
                   cardBorderSide: cardBorderSide,
+                  buttonText: 'Voir mes gardes',
+                  onButtonPressed: () {
+                    // Logique pour voir les gardes
+                    print('Voir mes gardes');
+                  },
                 ),
               ],
             ),
@@ -94,21 +117,32 @@ class MyProfilPage extends StatelessWidget {
     required TextStyle titleTextStyle,
     required TextStyle contentTextStyle,
     required BorderSide cardBorderSide,
+    String? buttonText,
+    VoidCallback? onButtonPressed,
   }) {
     return Card(
       color: cardColor,
       elevation: 0,
       shape: RoundedRectangleBorder(
         borderRadius: BorderRadius.circular(12),
-        side: BorderSide(color: greenBar), // Ensure you have defined `greenBar` color in your CSS constants
+        side: cardBorderSide,
       ),
       child: Padding(
         padding: const EdgeInsets.all(16.0),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.stretch,
           children: [
-            Center(child: Text(title, style: titleTextStyle.copyWith(color: greenBar))), // Use `greenBar` for title color
+            Center(child: Text(title, style: titleTextStyle.copyWith(color: greenBar))),
             for (var content in contents) Text(content, style: contentTextStyle),
+            if (buttonText != null && onButtonPressed != null)
+              Padding(
+                padding: const EdgeInsets.only(top: 16.0),
+                child: ElevatedButton(
+                  onPressed: onButtonPressed,
+                  child: Text(buttonText),
+                  style: ElevatedButton.styleFrom(primary: greenBar),
+                ),
+              ),
           ],
         ),
       ),
