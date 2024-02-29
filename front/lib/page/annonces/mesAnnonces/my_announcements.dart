@@ -22,7 +22,7 @@ final List<Annonces> annonces = [
     fin: DateTime(2024, 3, 10),
     aroseur_id: '2',
     proprio_id: '2',
-    url: 'annnonce1.jpg',
+    url: 'annonce2.jpg',
   )
 ];
 
