@@ -1,9 +1,38 @@
 import 'package:flutter/material.dart';
 
 import ' garde_detail_page.dart';
+import '../../../constant/annonces.dart';
 import '../../../constant/css.dart';
-import '../mesAnnonces/announce_details.dart';
 
+final List<Annonces> annonces = [
+  Annonces(
+    id: '1',
+    titre: 'MARTA',
+    debut: DateTime(2024, 6, 15),
+    fin: DateTime(2024, 6, 30),
+    aroseur_id: '1',
+    proprio_id: '1',
+    url: 'garde1.jpg',
+  ),
+  Annonces(
+    id: '2',
+    titre: 'SPIKE',
+    debut: DateTime(2024, 7, 1),
+    fin: DateTime(2024, 7, 15),
+    aroseur_id: '2',
+    proprio_id: '2',
+    url: 'garde2.jpg',
+  ),
+  Annonces(
+    id: '3',
+    titre: 'ANNA',
+    debut: DateTime(2024, 7, 20),
+    fin: DateTime(2024, 8, 5),
+    aroseur_id: '3',
+    proprio_id: '3',
+    url: 'garde3.jpg',
+  ),
+];
 
 
 class MyGardesPage extends StatelessWidget {
@@ -30,8 +59,9 @@ class MyGardesPage extends StatelessWidget {
             ),
           ),
           ListView.builder(
-            itemCount: 3,
+            itemCount: annonces.length,
             itemBuilder: (context, index) {
+              final annonce = annonces[index];
               return Card(
                 color: Colors.white,
                 margin: const EdgeInsets.symmetric(horizontal: 8, vertical: 4),
@@ -39,14 +69,17 @@ class MyGardesPage extends StatelessWidget {
                   borderRadius: BorderRadius.circular(15.0),
                 ),
                 child: ListTile(
-                  leading: Image.asset('assets/images/green-2567165_1280.jpg'),
-                  title: const Text('MARTA'),
-                  subtitle: const Text('15/06/24 au 30/06/24'),
+                  leading: Image.asset(
+                    'assets/images/${annonce.url}',
+                  ),
+
+                  title: Text(annonce.titre),
+                  subtitle: Text('${annonce.debut.day}/${annonce.debut.month}/${annonce.debut.year} au ${annonce.fin.day}/${annonce.fin.month}/${annonce.fin.year}'),
                   trailing: ElevatedButton(
                     onPressed: () {
                       Navigator.push(
                         context,
-                        MaterialPageRoute(builder: (context) => const PlantCarePage()),
+                        MaterialPageRoute(builder: (context) => PlantCarePage(annonceId: annonce.id)),
                       );
                     },
                     child: const Text('DECLARER UNE VISITE'),

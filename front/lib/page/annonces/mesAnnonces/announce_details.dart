@@ -1,11 +1,52 @@
 import 'package:flutter/material.dart';
+git
+
+import '../../../constant/annonces.dart';
 import '../../../constant/css.dart';
+import '../../../constant/users.dart';
+
+
+final List<Annonces> annonces = [
+  Annonces(
+    id: '1',
+    titre: 'CARLA',
+    debut: DateTime(2024, 4, 2),
+    fin: DateTime(2024, 4, 15),
+    aroseur_id: '1',
+    proprio_id: '1',
+    url: 'annonce1.jpg',
+  ),
+  Annonces(
+    id: '2',
+    titre: 'TEO',
+    debut: DateTime(2024, 2, 27),
+    fin: DateTime(2024, 3, 10),
+    aroseur_id: '2',
+    proprio_id: '2',
+    url: 'annnonce2.jpg',
+  )
+];
+
+User user = User(
+  id: '2',
+  pseudo: 'user2',
+  password: '1234',
+  nom: 'Matin',
+  prenom: 'Martin',
+  email: 'martin.matin@gmail.com',
+  adresse: '2 Avenue de la Paix 444000 Nantes',
+  user_photo: '',
+);
 
 class PlantDetailsPage extends StatelessWidget {
-  const PlantDetailsPage({Key? key}) : super(key: key);
+  final String annonceId;
+
+  const PlantDetailsPage({Key? key, required this.annonceId}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
+    Annonces annonce = annonces.firstWhere((element) => element.id == annonceId);
+
     return Scaffold(
       appBar: AppBar(
         title: const Text('Détails de ma plante'),
@@ -25,65 +66,69 @@ class PlantDetailsPage extends StatelessWidget {
               ),
             ),
           ),
-          SingleChildScrollView(
-            child: Column(
-              children: [
-                SizedBox(height: 20),
-                Padding(
-                  padding: const EdgeInsets.all(10.0),
-                  child: Container(
-                    decoration: BoxDecoration(
-                      borderRadius: BorderRadius.circular(10), // Définissez le rayon de bordure ici
-                      border: Border.all(color: Colors.black, width: 2), // Définissez la bordure ici
-                    ),
-                    child: ClipRRect(
-                      borderRadius: BorderRadius.circular(10), // Définissez le même rayon de bordure ici
-                      child: Image.asset(
-                        'assets/images/green-2567165_1280.jpg',
-                        width: 150,
+          Card(
+            child: SingleChildScrollView(
+              child: Column(
+                children: [
+                  SizedBox(height: 20),
+                  Padding(
+                    padding: const EdgeInsets.all(10.0),
+                    child: Container(
+                      decoration: BoxDecoration(
+                        borderRadius: BorderRadius.circular(10),
+                        border: Border.all(color: Colors.black, width: 2),
+                      ),
+                      child: ClipRRect(
+                        borderRadius: BorderRadius.circular(10),
+                        child: Image.asset(
+                          'assets/images/${annonce.url}',
+                          width: 150,
+                        ),
                       ),
                     ),
                   ),
-                ),
-                const Text(
-                  'AGATA',
-                  style: TextStyle(
+                  Text(
+                    annonce.titre,
+                    style: TextStyle(
                       fontWeight: FontWeight.bold,
-                      fontSize: 24
+                      fontSize: 24,
+                    ),
                   ),
-                ),
-                const SizedBox(height: 10),
-                const Text(
-                  'ARos-eur: JohnD\nTaille: 45cm\nSon Nom: Nom\nType: Intérieur\nCe qu\'elle aime:',
-                  style: TextStyle(fontSize: 16,),
-                  textAlign: TextAlign.center,
-                ),
-                const SizedBox(height: 20),
-                ElevatedButton(
+                  SizedBox(height: 10),
+                  Text(
+                    'ARos-eur: ${user.pseudo}\nTaille: 45cm\nSon Nom: ${annonce.titre}: Intérieur\nCe qu\'elle aime:',
+                    style: TextStyle(
+                      fontSize: 16,
+                    ),
+                    textAlign: TextAlign.center,
+                  ),
+                  SizedBox(height: 20),
+                  ElevatedButton(
                     onPressed: () {
                       //TODO Implement delete functionality
                     },
                     style: ElevatedButton.styleFrom(
                       primary: Colors.red,
                       onPrimary: Colors.white,
-                      minimumSize: const Size(double.infinity, 50),
+                      minimumSize: Size(double.infinity, 50),
                     ),
-                    child: const Text('Supprimer mon annonce')
-                ),
-                const SizedBox(height: 10),
-                ElevatedButton(
-                  onPressed: () {
-                    // TODO Implement contact functionality
-                  },
-                  style: ElevatedButton.styleFrom(
-                    primary: Colors.blue,
-                    onPrimary: Colors.white,
-                    minimumSize: const Size(double.infinity, 50),
+                    child: Text('Supprimer mon annonce'),
                   ),
-                  child: const Text('Contacter mon ARos-eur'),
-                ),
-                const SizedBox(height: 30),
-              ],
+                  SizedBox(height: 10),
+                  ElevatedButton(
+                    onPressed: () {
+                      // TODO Implement contact functionality
+                    },
+                    style: ElevatedButton.styleFrom(
+                      primary: Colors.blue,
+                      onPrimary: Colors.white,
+                      minimumSize: Size(double.infinity, 50),
+                    ),
+                    child: Text('Contacter mon ARos-eur'),
+                  ),
+                  SizedBox(height: 30),
+                ],
+              ),
             ),
           ),
         ],
@@ -92,4 +137,3 @@ class PlantDetailsPage extends StatelessWidget {
     );
   }
 }
-

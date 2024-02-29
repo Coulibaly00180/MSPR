@@ -34,38 +34,38 @@ class _MyAppState extends State<MyApp> {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      debugShowCheckedModeBanner: false,
-      home: Scaffold(
-        body: Scaffold(
-        body: _pages[_currentIndex], // Affiche la page en fonction de l'index actuel
-        bottomNavigationBar: BottomNavigationBar(
-          backgroundColor: Colors.black,
-          selectedItemColor: greenBar,
-          elevation: 10,
-          currentIndex: _currentIndex,
-          onTap: setCurrentIndex, // Met à jour l'index lorsqu'un onglet est tapé
-          unselectedItemColor: Colors.grey,
-          items: const [
-            BottomNavigationBarItem(
-              icon: Icon(Icons.home),
-              label: 'Home',
+        debugShowCheckedModeBanner: false,
+        home: Scaffold(
+          body: Scaffold(
+            body: _pages[_currentIndex], // Affiche la page en fonction de l'index actuel
+            bottomNavigationBar: BottomNavigationBar(
+              backgroundColor: Colors.black,
+              selectedItemColor: greenBar,
+              elevation: 10,
+              currentIndex: _currentIndex,
+              onTap: setCurrentIndex, // Met à jour l'index lorsqu'un onglet est tapé
+              unselectedItemColor: Colors.grey,
+              items: const [
+                BottomNavigationBarItem(
+                  icon: Icon(Icons.home),
+                  label: 'Home',
+                ),
+                BottomNavigationBarItem(
+                  icon: Icon(Icons.search),
+                  label: 'Recherche',
+                ),
+                BottomNavigationBarItem(
+                  icon: Icon(FontAwesomeIcons.pagelines),
+                  label: 'Mes Annonces',
+                ),
+                BottomNavigationBarItem(
+                  icon: Icon(Icons.person),
+                  label: 'Profil',
+                ),
+              ],
             ),
-            BottomNavigationBarItem(
-              icon: Icon(Icons.search),
-              label: 'Recherche',
-            ),
-            BottomNavigationBarItem(
-              icon: Icon(FontAwesomeIcons.pagelines),
-              label: 'Mes Annonces',
-            ),
-            BottomNavigationBarItem(
-              icon: Icon(Icons.person),
-              label: 'Profil',
-            ),
-          ],
-        ),
-      ),
-      )
+          ),
+        )
     );
   }
 }

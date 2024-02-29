@@ -1,9 +1,30 @@
 import 'package:flutter/material.dart';
 
+import '../../../constant/annonces.dart';
 import '../../../constant/css.dart';
 import 'add_announcements.dart';
 import 'announce_details.dart';
 
+final List<Annonces> annonces = [
+  Annonces(
+    id: '1',
+    titre: 'CARLA',
+    debut: DateTime(2024, 4, 2),
+    fin: DateTime(2024, 4, 15),
+    aroseur_id: '1',
+    proprio_id: '1',
+    url: 'annonce1.jpg',
+  ),
+  Annonces(
+    id: '2',
+    titre: 'TEO',
+    debut: DateTime(2024, 2, 27),
+    fin: DateTime(2024, 3, 10),
+    aroseur_id: '2',
+    proprio_id: '2',
+    url: 'annonce2.jpg',
+  )
+];
 
 class MyAdsPage extends StatelessWidget {
   const MyAdsPage({Key? key}) : super(key: key);
@@ -30,8 +51,9 @@ class MyAdsPage extends StatelessWidget {
             ),
           ),
           ListView.builder(
-            itemCount: 3,
+            itemCount: annonces.length,
             itemBuilder: (context, index) {
+              final annonce = annonces[index];
               return Card(
                 color: Colors.white,
                 margin: const EdgeInsets.symmetric(horizontal: 8, vertical: 4),
@@ -39,13 +61,14 @@ class MyAdsPage extends StatelessWidget {
                   borderRadius: BorderRadius.circular(15.0),
                 ),
                 child: ListTile(
-                  leading: Image.asset('assets/images/green-2567165_1280.jpg'),                  title: const Text('NOM DE MA PLANTE'),
-                  subtitle: const Text('15/06/24 au 30/06/24'),
+                  leading: Image.asset('assets/images/${annonce.url}'),
+                  title: Text(annonce.titre),
+                  subtitle: Text('${annonce.debut.day}/${annonce.debut.month}/${annonce.debut.year} au ${annonce.fin.day}/${annonce.fin.month}/${annonce.fin.year}'),
                   trailing: ElevatedButton(
                     onPressed: () {
                       Navigator.push(
                         context,
-                        MaterialPageRoute(builder: (context) => const PlantDetailsPage()),
+                        MaterialPageRoute(builder: (context) => PlantDetailsPage(annonceId: annonce.id)),
                       );
                     },
                     child: const Text('DETAILS'),
@@ -75,4 +98,5 @@ class MyAdsPage extends StatelessWidget {
     );
   }
 }
+
 

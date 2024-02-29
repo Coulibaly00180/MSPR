@@ -2,6 +2,19 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 import '../../constant/css.dart';
+import '../../constant/users.dart';
+
+User user = User(
+  id: '1',
+  pseudo: 'user',
+  password: '1234',
+  nom: 'Doe',
+  prenom: 'John',
+  email: 'john.doe@gmail.com',
+  adresse: '123 Rue du Général 444000 Nantes',
+  user_photo:'',
+);
+
 
 class MyProfilPage extends StatelessWidget {
   const MyProfilPage({super.key});
@@ -20,7 +33,6 @@ class MyProfilPage extends StatelessWidget {
       ),
       body: Stack(
         children: [
-          // Background image with opacity
           Opacity(
             opacity: 0.5,
             child: Container(
@@ -38,7 +50,11 @@ class MyProfilPage extends StatelessWidget {
               children: [
                 _buildCard(
                   title: "Mes Informations personnelles",
-                  contents: ["Nom", "Prénom", "Adresse"],
+                  contents: [
+                    "Nom: ${user.nom}",
+                    "Prénom: ${user.prenom}",
+                    "Adresse: ${user.adresse}",
+                  ],
                   cardColor: cardColor,
                   titleTextStyle: titleTextStyle,
                   contentTextStyle: contentTextStyle,
@@ -83,14 +99,14 @@ class MyProfilPage extends StatelessWidget {
       elevation: 0,
       shape: RoundedRectangleBorder(
         borderRadius: BorderRadius.circular(12),
-        side: BorderSide(color: greenBar),
+        side: BorderSide(color: greenBar), // Ensure you have defined `greenBar` color in your css constants
       ),
       child: Padding(
         padding: const EdgeInsets.all(16.0),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.stretch,
           children: [
-            Center(child: Text(title, style: titleTextStyle.copyWith(color: greenBar))),
+            Center(child: Text(title, style: titleTextStyle.copyWith(color: greenBar))), // Use `greenBar` for title color
             for (var content in contents) Text(content, style: contentTextStyle),
           ],
         ),
