@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 
 import '../../../constant/annonces.dart';
 import '../../../constant/css.dart';
+import '../../../constant/users.dart';
+import '../../../widgets/date_picker.dart';
 
 final List<Annonces> annonces = [
   Annonces(
@@ -32,6 +34,17 @@ final List<Annonces> annonces = [
     url: 'garde3.jpg',
   ),
 ];
+
+User user = User(
+  id: '2',
+  pseudo: 'user2',
+  password: '1234',
+  nom: 'Matin',
+  prenom: 'Martin',
+  email: 'martin.matin@gmail.com',
+  adresse: '2 Avenue de la Paix 444000 Nantes',
+  user_photo: '',
+);
 
 class PlantCarePage extends StatelessWidget {
   final String annonceId;
@@ -83,69 +96,99 @@ class PlantCarePage extends StatelessWidget {
                               ),
                             ),
                           ),
-                          flex: 2,
                         ),
-                        Padding(
-                          padding: const EdgeInsets.all(16.0),
-                          child: Column(
-                            crossAxisAlignment: CrossAxisAlignment.center,
-                            children: [
-                              Text(
-                                annonce.titre,
+                        Column(
+                          crossAxisAlignment: CrossAxisAlignment.center,
+                          children: [
+                            Text(
+                              annonce.titre,
+                              style: TextStyle(
+                                fontWeight: FontWeight.bold,
+                                fontSize: 24,
+                              ),
+                            ),
+                            SizedBox(height: 8),
+                            Text(
+                              'Catégorie : Monstera',
+                              textAlign: TextAlign.center,
+                            ),
+                            SizedBox(height: 8),
+                            Text(
+                              'Types: Intérieur',
+                              textAlign: TextAlign.center,
+                            ),
+                            SizedBox(height: 8),
+                            RichText(
+                              text: TextSpan(
                                 style: TextStyle(
-                                  fontWeight: FontWeight.bold,
-                                  fontSize: 24,
+                                  fontSize: 14,
+                                  color: Colors.black,
                                 ),
-                              ),
-                              SizedBox(height: 8),
-                              Text(
-                                'Catégorie : Monstera',
-                                textAlign: TextAlign.center,
-                              ),
-                              SizedBox(height: 8),
-                              Text(
-                                'Types: Intérieur',
-                                textAlign: TextAlign.center,
-                              ),
-                              SizedBox(height: 8),
-                              Row(
-                                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                                 children: [
-                                  Icon(Icons.wb_sunny),
-                                  Icon(Icons.water_drop),
-                                  Icon(Icons.thermostat),
+                                  TextSpan(
+                                    text: 'Nom du Propriétaire : ',
+                                    style: TextStyle(
+                                      fontWeight: FontWeight.bold,
+                                    ),
+                                  ),
+                                  TextSpan(
+                                    text: '${user.nom} ${user.prenom}',
+                                  ),
                                 ],
                               ),
-                              SizedBox(height: 16),
-                              ElevatedButton.icon(
-                                icon: Icon(Icons.camera_alt),
-                                label: Text('DÉPOSER UNE PHOTO'),
-                                onPressed: () {
-                                  // Implement photo upload logic
-                                },
-                                style: ElevatedButton.styleFrom(
-                                  primary: Colors.green,
-                                  onPrimary: Colors.white,
-                                  minimumSize: Size(double.infinity, 36),
+                            ),
+                            SizedBox(height: 8),
+                            RichText(
+                              text: TextSpan(
+                                style: TextStyle(
+                                  fontSize: 14,
+                                  color: Colors.black,
                                 ),
+                                children: [
+                                  TextSpan(
+                                    text: 'Adresse : ',
+                                    style: TextStyle(
+                                      fontWeight: FontWeight.bold,
+                                    ),
+                                  ),
+                                  TextSpan(
+                                    text: '${user.adresse}',
+                                  ),
+                                ],
                               ),
-                              SizedBox(height: 8),
-                              TextButton.icon(
-                                icon: Icon(Icons.check, color: Colors.green),
-                                label: Text('Valider', style: TextStyle(color: Colors.green)),
-                                onPressed: () {
-                                  // Implement validation logic
-                                },
+                            ),
+                            SizedBox(height: 8),
+                            const Text('Date de ma visite', style: TextStyle(color: Colors.grey)),
+                            const DatePicker(),
+                            SizedBox(height: 16),
+                            ElevatedButton.icon(
+                              icon: Icon(Icons.camera_alt),
+                              label: Text('DÉPOSER UNE PHOTO'),
+                              onPressed: () {
+                                // Implement photo upload logic
+                              },
+                              style: ElevatedButton.styleFrom(
+                                primary: greenBar,
+                                onPrimary: Colors.white,
+                                minimumSize: Size(double.infinity, 36),
                               ),
-                            ],
-                          ),
+                            ),
+                            SizedBox(height: 8),
+                            TextButton.icon(
+                              icon: Icon(Icons.check, color: greenBar),
+                              label: Text('Valider', style: TextStyle(color: greenBar)),
+                              onPressed: () {
+                                // Implement validation logic
+                              },
+                            ),
+                          ],
                         ),
                       ],
                     ),
                   ),
                 ),
               ),
-              SizedBox(height: 20), // Espacement en bas
+              SizedBox(height: 20),
             ],
           ),
         ),

@@ -98,7 +98,7 @@ class PlantDetailsPage extends StatelessWidget {
                       ),
                       SizedBox(height: 10),
                       Text(
-                        'ARos-eur: ${user.pseudo}\nTaille: 45cm\nSon Nom: ${annonce.titre}: Intérieur\nCe qu\'elle aime:',
+                        'ARos-eur: ${user.pseudo}\nTaille: 45cm\nSon Nom: ${annonce.titre}',
                         style: TextStyle(
                           fontSize: 16,
                         ),
