@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-git
 
 import '../../../constant/annonces.dart';
 import '../../../constant/css.dart';
@@ -106,28 +105,29 @@ class PlantDetailsPage extends StatelessWidget {
                         textAlign: TextAlign.center,
                       ),
                       SizedBox(height: 20),
-                      ElevatedButton(
-                        onPressed: () {
-                          //TODO Implement delete functionality
-                        },
-                        style: ElevatedButton.styleFrom(
-                          primary: Colors.red,
-                          onPrimary: Colors.white,
-                          minimumSize: Size(double.infinity, 50),
-                        ),
-                        child: Text('Supprimer mon annonce'),
-                      ),
-                      SizedBox(height: 10),
+
                       ElevatedButton(
                         onPressed: () {
                           // TODO Implement contact functionality
                         },
                         style: ElevatedButton.styleFrom(
-                          primary: Colors.blue,
+                          primary: Colors.green.shade400,
                           onPrimary: Colors.white,
                           minimumSize: Size(double.infinity, 50),
                         ),
                         child: Text('Contacter mon ARos-eur'),
+                      ),
+                      SizedBox(height: 10),
+                      ElevatedButton(
+                        onPressed: () {
+                          //TODO Implement delete functionality
+                        },
+                        style: ElevatedButton.styleFrom(
+                          primary: Colors.red.shade400,
+                          onPrimary: Colors.white,
+                          minimumSize: Size(double.infinity, 50),
+                        ),
+                        child: Text('Supprimer mon annonce'),
                       ),
                       SizedBox(height: 30),
                     ],
