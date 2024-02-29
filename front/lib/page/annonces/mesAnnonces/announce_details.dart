@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-
 import '../../../constant/css.dart';
 
 class PlantDetailsPage extends StatelessWidget {
