@@ -62,6 +62,12 @@ public class Utilisateur {
      *
      */
 
+    @OneToMany(mappedBy = "expediteur")
+    private Set<Message> messages_envoyes;
+
+    @OneToMany(mappedBy = "destinataire")
+    private Set<Message> messages_recus;
+
     @OneToMany(mappedBy = "utilisateur")
     private Set<Reponse> reponses;
 
@@ -144,6 +150,22 @@ public class Utilisateur {
 
     public void setReponses(Set<Reponse> reponses) {
         this.reponses = reponses;
+    }
+
+    public Set<Message> getMessages_envoyes() {
+        return messages_envoyes;
+    }
+
+    public void setMessages_envoyes(Set<Message> messages_envoyes) {
+        this.messages_envoyes = messages_envoyes;
+    }
+
+    public Set<Message> getMessages_recus() {
+        return messages_recus;
+    }
+
+    public void setMessages_recus(Set<Message> messages_recus) {
+        this.messages_recus = messages_recus;
     }
 
     @Override
