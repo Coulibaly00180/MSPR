@@ -1,19 +1,24 @@
 package com.mspr.back.controllers;
 
 import com.mspr.back.entities.Utilisateur;
+import com.mspr.back.repositories.UtilisateurRepository;
 import com.mspr.back.services.AuthentificationService;
+import com.mspr.back.services.UtilisateurService;
+import jakarta.servlet.http.HttpSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.DataIntegrityViolationException;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import javax.naming.AuthenticationException;
 import java.util.Map;
-
+@CrossOrigin
 @RestController
 @RequestMapping("/authentification")
 public class AuthentificationController {
 
-    private final AuthentificationService authentificationService;
+    private AuthentificationService authentificationService;
 
 
     @Autowired
@@ -50,7 +55,7 @@ public class AuthentificationController {
                 return ResponseEntity.ok("L'utilisateur a été crée");
             }
             else {
-                return ResponseEntity.badRequest().body("L'utilisateur existe déjà");
+                return ResponseEntity.badRequest().body("Ce mail existe déjà");
             }
         }
 
@@ -58,7 +63,7 @@ public class AuthentificationController {
         catch (IllegalArgumentException e) {
             return ResponseEntity.badRequest().body(e.getMessage());
         } catch (DataIntegrityViolationException e) {
-            return ResponseEntity.badRequest().body("L'email est déjà utilisé");
+            return ResponseEntity.badRequest().body("Ce pseudo existe déjà");
         }
 
 
@@ -66,6 +71,8 @@ public class AuthentificationController {
 
 
     }
+
+
 
     private void validateInput(String email, String password) {
         if (email == null || !email.matches("\\S+@\\S+\\.\\S+")) {
@@ -80,3 +87,6 @@ public class AuthentificationController {
 
 
 }
+
+
+

@@ -4,6 +4,7 @@ import jakarta.persistence.*;
 import lombok.Data;
 import  com.mspr.back.entities.Botaniste;
 
+import java.util.HashSet;
 import java.util.Set;
 
 @Data
@@ -46,6 +47,74 @@ public class Plante {
     @JoinColumn(name="utilisateur_id")
     private Utilisateur utilisateur;
 
+    public Plante() {
+        annonces = new HashSet<Annonce>();
+        commentaires = new HashSet<Commentaire>();
+    }
+
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
+
+    public String getNom() {
+        return nom;
+    }
+
+    public void setNom(String nom) {
+        this.nom = nom;
+    }
+
+    public String getPhoto() {
+        return photo;
+    }
+
+    public void setPhoto(String photo) {
+        this.photo = photo;
+    }
+
+    public String getDescription() {
+        return description;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
+    }
+
+    public String getCategorie() {
+        return categorie;
+    }
+
+    public void setCategorie(String categorie) {
+        this.categorie = categorie;
+    }
+
+    public Set<Annonce> getAnnonces() {
+        return annonces;
+    }
+
+    public void setAnnonces(Set<Annonce> annonces) {
+        this.annonces = annonces;
+    }
+
+    public Set<Commentaire> getCommentaires() {
+        return commentaires;
+    }
+
+    public void setCommentaires(Set<Commentaire> commentaires) {
+        this.commentaires = commentaires;
+    }
+
+    public Utilisateur getUtilisateur() {
+        return utilisateur;
+    }
+
+    public void setUtilisateur(Utilisateur utilisateur) {
+        this.utilisateur = utilisateur;
+    }
 }
 
 

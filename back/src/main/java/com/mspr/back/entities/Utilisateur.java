@@ -58,9 +58,9 @@ public class Utilisateur {
     private Set<Plante> plantes;
 
     /*@OneToMany(mappedBy = "utilisateur_publiant")
-    *private Set<Annonce> annonces_publiees;
-    *
-    */
+     *private Set<Annonce> annonces_publiees;
+     *
+     */
 
     @OneToMany(mappedBy = "utilisateur")
     private Set<Reponse> reponses;
