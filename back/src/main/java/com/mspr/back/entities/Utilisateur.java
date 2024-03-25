@@ -47,6 +47,8 @@ public class Utilisateur {
     @Column(name = "adresse_utilisateur", nullable = false)
     private String adresse;
 
+    private Statut statut;
+
     @ManyToMany
     @JoinTable(name = "accepte",
             joinColumns = @JoinColumn(name = "id_utilisateur", referencedColumnName = "id"),
@@ -166,6 +168,14 @@ public class Utilisateur {
 
     public void setMessages_recus(Set<Message> messages_recus) {
         this.messages_recus = messages_recus;
+    }
+
+    public Statut getStatut() {
+        return statut;
+    }
+
+    public void setStatut(Statut statut) {
+        this.statut = statut;
     }
 
     @Override
