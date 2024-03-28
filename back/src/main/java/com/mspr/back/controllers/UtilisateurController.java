@@ -18,21 +18,21 @@ public class UtilisateurController {
 
     private final UtilisateurService utilisateurService;
 
-    @MessageMapping("/addUtilisateur")
+    @MessageMapping("/utilisateur.addUtilisateur")
     @SendTo("/utilisateur/topic")
     public Utilisateur addUtilisateur( @Payload Utilisateur utilisateur){
         utilisateurService.saveUtilisateur(utilisateur);
         return utilisateur;
     }
 
-    @MessageMapping("/deconnectUtilisateur")
+    @MessageMapping("/utilisateur.deconnectUtilisateur")
     @SendTo("/utilisateur/topic")
     public Utilisateur deconnect ( @Payload Utilisateur utilisateur){
         utilisateurService.deconnect(utilisateur);
         return utilisateur;
     }
 
-    @GetMapping
+    @GetMapping("/utilisateurs")
     public ResponseEntity<List<Utilisateur>> findConnectUtilisateurs(){
         return ResponseEntity.ok(utilisateurService.findUtilisateursConnectes());
     }
