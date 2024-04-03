@@ -2,6 +2,7 @@ package com.mspr.back.services;
 
 import com.mspr.back.entities.ChatRoom;
 import com.mspr.back.repositories.ChatRoomRepository;
+import com.mspr.back.repositories.UtilisateurRepository;
 import lombok.Data;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -15,6 +16,10 @@ public class ChatRoomService {
 
     @Autowired
     private final ChatRoomRepository chatRoomRepository;
+
+    @Autowired
+    private final UtilisateurRepository utilisateurRepository;
+
     public Optional<Long> getChatRoomId(Long senderId, Long recipientId, boolean createNewRoomIfNotExists){
         return chatRoomRepository.findBySenderIdAndRecipientId(senderId, recipientId)
                 .map(ChatRoom::getChatId)
@@ -32,14 +37,14 @@ public class ChatRoomService {
 
         ChatRoom senderRecipient = ChatRoom.builder()
                 .chatId(Long.valueOf(chatId))
-                .senderId(senderId)
-                .recipientId(recipientId)
+                .sender(utilisateurRepository.findUtilisateurById(senderId))
+                .recipient(utilisateurRepository.findUtilisateurById(recipientId))
                 .build();
 
         ChatRoom recipientSender = ChatRoom.builder()
                 .chatId(Long.valueOf(chatId))
-                .senderId(recipientId)
-                .recipientId(senderId)
+                .sender(utilisateurRepository.findUtilisateurById(recipientId))
+                .recipient(utilisateurRepository.findUtilisateurById(senderId))
                 .build();
 
         chatRoomRepository.save(senderRecipient);

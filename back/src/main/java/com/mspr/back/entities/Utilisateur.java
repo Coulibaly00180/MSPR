@@ -9,6 +9,7 @@ import javax.validation.constraints.Email;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.Size;
 
+import java.util.List;
 import java.util.Objects;
 import java.util.Set;
 
@@ -64,14 +65,32 @@ public class Utilisateur {
      *
      */
 
-    @OneToMany(mappedBy = "expediteur")
+   /* @OneToMany(mappedBy = "expediteur")
     private Set<Message> messages_envoyes;
 
     @OneToMany(mappedBy = "destinataire")
     private Set<Message> messages_recus;
 
+    */
+
     @OneToMany(mappedBy = "utilisateur")
     private Set<Reponse> reponses;
+
+
+    @OneToMany(mappedBy = "sender")
+    private Set<ChatMessage> messages_envoyes;
+
+    @OneToMany(mappedBy = "recipient")
+    private Set<ChatMessage> messages_recus;
+
+    @OneToMany(mappedBy = "sender")
+    private List<ChatRoom> senderRooms;
+
+    @OneToMany(mappedBy = "recipient")
+    private List<ChatRoom> recipientRooms;
+
+
+
 
 
     public Long getId() {
@@ -154,6 +173,7 @@ public class Utilisateur {
         this.reponses = reponses;
     }
 
+    /*
     public Set<Message> getMessages_envoyes() {
         return messages_envoyes;
     }
@@ -169,6 +189,8 @@ public class Utilisateur {
     public void setMessages_recus(Set<Message> messages_recus) {
         this.messages_recus = messages_recus;
     }
+
+     */
 
     public Statut getStatut() {
         return statut;

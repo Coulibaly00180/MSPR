@@ -9,8 +9,11 @@ import lombok.*;
 @Builder
 public class ChatNotification {
     private Long id;
-    private Long senderId;
-    private Long recipientId;
+    // Ou utiliser plutot les senderId et recipientId
+    // Si oui, modifier dans le chatController le builder
+    // de la methode processMessage
+    private Utilisateur sender;
+    private Utilisateur recipient;
     private String content;
 
 }

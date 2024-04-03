@@ -19,12 +19,13 @@ public class ChatMessageService {
     @Autowired
     private final ChatMessageRepository chatMessageRepository;
 
+    @Autowired
     private final ChatRoomService chatRoomService;
 
     public ChatMessage save(ChatMessage chatMessage){
-        var chatId = chatRoomService.getChatRoomId(chatMessage.getSenderId(), chatMessage.getRecipientId(), true)
+        var chatId = chatRoomService.getChatRoomId(chatMessage.getSender().getId(), chatMessage.getRecipient().getId(), true)
                 .orElseThrow();
-        chatMessage.setChatId(Long.valueOf(chatId));
+        chatMessage.getChatRoom().setId(Long.valueOf(chatId));
         chatMessageRepository.save(chatMessage);
         return chatMessage;
     }

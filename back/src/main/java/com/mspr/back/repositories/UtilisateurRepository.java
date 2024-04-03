@@ -14,6 +14,8 @@ public interface UtilisateurRepository extends CrudRepository <Utilisateur, Long
 
     Utilisateur findByEmail(String email);
 
+    Utilisateur findUtilisateurById(Long id);
+
     List<Utilisateur> findAllByStatut(Statut statut);
 
 }

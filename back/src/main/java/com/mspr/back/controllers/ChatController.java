@@ -25,11 +25,11 @@ public class ChatController {
     public void processMessage(@Payload ChatMessage chatMessage){
         ChatMessage savedMsg = chatMessageService.save(chatMessage);
         messagingTemplate.convertAndSendToUser(
-                String.valueOf(chatMessage.getRecipientId()), "/queue/messages",
+                String.valueOf(chatMessage.getRecipient().getId()), "/queue/messages",
                 ChatNotification.builder()
                         .id(savedMsg.getId())
-                        .senderId(savedMsg.getSenderId())
-                        .recipientId(savedMsg.getRecipientId())
+                        .sender(savedMsg.getSender())
+                        .recipient(savedMsg.getRecipient())
                         .build()
         );
     }
