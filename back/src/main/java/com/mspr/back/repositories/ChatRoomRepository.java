@@ -2,9 +2,11 @@ package com.mspr.back.repositories;
 
 import com.mspr.back.entities.ChatRoom;
 import org.springframework.data.repository.CrudRepository;
+import org.springframework.data.rest.core.annotation.RepositoryRestResource;
 
 import java.util.Optional;
 
+@RepositoryRestResource(collectionResourceRel = "records", path = "chatRoom")
 public interface ChatRoomRepository extends CrudRepository<ChatRoom, String> {
 
 
