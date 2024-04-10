@@ -11,11 +11,16 @@ import java.util.List;
 @NoArgsConstructor
 @Builder
 @Entity
+@Table(name = "chat_room")
 public class ChatRoom {
 
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    private Long chatId;
+
+    private String chatId;
+
+    private String nom;
 
     /*
 

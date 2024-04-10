@@ -6,8 +6,9 @@ import org.springframework.data.rest.core.annotation.RepositoryRestResource;
 
 import java.util.List;
 
-@RepositoryRestResource(collectionResourceRel = "records", path = "chatMessage")
-public interface ChatMessageRepository extends CrudRepository<ChatMessage,String> {
+@RepositoryRestResource(collectionResourceRel = "records", path = "chatMessages")
+public interface ChatMessageRepository extends CrudRepository<ChatMessage, Long> {
 
-    List<ChatMessage> findByChatId(Long id);
+    List<ChatMessage> findByChatId(String id);
+
 }

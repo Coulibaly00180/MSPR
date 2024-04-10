@@ -9,7 +9,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
-import java.util.Optional;
 
 @Data
 @Service
@@ -19,11 +18,11 @@ public class UtilisateurService {
     @Autowired
     private UtilisateurRepository utilisateurRepository;
 
-    public Optional<Utilisateur> getUtilisateur(final Long id) {
-        return utilisateurRepository.findById(id);
+    public Utilisateur getUtilisateurById(final Long id) {
+        return utilisateurRepository.findById(id).orElse(null);
     }
 
-    public Iterable<Utilisateur> getUtilisateurs() {
+    public Iterable<Utilisateur> getAllUtilisateurs() {
         return utilisateurRepository.findAll();
     }
 

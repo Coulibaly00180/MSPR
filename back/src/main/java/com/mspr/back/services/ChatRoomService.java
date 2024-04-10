@@ -20,13 +20,13 @@ public class ChatRoomService {
     @Autowired
     private final UtilisateurRepository utilisateurRepository;
 
-    public Optional<Long> getChatRoomId(Long senderId, Long recipientId, boolean createNewRoomIfNotExists){
+    public Optional<String> getChatRoomId(Long senderId, Long recipientId, boolean createNewRoomIfNotExists){
         return chatRoomRepository.findBySenderIdAndRecipientId(senderId, recipientId)
                 .map(ChatRoom::getChatId)
                 .or(()-> {
                     if (createNewRoomIfNotExists){
                         var chatId = createChatId(senderId, recipientId);
-                        return Optional.of(Long.valueOf(chatId));
+                        return Optional.of(chatId);
                     }
                     return Optional.empty();
                 });
@@ -36,13 +36,13 @@ public class ChatRoomService {
         var chatId = String.format("%s_%s", senderId, recipientId);
 
         ChatRoom senderRecipient = ChatRoom.builder()
-                .chatId(Long.valueOf(chatId))
+                .chatId(chatId)
                 .sender(utilisateurRepository.findUtilisateurById(senderId))
                 .recipient(utilisateurRepository.findUtilisateurById(recipientId))
                 .build();
 
         ChatRoom recipientSender = ChatRoom.builder()
-                .chatId(Long.valueOf(chatId))
+                .chatId(chatId)
                 .sender(utilisateurRepository.findUtilisateurById(recipientId))
                 .recipient(utilisateurRepository.findUtilisateurById(senderId))
                 .build();

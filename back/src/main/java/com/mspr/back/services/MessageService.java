@@ -28,6 +28,23 @@ public class MessageService {
         // Logique pour récupérer les messages d'un utilisateur
         return messageRepository.findByExpediteurIdUtilisateurOrDestinataireIdUtilisateur(idUtilisateur, idUtilisateur);
     }
-
      */
+
+    public List<Message> getAllMessages() {
+        return (List<Message>) messageRepository.findAll();
+    }
+
+    public Message getMessageById(Long id) {
+        return messageRepository.findById(id).orElse(null);
+    }
+
+    public Message saveMessage(Message message) {
+        return messageRepository.save(message);
+    }
+
+    public void deleteMessage(Long id) {
+        messageRepository.deleteById(id);
+    }
+
+
 }
