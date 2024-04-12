@@ -1,8 +1,20 @@
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:front/app.dart';
 import 'package:front/route.dart';
 
+void main() {
+  runApp(MyApp());
+}
 
+class MyApp extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return MaterialApp(
+      home: const NavBar(),
+    );
+  }
+}
 
 class NavigationUltime extends StatefulWidget {
   const NavigationUltime({Key? key}) : super(key: key);

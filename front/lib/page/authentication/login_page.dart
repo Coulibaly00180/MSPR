@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:front/functionApi/auth_service.dart';
+import 'package:front/page/home/home_page.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'signup_page.dart';
 
@@ -47,7 +49,6 @@ class LoginPage extends StatelessWidget {
               TitleSection(),
               TextSection(),
               InputSection(),
-              ButtonWidget(),
               BottomSection(),
               ForgetButton(),
             ],
@@ -136,8 +137,24 @@ class TextSection extends StatelessWidget {
   }
 }
 
-class InputSection extends StatelessWidget {
+class InputSection extends StatefulWidget {
   const InputSection({super.key});
+
+  @override
+  State<InputSection> createState() => _InputSectionState();
+}
+
+class _InputSectionState extends State<InputSection> {
+
+  final TextEditingController _emailController = TextEditingController();
+  final TextEditingController _passwordController = TextEditingController();
+
+  @override
+  void dispose() {
+    _emailController.dispose();
+    _passwordController.dispose();
+    super.dispose();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -172,6 +189,7 @@ class InputSection extends StatelessWidget {
               ),
               Expanded(
                 child: TextField(
+                  controller: _emailController,
                   style: GoogleFonts.comfortaa(
                     fontSize: 20,
                     color: Colors.white,
@@ -179,7 +197,7 @@ class InputSection extends StatelessWidget {
                   ),
                   obscureText: false,
                   decoration: InputDecoration(
-                    hintText: 'Pseudo',
+                    hintText: 'Email',
                     hintStyle: GoogleFonts.comfortaa(
                       color: Colors.white,
                     ),
@@ -219,6 +237,7 @@ class InputSection extends StatelessWidget {
               ),
               Expanded(
                 child: TextField(
+                  controller: _passwordController,
                   style: GoogleFonts.comfortaa(
                     fontSize: 20,
                     color: Colors.white,
@@ -237,13 +256,24 @@ class InputSection extends StatelessWidget {
             ],
           ),
         ),
+        const SizedBox(height: 30),
+        ButtonWidget(emailController: _emailController, passwordController: _passwordController,)
       ]),
     );
   }
+
 }
 
 class ButtonWidget extends StatelessWidget {
-  const ButtonWidget({super.key});
+  
+  final TextEditingController emailController;
+  final TextEditingController passwordController;
+
+  const ButtonWidget({
+    super.key,
+    required this.emailController,
+    required this.passwordController,
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -265,13 +295,22 @@ class ButtonWidget extends StatelessWidget {
             fontSize: 20,
           ),
         ),
-        onPressed: () {
-          Navigator.push(
-            context,
-            MaterialPageRoute(
-              builder: (context) => const SignupPage(),
-            ),
+        onPressed: () async{
+          final success = await AuthService.signin(
+            emailController.text,
+            passwordController.text,
           );
+          if (success) {
+            Navigator.push(
+              context,
+              MaterialPageRoute(
+                builder: (context) => const HomePage(),
+              ),
+            );
+          } else {
+            // Gérer l'échec de la connexion
+            print("Pas connecté");
+          }  
         },
       ),
     );

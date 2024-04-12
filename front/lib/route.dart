@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:front/page/annonces/mesAnnonces/add_announcements.dart';
 import 'package:front/page/annonces/mesAnnonces/announce_details.dart';
 import 'package:front/page/annonces/announcement_menu.dart';
