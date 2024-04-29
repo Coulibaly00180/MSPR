@@ -59,12 +59,12 @@ public class AuthentificationService {
 
 
         // String passwordEncode = passwordEncoder.encode(utilisateur.getPassword());
-       // utilisateur.setPassword(passwordEncode);       // Si l'utilisateur existe déjà
+        // utilisateur.setPassword(passwordEncode);       // Si l'utilisateur existe déjà
 
 
 
         //if (utilisateurRepository.findByEmail(email) != null){
-            //return false;
+        //return false;
         //}
 
         //Utilisateur newUtilisateur = new Utilisateur();

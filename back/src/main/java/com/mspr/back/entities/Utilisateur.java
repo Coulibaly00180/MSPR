@@ -1,21 +1,29 @@
 package com.mspr.back.entities;
 
+import com.fasterxml.jackson.annotation.JsonIdentityInfo;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
+import com.fasterxml.jackson.annotation.ObjectIdGenerators;
 import jakarta.persistence.*;
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import lombok.*;
 
 import javax.validation.constraints.Email;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.Size;
+
+
+import java.time.LocalDate;
+import java.util.Date;
+import java.util.List;
 import java.util.Objects;
 import java.util.Set;
 
-@Data
+@Getter
+@Setter
 @Entity
 @AllArgsConstructor
 @NoArgsConstructor
 @Table(name = "Utilisateur")
+@JsonIdentityInfo(generator = ObjectIdGenerators.PropertyGenerator.class, property = "id")
 public class Utilisateur {
 
     @Id
@@ -46,6 +54,10 @@ public class Utilisateur {
     @Column(name = "adresse_utilisateur", nullable = false)
     private String adresse;
 
+    @Enumerated(EnumType.STRING)
+    private Statut statut;
+
+
     @ManyToMany
     @JoinTable(name = "accepte",
             joinColumns = @JoinColumn(name = "id_utilisateur", referencedColumnName = "id"),
@@ -57,93 +69,54 @@ public class Utilisateur {
     private Set<Plante> plantes;
 
     /*@OneToMany(mappedBy = "utilisateur_publiant")
-    *private Set<Annonce> annonces_publiees;
-    *
+     *private Set<Annonce> annonces_publiees;
+     *
+     */
+
+   /* @OneToMany(mappedBy = "expediteur")
+    private Set<Message> messages_envoyes;
+
+    @OneToMany(mappedBy = "destinataire")
+    private Set<Message> messages_recus;
+
     */
 
     @OneToMany(mappedBy = "utilisateur")
     private Set<Reponse> reponses;
 
+    @JsonManagedReference
+    @OneToMany(mappedBy = "sender")
+    private Set<ChatMessage> messages_envoyes;
 
-    public Long getId() {
-        return id;
+    @OneToMany(mappedBy = "recipient")
+    private Set<ChatMessage> messages_recus;
+
+    @OneToMany(mappedBy = "sender")
+    private List<ChatRoom> senderRooms;
+
+    @OneToMany(mappedBy = "recipient")
+    private List<ChatRoom> recipientRooms;
+
+
+
+    /*
+    public Set<Message> getMessages_envoyes() {
+        return messages_envoyes;
     }
 
-    public void setId(Long id) {
-        this.id = id;
+    public void setMessages_envoyes(Set<Message> messages_envoyes) {
+        this.messages_envoyes = messages_envoyes;
     }
 
-    public String getPseudo() {
-        return pseudo;
+    public Set<Message> getMessages_recus() {
+        return messages_recus;
     }
 
-    public void setPseudo(String pseudo) {
-        this.pseudo = pseudo;
+    public void setMessages_recus(Set<Message> messages_recus) {
+        this.messages_recus = messages_recus;
     }
 
-    public String getPassword() {
-        return password;
-    }
-
-    public void setPassword(String password) {
-        this.password = password;
-    }
-
-    public String getEmail() {
-        return email;
-    }
-
-    public void setEmail(String email) {
-        this.email = email;
-    }
-
-    public String getNom() {
-        return nom;
-    }
-
-    public void setNom(String nom) {
-        this.nom = nom;
-    }
-
-    public String getPrenom() {
-        return prenom;
-    }
-
-    public void setPrenom(String prenom) {
-        this.prenom = prenom;
-    }
-
-    public String getAdresse() {
-        return adresse;
-    }
-
-    public void setAdresse(String adresse) {
-        this.adresse = adresse;
-    }
-
-    public Set<Annonce> getAnnonces_repondues() {
-        return annonces_repondues;
-    }
-
-    public void setAnnonces_repondues(Set<Annonce> annonces_repondues) {
-        this.annonces_repondues = annonces_repondues;
-    }
-
-    public Set<Plante> getPlantes() {
-        return plantes;
-    }
-
-    public void setPlantes(Set<Plante> plantes) {
-        this.plantes = plantes;
-    }
-
-    public Set<Reponse> getReponses() {
-        return reponses;
-    }
-
-    public void setReponses(Set<Reponse> reponses) {
-        this.reponses = reponses;
-    }
+     */
 
     @Override
     public boolean equals(Object o) {

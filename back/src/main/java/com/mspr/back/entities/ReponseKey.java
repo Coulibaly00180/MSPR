@@ -14,6 +14,15 @@ public class ReponseKey implements Serializable {
     @Column(name = "annonce_id")
     Long annonce_id;
 
+    public ReponseKey(Long annonce_id, Long utilisateur_id) {
+        this.utilisateur_id = utilisateur_id;
+        this.annonce_id = annonce_id;
+    }
+
+    public ReponseKey() {
+
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;

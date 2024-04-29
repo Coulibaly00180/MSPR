@@ -31,4 +31,53 @@ public class Commentaire {
     private String texte;
     private LocalDateTime dateTime;
 
+    public Commentaire(){ }
+
+    public CommentaireKey getId() {
+        return id;
+    }
+
+    public void setId(CommentaireKey id) {
+        this.id = id;
+    }
+
+    public Plante getPlante() {
+        return plante;
+    }
+
+    public void setPlante(Plante plante) {
+        this.plante = plante;
+    }
+
+    public Botaniste getBotaniste() {
+        return botaniste;
+    }
+
+    public void setBotaniste(Botaniste botaniste) {
+        this.botaniste = botaniste;
+    }
+
+    public Entretien getEntretien() {
+        return entretien;
+    }
+
+    public void setEntretien(Entretien entretien) {
+        this.entretien = entretien;
+    }
+
+    public String getTexte() {
+        return texte;
+    }
+
+    public void setTexte(String texte) {
+        this.texte = texte;
+    }
+
+    public LocalDateTime getDateTime() {
+        return dateTime;
+    }
+
+    public void setDateTime(LocalDateTime dateTime) {
+        this.dateTime = dateTime;
+    }
 }
