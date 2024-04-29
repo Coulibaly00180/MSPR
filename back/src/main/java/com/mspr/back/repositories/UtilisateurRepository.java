@@ -11,11 +11,9 @@ import java.util.Optional;
 @RepositoryRestResource(collectionResourceRel = "records", path = "utilisateurs")
 public interface UtilisateurRepository extends CrudRepository <Utilisateur, Long> {
     Utilisateur findByEmailAndPassword(String email, String password);
-
     Utilisateur findByEmail(String email);
 
     Utilisateur findUtilisateurById(Long id);
 
     List<Utilisateur> findAllByStatut(Statut statut);
-
 }

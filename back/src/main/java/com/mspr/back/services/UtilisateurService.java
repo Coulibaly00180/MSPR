@@ -3,6 +3,7 @@ package com.mspr.back.services;
 import com.mspr.back.entities.Statut;
 import com.mspr.back.entities.Utilisateur;
 import com.mspr.back.repositories.UtilisateurRepository;
+import jakarta.servlet.http.HttpSession;
 import lombok.Data;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -14,6 +15,10 @@ import java.util.List;
 @Service
 @RequiredArgsConstructor
 public class UtilisateurService {
+
+    public Utilisateur getUtilisateurConnecte(HttpSession session) {
+        return (Utilisateur) session.getAttribute("utilisateurConnecte");
+    }
 
     @Autowired
     private UtilisateurRepository utilisateurRepository;
