@@ -1,4 +1,4 @@
-package com.mspr.back;
+package com.mspr.back.config;
 
 import org.springdoc.core.models.GroupedOpenApi;
 import org.springframework.context.annotation.Bean;
