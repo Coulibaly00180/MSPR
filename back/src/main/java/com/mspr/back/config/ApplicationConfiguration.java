@@ -1,6 +1,6 @@
 package com.mspr.back.config;
 
-import com.mspr.back.repositories.UtilisateurRepository;
+import com.mspr.back.repositories.UserRepository;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.authentication.AuthenticationManager;
@@ -10,18 +10,20 @@ import org.springframework.security.config.annotation.authentication.configurati
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 
-
+/**
+ * Classe de configuration nécessaire pour la mise en place de la sécurité
+ */
 @Configuration
 public class ApplicationConfiguration {
-   private final UtilisateurRepository utilisateurRepository;
+   private final UserRepository userRepository;
 
-   public ApplicationConfiguration(UtilisateurRepository utilisateurRepository) {
-      this.utilisateurRepository = utilisateurRepository;
+   public ApplicationConfiguration(UserRepository userRepository) {
+      this.userRepository = userRepository;
    }
 
    @Bean
    UserDetailsService userDetailsService() {
-      return username -> utilisateurRepository.findByEmail(username);
+      return username -> userRepository.findByEmail(username);
             //.orElseThrow(() -> new UsernameNotFoundException("User not found"));
    }
 
