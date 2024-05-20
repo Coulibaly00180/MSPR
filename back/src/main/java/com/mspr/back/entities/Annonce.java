@@ -1,14 +1,20 @@
 package com.mspr.back.entities;
 
 import jakarta.persistence.*;
-import lombok.Data;
+import lombok.*;
+
 import java.time.LocalDate;
 import java.util.HashSet;
 import java.util.Set;
 
 
 @Data
+@Getter
+@Setter
 @Entity
+@NoArgsConstructor
+@AllArgsConstructor
+@Builder
 @Table(name = "Annonce")
 public class Annonce {
     
@@ -25,6 +31,14 @@ public class Annonce {
 
     @Column(name = "date_fin", nullable = false)
     private LocalDate dateFin;
+
+    @Column(name = "photo_plante", nullable = false)
+    private String photoPlante;
+
+
+    @ManyToOne
+    @JoinColumn(name = "user", nullable = false)
+    private User user;
 
     //Utilisateurs repondants aux annonces
     @ManyToMany(mappedBy = "annonces_repondues")
@@ -54,7 +68,7 @@ public class Annonce {
 
 
     // Constructeur
-    public Annonce(String titreAnnonce, Set<Plante> plantes_annonce){
+   /* public Annonce(String titreAnnonce, Set<Plante> plantes_annonce){
         this.titreAnnonce = titreAnnonce;
         this.plantes_annonce = plantes_annonce;
     }
@@ -65,60 +79,6 @@ public class Annonce {
         utilisateurs_repondants = new HashSet<Utilisateur>();
     }
 
+    */
 
-    public Long getId() {
-        return id;
-    }
-
-    public void setId(Long id) {
-        this.id = id;
-    }
-
-    public String getTitreAnnonce() {
-        return titreAnnonce;
-    }
-
-    public void setTitreAnnonce(String titreAnnonce) {
-        this.titreAnnonce = titreAnnonce;
-    }
-
-    public LocalDate getDateDebut() {
-        return dateDebut;
-    }
-
-    public void setDateDebut(LocalDate dateDebut) {
-        this.dateDebut = dateDebut;
-    }
-
-    public LocalDate getDateFin() {
-        return dateFin;
-    }
-
-    public void setDateFin(LocalDate dateFin) {
-        this.dateFin = dateFin;
-    }
-
-    public Set<Utilisateur> getUtilisateurs_repondants() {
-        return utilisateurs_repondants;
-    }
-
-    public void setUtilisateurs_repondants(Set<Utilisateur> utilisateurs_repondants) {
-        this.utilisateurs_repondants = utilisateurs_repondants;
-    }
-
-    public Set<Plante> getPlantes_annonce() {
-        return plantes_annonce;
-    }
-
-    public void setPlantes_annonce(Set<Plante> plantes_annonce) {
-        this.plantes_annonce = plantes_annonce;
-    }
-
-    public Set<Reponse> getReponses() {
-        return reponses;
-    }
-
-    public void setReponses(Set<Reponse> reponses) {
-        this.reponses = reponses;
-    }
 }
