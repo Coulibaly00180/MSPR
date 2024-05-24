@@ -12,8 +12,7 @@ public class ChatNotification {
     // Ou utiliser plutot les senderId et recipientId
     // Si oui, modifier dans le chatController le builder
     // de la methode processMessage
-    private Utilisateur sender;
-    private Utilisateur recipient;
+    private User sender;
+    private User recipient;
     private String content;
-
 }

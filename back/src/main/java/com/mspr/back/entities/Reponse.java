@@ -13,7 +13,7 @@ public class Reponse {
     @ManyToOne
     @MapsId("utilisateur_id")
     @JoinColumn(name = "utilisateur_id")
-    private Utilisateur utilisateur;
+    private User user;
 
     @ManyToOne
     @MapsId("annonce_id")
@@ -35,12 +35,12 @@ public class Reponse {
         this.id = id;
     }
 
-    public Utilisateur getUtilisateur() {
-        return utilisateur;
+    public User getUser() {
+        return user;
     }
 
-    public void setUtilisateur(Utilisateur utilisateur) {
-        this.utilisateur = utilisateur;
+    public void setUser(User user) {
+        this.user = user;
     }
 
     public Annonce getAnnonce() {

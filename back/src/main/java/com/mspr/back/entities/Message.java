@@ -40,12 +40,11 @@ public class Message {
 
     @ManyToOne
     @JoinColumn(name = "id_expediteur")
-    private Utilisateur expediteur;
+    private User expediteur;
 
     @ManyToOne
     @JoinColumn(name = "id_destinataire")
-    private Utilisateur destinataire;
+    private User destinataire;
 
     public Message(){}
-
 }

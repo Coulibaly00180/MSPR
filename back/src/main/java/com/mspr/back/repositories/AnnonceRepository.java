@@ -23,24 +23,22 @@ public interface AnnonceRepository extends CrudRepository<Annonce, Long> {
 
     @Query("SELECT DISTINCT a FROM Annonce a " +
             "JOIN a.plantes_annonce p " +
-            "JOIN p.utilisateur u " +
+            "JOIN p.user u " +
             "WHERE u.id = :utilisateurId")
-    List<Annonce> findAnnoncesByUtilisateurId(@Param("utilisateurId") Long utilisateurId);
+    List<Annonce> findAnnoncesByUserId(@Param("utilisateurId") Long utilisateurId);
 
 
     @Query("SELECT DISTINCT a FROM Annonce a " +
             "JOIN a.plantes_annonce p " +
-            "JOIN p.utilisateur u " +
+            "JOIN p.user u " +
             "WHERE a.dateDebut <= CURRENT_DATE" +
             " AND a.dateFin >= CURRENT_DATE" +
-            " AND p.utilisateur.adresse = :adresseUtilisateur")
-    List<Annonce> findAnnoncesEnCoursByAdresseUtilisateur(@Param("adresseUtilisateur") String adresseUtilisateur);
+            " AND p.user.adresse = :adresseUtilisateur")
+    List<Annonce> findAnnoncesEnCoursByUserAddress(@Param("adresseUtilisateur") String adresseUtilisateur);
 
     List<Annonce> findByDateFinAfter(LocalDate dateFin);
     List<Annonce> findByDateFinBefore(LocalDate dateFin);
 
     List<Annonce> findByDateDebutBeforeAndDateFinAfter(LocalDate dateDebut, LocalDate dateFin);
-
-
 
 }

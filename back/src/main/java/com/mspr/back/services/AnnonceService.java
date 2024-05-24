@@ -57,14 +57,14 @@ public class AnnonceService {
         return annonceRepository.findAnnonceDetails(annonceId);
     }
 
-    public Iterable<Annonce> getAnnoncesByUtilisateur(Long utilisateurId) {
-        return annonceRepository.findAnnoncesByUtilisateurId(utilisateurId);
+    public Iterable<Annonce> getAnnoncesByUser(Long utilisateurId) {
+        return annonceRepository.findAnnoncesByUserId(utilisateurId);
     }
 
 
     // Recupérer les annonces en cours d'un utilisateur par son adresse
-    public List<Annonce> getAnnoncesEnCoursByAdresseUtilisateur(String adresseUtilisateur) {
-        return annonceRepository.findAnnoncesEnCoursByAdresseUtilisateur(adresseUtilisateur);
+    public List<Annonce> getAnnoncesEnCoursByAdresseUser(String userAddress) {
+        return annonceRepository.findAnnoncesEnCoursByUserAddress(userAddress);
     }
 
     // Recupérer les annonces en cours
@@ -72,8 +72,6 @@ public class AnnonceService {
         LocalDate now = LocalDate.now();
         return annonceRepository.findByDateDebutBeforeAndDateFinAfter(now, now);
     }
-
-
     /*
     *
 
@@ -84,6 +82,4 @@ public class AnnonceService {
     }
     *
     * */
-
-
 }

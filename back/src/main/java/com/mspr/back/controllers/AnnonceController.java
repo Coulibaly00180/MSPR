@@ -43,7 +43,7 @@ public class AnnonceController {
     // Les annonces d'un utilisateurs
     @GetMapping("/utilisateur/{utilisateurId}")
     public Iterable<Annonce> getAnnoncesByUtilisateur(@PathVariable Long utilisateurId) {
-        return annonceService.getAnnoncesByUtilisateur(utilisateurId);
+        return annonceService.getAnnoncesByUser(utilisateurId);
     }
 
     // recuperer les details d'une annonce
@@ -61,14 +61,12 @@ public class AnnonceController {
 
 
     @GetMapping("/en-cours/{adresseUtilisateur}")
-    public List<Annonce> getAnnoncesEnCoursByAdresseUtilisateur(@PathVariable String adresseUtilisateur) {
-        return annonceService.getAnnoncesEnCoursByAdresseUtilisateur(adresseUtilisateur);
+    public List<Annonce> getAnnoncesEnCoursByAdresseUtilisateur(@PathVariable String userAddress) {
+        return annonceService.getAnnoncesEnCoursByAdresseUser(userAddress);
     }
-
 
     @GetMapping("/encours")
     public List<Annonce> getAnnoncesEnCours() {
         return annonceService.getAnnoncesEnCours();
     }
-
 }

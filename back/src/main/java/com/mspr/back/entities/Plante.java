@@ -2,7 +2,6 @@ package com.mspr.back.entities;
 
 import jakarta.persistence.*;
 import lombok.Data;
-import  com.mspr.back.entities.Botaniste;
 
 import java.util.HashSet;
 import java.util.Set;
@@ -45,7 +44,7 @@ public class Plante {
 
     @ManyToOne
     @JoinColumn(name="utilisateur_id")
-    private Utilisateur utilisateur;
+    private User user;
 
     public Plante() {
         annonces = new HashSet<Annonce>();
@@ -108,12 +107,12 @@ public class Plante {
         this.commentaires = commentaires;
     }
 
-    public Utilisateur getUtilisateur() {
-        return utilisateur;
+    public User getUser() {
+        return user;
     }
 
-    public void setUtilisateur(Utilisateur utilisateur) {
-        this.utilisateur = utilisateur;
+    public void setUser(User user) {
+        this.user = user;
     }
 }
 

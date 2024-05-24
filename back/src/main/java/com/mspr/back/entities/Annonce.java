@@ -28,7 +28,7 @@ public class Annonce {
 
     //Utilisateurs repondants aux annonces
     @ManyToMany(mappedBy = "annonces_repondues")
-    private Set<Utilisateur> utilisateurs_repondants;
+    private Set<User> utilisateurs_repondants;
 
     //Utilisateurs publiant une annonce
    /* @ManyToOne
@@ -62,7 +62,7 @@ public class Annonce {
     public Annonce() {
         reponses = new HashSet<Reponse>();
         plantes_annonce = new HashSet<Plante>();
-        utilisateurs_repondants = new HashSet<Utilisateur>();
+        utilisateurs_repondants = new HashSet<User>();
     }
 
 
@@ -98,11 +98,11 @@ public class Annonce {
         this.dateFin = dateFin;
     }
 
-    public Set<Utilisateur> getUtilisateurs_repondants() {
+    public Set<User> getUtilisateurs_repondants() {
         return utilisateurs_repondants;
     }
 
-    public void setUtilisateurs_repondants(Set<Utilisateur> utilisateurs_repondants) {
+    public void setUtilisateurs_repondants(Set<User> utilisateurs_repondants) {
         this.utilisateurs_repondants = utilisateurs_repondants;
     }
 

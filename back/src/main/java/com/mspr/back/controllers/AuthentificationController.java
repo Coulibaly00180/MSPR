@@ -1,17 +1,12 @@
 package com.mspr.back.controllers;
 
-import com.mspr.back.entities.Utilisateur;
-import com.mspr.back.repositories.UtilisateurRepository;
+import com.mspr.back.entities.User;
 import com.mspr.back.services.AuthentificationService;
-import com.mspr.back.services.UtilisateurService;
-import jakarta.servlet.http.HttpSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.DataIntegrityViolationException;
-import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
-import javax.naming.AuthenticationException;
 import java.util.Map;
 @CrossOrigin
 @RestController
@@ -43,7 +38,7 @@ public class AuthentificationController {
 
     // Pour gerer l'inscription
     @PostMapping("/signup")
-    public ResponseEntity<String> signup(@RequestBody Utilisateur utilisateur){
+    public ResponseEntity<String> signup(@RequestBody User user){
 
         try {
 
@@ -51,7 +46,7 @@ public class AuthentificationController {
             //
             // validateInput(email,password);
 
-            if (authentificationService.inscriptionUtilisateur(utilisateur)){
+            if (authentificationService.inscriptionUtilisateur(user)){
                 return ResponseEntity.ok("L'utilisateur a été crée");
             }
             else {
@@ -59,19 +54,14 @@ public class AuthentificationController {
             }
         }
 
-
         catch (IllegalArgumentException e) {
             return ResponseEntity.badRequest().body(e.getMessage());
         } catch (DataIntegrityViolationException e) {
             return ResponseEntity.badRequest().body("Ce pseudo existe déjà");
         }
 
-
         //authentificationService.inscriptionUtilisateur(utilisateur);
-
-
     }
-
 
 
     private void validateInput(String email, String password) {
@@ -82,8 +72,4 @@ public class AuthentificationController {
             throw new IllegalArgumentException("Le mot de passe doit contenir au moins 3 caractères");
         }
     }
-
 }
-
-
-

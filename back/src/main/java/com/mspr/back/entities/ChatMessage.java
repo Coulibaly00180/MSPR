@@ -37,11 +37,11 @@ public class ChatMessage {
     @JsonBackReference
     @ManyToOne
     @JoinColumn(name = "sender_id")
-    private Utilisateur sender;
+    private User sender;
 
     @ManyToOne
     @JoinColumn(name = "recipient_id")
-    private Utilisateur recipient;
+    private User recipient;
 
 
 

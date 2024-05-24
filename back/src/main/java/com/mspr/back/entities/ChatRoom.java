@@ -23,23 +23,19 @@ public class ChatRoom {
     private String nom;
 
     /*
-
     private Long senderId;
 
     private Long recipientId;
      */
 
-
     @ManyToOne
     @JoinColumn(name = "sender_id")
-    private Utilisateur sender;
+    private User sender;
 
     @ManyToOne
     @JoinColumn(name = "recipient_id")
-    private Utilisateur recipient;
+    private User recipient;
 
     @OneToMany(mappedBy = "chatRoom")
     private List<ChatMessage> messages;
-
-
 }

@@ -1,7 +1,7 @@
 package com.mspr.back.services;
 
-import com.mspr.back.entities.Utilisateur;
-import com.mspr.back.repositories.UtilisateurRepository;
+import com.mspr.back.entities.User;
+import com.mspr.back.repositories.UserRepository;
 import lombok.Data;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -12,22 +12,20 @@ import org.springframework.stereotype.Service;
 @Slf4j
 public class AuthentificationService {
 
-    private final UtilisateurRepository utilisateurRepository;
+    private final UserRepository userRepository;
     //private final BCryptPasswordEncoder passwordEncoder; // mot de passe hasher
 
     @Autowired
-    public AuthentificationService(UtilisateurRepository utilisateurRepository){
-        this.utilisateurRepository = utilisateurRepository;
+    public AuthentificationService(UserRepository userRepository){
+        this.userRepository = userRepository;
     }
 
     // Verifie la connexion
     public boolean connecteUtilisateur(String email, String password){
-        Utilisateur utilisateur = utilisateurRepository.findByEmail(email);
-        return utilisateur != null && password.equals(utilisateur.getPassword());
+        User user = userRepository.findByEmail(email);
+        return user != null && password.equals(user.getPassword());
         //return emailUser != null && passwordEncoder.matches(password, utilisateur.getPassword());
     }
-
-
 
     /*
     public Utilisateur register(Utilisateur utilisateur) throws EntityAlreadyExistsException {
@@ -44,24 +42,18 @@ public class AuthentificationService {
 
      */
 
-
-
     // Verifie si l'utilisateur est inscrit
     // Sinon le creer
-    public boolean inscriptionUtilisateur(Utilisateur utilisateur) {
+    public boolean inscriptionUtilisateur(User user) {
 
-
-        if(utilisateurRepository.findByEmail(utilisateur.getEmail())!=null){
+        if(userRepository.findByEmail(user.getEmail())!=null){
             return false;
         }
-        utilisateurRepository.save(utilisateur);
+        userRepository.save(user);
         return true;
-
 
         // String passwordEncode = passwordEncoder.encode(utilisateur.getPassword());
         // utilisateur.setPassword(passwordEncode);       // Si l'utilisateur existe déjà
-
-
 
         //if (utilisateurRepository.findByEmail(email) != null){
         //return false;
@@ -71,8 +63,6 @@ public class AuthentificationService {
         //newUtilisateur.setEmail(email);
         //newUtilisateur.setPassword(passwordEncoder.encode(password)); // Hash le mot de passe
 
-
         //log.info(" =============== " +passwordEncode);
-
     }
 }
