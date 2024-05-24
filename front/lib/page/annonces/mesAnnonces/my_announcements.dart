@@ -42,8 +42,8 @@ class MyAdsPage extends StatelessWidget {
                 },
                 child: const Text('DETAILS'),
                 style: ElevatedButton.styleFrom(
-                  primary: Colors.black,
-                  onPrimary: Colors.white,
+                  //primary: Colors.black,
+                  //onPrimary: Colors.white,
                 ),
               ),
             ),

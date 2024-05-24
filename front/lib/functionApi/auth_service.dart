@@ -1,7 +1,10 @@
 import 'package:http/http.dart' as http;
 import 'dart:convert';
+import 'package:front/token.dart';
 
 class AuthService {
+
+  static final TokenStorage _tokenStorage = TokenStorage();
 
   // Inscription
   static Future<bool> signup(String pseudo, String password, String email, String nom, String prenom, String adresse) async {
@@ -44,7 +47,10 @@ class AuthService {
 
     if (response.statusCode == 200) {
       // Connexion réussie
-      // Vous pouvez traiter la réponse ici, par exemple en sauvegardant le jeton d'authentification
+      // Sauvegarder le jeton d'authentification
+      final Map<String, dynamic> responseData = json.decode(response.body);
+      final String token = responseData['token'];
+      await _tokenStorage.saveToken(token);
       print('Connexion réussie');
       return true;
     } else {

@@ -40,8 +40,8 @@ class PlantDetailsPage extends StatelessWidget {
                 //TODO Implement delete functionality
               },
               style: ElevatedButton.styleFrom(
-                primary: Colors.red,
-                onPrimary: Colors.white,
+                //primary: Colors.red,
+                //onPrimary: Colors.white,
                 minimumSize: const Size(double.infinity, 50),
               ),
               child: const Text('Supprimer mon annonce')
@@ -52,8 +52,8 @@ class PlantDetailsPage extends StatelessWidget {
                 // TODO Implement contact functionality
               },
               style: ElevatedButton.styleFrom(
-                primary: Colors.blue,
-                onPrimary: Colors.white,
+                //primary: Colors.blue,
+                //onPrimary: Colors.white,
                 minimumSize: const Size(double.infinity, 50),
               ),
               child: const Text('Contacter mon ARos-eur'),

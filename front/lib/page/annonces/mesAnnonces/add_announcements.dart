@@ -89,11 +89,11 @@ class AddAnnouncementPage extends StatelessWidget {
                           // TODO: Implement les fonctions pour ajouter l'annonce
                         },
                         child: const Text('Ajouter mon annonce'),
-                        style: ElevatedButton.styleFrom(
-                          primary: Colors.green,
-                          onPrimary: Colors.white,
-                          minimumSize: const Size(double.infinity, 50),
-                        ),
+                        //style: ElevatedButton.styleFrom(
+                          //primary: Colors.green,
+                         // onPrimary: Colors.white,
+                          //minimumSize: const Size(double.infinity, 50),
+                       // ),
                       ),
                     ],
                   ),

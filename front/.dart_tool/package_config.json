@@ -33,9 +33,9 @@
     },
     {
       "name": "cross_file",
-      "rootUri": "file:///Users/juliebannier/.pub-cache/hosted/pub.dev/cross_file-0.3.3+8",
+      "rootUri": "file:///Users/juliebannier/.pub-cache/hosted/pub.dev/cross_file-0.3.4+1",
       "packageUri": "lib/",
-      "languageVersion": "3.2"
+      "languageVersion": "3.3"
     },
     {
       "name": "crypto",
@@ -45,9 +45,9 @@
     },
     {
       "name": "cupertino_icons",
-      "rootUri": "file:///Users/juliebannier/.pub-cache/hosted/pub.dev/cupertino_icons-1.0.6",
+      "rootUri": "file:///Users/juliebannier/.pub-cache/hosted/pub.dev/cupertino_icons-1.0.8",
       "packageUri": "lib/",
-      "languageVersion": "2.19"
+      "languageVersion": "3.1"
     },
     {
       "name": "fake_async",
@@ -57,9 +57,9 @@
     },
     {
       "name": "ffi",
-      "rootUri": "file:///Users/juliebannier/.pub-cache/hosted/pub.dev/ffi-2.1.0",
+      "rootUri": "file:///Users/juliebannier/.pub-cache/hosted/pub.dev/ffi-2.1.2",
       "packageUri": "lib/",
-      "languageVersion": "3.0"
+      "languageVersion": "3.3"
     },
     {
       "name": "file_selector_linux",
@@ -69,9 +69,9 @@
     },
     {
       "name": "file_selector_macos",
-      "rootUri": "file:///Users/juliebannier/.pub-cache/hosted/pub.dev/file_selector_macos-0.9.3+3",
+      "rootUri": "file:///Users/juliebannier/.pub-cache/hosted/pub.dev/file_selector_macos-0.9.4",
       "packageUri": "lib/",
-      "languageVersion": "2.19"
+      "languageVersion": "3.1"
     },
     {
       "name": "file_selector_platform_interface",
@@ -89,7 +89,7 @@
       "name": "flutter",
       "rootUri": "file:///Users/juliebannier/Documents/flutter/packages/flutter",
       "packageUri": "lib/",
-      "languageVersion": "3.2"
+      "languageVersion": "3.3"
     },
     {
       "name": "flutter_lints",
@@ -105,13 +105,13 @@
     },
     {
       "name": "flutter_plugin_android_lifecycle",
-      "rootUri": "file:///Users/juliebannier/.pub-cache/hosted/pub.dev/flutter_plugin_android_lifecycle-2.0.17",
+      "rootUri": "file:///Users/juliebannier/.pub-cache/hosted/pub.dev/flutter_plugin_android_lifecycle-2.0.19",
       "packageUri": "lib/",
-      "languageVersion": "2.19"
+      "languageVersion": "3.2"
     },
     {
       "name": "flutter_secure_storage",
-      "rootUri": "file:///Users/juliebannier/.pub-cache/hosted/pub.dev/flutter_secure_storage-9.2.1",
+      "rootUri": "file:///Users/juliebannier/.pub-cache/hosted/pub.dev/flutter_secure_storage-9.2.2",
       "packageUri": "lib/",
       "languageVersion": "2.12"
     },
@@ -123,7 +123,7 @@
     },
     {
       "name": "flutter_secure_storage_macos",
-      "rootUri": "file:///Users/juliebannier/.pub-cache/hosted/pub.dev/flutter_secure_storage_macos-3.1.1",
+      "rootUri": "file:///Users/juliebannier/.pub-cache/hosted/pub.dev/flutter_secure_storage_macos-3.1.2",
       "packageUri": "lib/",
       "languageVersion": "2.12"
     },
@@ -149,7 +149,7 @@
       "name": "flutter_test",
       "rootUri": "file:///Users/juliebannier/Documents/flutter/packages/flutter_test",
       "packageUri": "lib/",
-      "languageVersion": "3.2"
+      "languageVersion": "3.3"
     },
     {
       "name": "flutter_web_plugins",
@@ -165,21 +165,21 @@
     },
     {
       "name": "go_router",
-      "rootUri": "file:///Users/juliebannier/.pub-cache/hosted/pub.dev/go_router-13.1.0",
+      "rootUri": "file:///Users/juliebannier/.pub-cache/hosted/pub.dev/go_router-13.2.5",
       "packageUri": "lib/",
-      "languageVersion": "3.0"
+      "languageVersion": "3.2"
     },
     {
       "name": "google_fonts",
-      "rootUri": "file:///Users/juliebannier/.pub-cache/hosted/pub.dev/google_fonts-6.1.0",
+      "rootUri": "file:///Users/juliebannier/.pub-cache/hosted/pub.dev/google_fonts-6.2.1",
       "packageUri": "lib/",
       "languageVersion": "2.14"
     },
     {
       "name": "http",
-      "rootUri": "file:///Users/juliebannier/.pub-cache/hosted/pub.dev/http-1.2.0",
+      "rootUri": "file:///Users/juliebannier/.pub-cache/hosted/pub.dev/http-1.2.1",
       "packageUri": "lib/",
-      "languageVersion": "3.2"
+      "languageVersion": "3.3"
     },
     {
       "name": "http_parser",
@@ -189,27 +189,27 @@
     },
     {
       "name": "image_picker",
-      "rootUri": "file:///Users/juliebannier/.pub-cache/hosted/pub.dev/image_picker-1.0.7",
+      "rootUri": "file:///Users/juliebannier/.pub-cache/hosted/pub.dev/image_picker-1.1.1",
       "packageUri": "lib/",
-      "languageVersion": "3.0"
+      "languageVersion": "3.3"
     },
     {
       "name": "image_picker_android",
-      "rootUri": "file:///Users/juliebannier/.pub-cache/hosted/pub.dev/image_picker_android-0.8.9+3",
+      "rootUri": "file:///Users/juliebannier/.pub-cache/hosted/pub.dev/image_picker_android-0.8.12+1",
       "packageUri": "lib/",
-      "languageVersion": "3.0"
+      "languageVersion": "3.3"
     },
     {
       "name": "image_picker_for_web",
-      "rootUri": "file:///Users/juliebannier/.pub-cache/hosted/pub.dev/image_picker_for_web-3.0.2",
+      "rootUri": "file:///Users/juliebannier/.pub-cache/hosted/pub.dev/image_picker_for_web-3.0.4",
       "packageUri": "lib/",
-      "languageVersion": "3.0"
+      "languageVersion": "3.3"
     },
     {
       "name": "image_picker_ios",
-      "rootUri": "file:///Users/juliebannier/.pub-cache/hosted/pub.dev/image_picker_ios-0.8.9+1",
+      "rootUri": "file:///Users/juliebannier/.pub-cache/hosted/pub.dev/image_picker_ios-0.8.11+2",
       "packageUri": "lib/",
-      "languageVersion": "3.0"
+      "languageVersion": "3.3"
     },
     {
       "name": "image_picker_linux",
@@ -225,9 +225,9 @@
     },
     {
       "name": "image_picker_platform_interface",
-      "rootUri": "file:///Users/juliebannier/.pub-cache/hosted/pub.dev/image_picker_platform_interface-2.9.3",
+      "rootUri": "file:///Users/juliebannier/.pub-cache/hosted/pub.dev/image_picker_platform_interface-2.10.0",
       "packageUri": "lib/",
-      "languageVersion": "3.0"
+      "languageVersion": "3.3"
     },
     {
       "name": "image_picker_windows",
@@ -249,9 +249,27 @@
     },
     {
       "name": "latlong2",
-      "rootUri": "file:///Users/juliebannier/.pub-cache/hosted/pub.dev/latlong2-0.9.0",
+      "rootUri": "file:///Users/juliebannier/.pub-cache/hosted/pub.dev/latlong2-0.9.1",
       "packageUri": "lib/",
       "languageVersion": "3.0"
+    },
+    {
+      "name": "leak_tracker",
+      "rootUri": "file:///Users/juliebannier/.pub-cache/hosted/pub.dev/leak_tracker-10.0.4",
+      "packageUri": "lib/",
+      "languageVersion": "3.2"
+    },
+    {
+      "name": "leak_tracker_flutter_testing",
+      "rootUri": "file:///Users/juliebannier/.pub-cache/hosted/pub.dev/leak_tracker_flutter_testing-3.0.3",
+      "packageUri": "lib/",
+      "languageVersion": "3.2"
+    },
+    {
+      "name": "leak_tracker_testing",
+      "rootUri": "file:///Users/juliebannier/.pub-cache/hosted/pub.dev/leak_tracker_testing-3.0.1",
+      "packageUri": "lib/",
+      "languageVersion": "3.2"
     },
     {
       "name": "lints",
@@ -267,7 +285,7 @@
     },
     {
       "name": "logger",
-      "rootUri": "file:///Users/juliebannier/.pub-cache/hosted/pub.dev/logger-2.0.2+1",
+      "rootUri": "file:///Users/juliebannier/.pub-cache/hosted/pub.dev/logger-2.3.0",
       "packageUri": "lib/",
       "languageVersion": "2.17"
     },
@@ -279,19 +297,19 @@
     },
     {
       "name": "matcher",
-      "rootUri": "file:///Users/juliebannier/.pub-cache/hosted/pub.dev/matcher-0.12.16",
+      "rootUri": "file:///Users/juliebannier/.pub-cache/hosted/pub.dev/matcher-0.12.16+1",
       "packageUri": "lib/",
-      "languageVersion": "2.18"
+      "languageVersion": "3.0"
     },
     {
       "name": "material_color_utilities",
-      "rootUri": "file:///Users/juliebannier/.pub-cache/hosted/pub.dev/material_color_utilities-0.5.0",
+      "rootUri": "file:///Users/juliebannier/.pub-cache/hosted/pub.dev/material_color_utilities-0.8.0",
       "packageUri": "lib/",
       "languageVersion": "2.17"
     },
     {
       "name": "meta",
-      "rootUri": "file:///Users/juliebannier/.pub-cache/hosted/pub.dev/meta-1.10.0",
+      "rootUri": "file:///Users/juliebannier/.pub-cache/hosted/pub.dev/meta-1.12.0",
       "packageUri": "lib/",
       "languageVersion": "2.12"
     },
@@ -321,27 +339,27 @@
     },
     {
       "name": "path",
-      "rootUri": "file:///Users/juliebannier/.pub-cache/hosted/pub.dev/path-1.8.3",
+      "rootUri": "file:///Users/juliebannier/.pub-cache/hosted/pub.dev/path-1.9.0",
       "packageUri": "lib/",
-      "languageVersion": "2.12"
+      "languageVersion": "3.0"
     },
     {
       "name": "path_provider",
-      "rootUri": "file:///Users/juliebannier/.pub-cache/hosted/pub.dev/path_provider-2.1.2",
+      "rootUri": "file:///Users/juliebannier/.pub-cache/hosted/pub.dev/path_provider-2.1.3",
       "packageUri": "lib/",
-      "languageVersion": "3.0"
+      "languageVersion": "3.1"
     },
     {
       "name": "path_provider_android",
-      "rootUri": "file:///Users/juliebannier/.pub-cache/hosted/pub.dev/path_provider_android-2.2.2",
+      "rootUri": "file:///Users/juliebannier/.pub-cache/hosted/pub.dev/path_provider_android-2.2.4",
       "packageUri": "lib/",
-      "languageVersion": "3.0"
+      "languageVersion": "3.2"
     },
     {
       "name": "path_provider_foundation",
-      "rootUri": "file:///Users/juliebannier/.pub-cache/hosted/pub.dev/path_provider_foundation-2.3.2",
+      "rootUri": "file:///Users/juliebannier/.pub-cache/hosted/pub.dev/path_provider_foundation-2.4.0",
       "packageUri": "lib/",
-      "languageVersion": "3.0"
+      "languageVersion": "3.2"
     },
     {
       "name": "path_provider_linux",
@@ -387,7 +405,7 @@
     },
     {
       "name": "provider",
-      "rootUri": "file:///Users/juliebannier/.pub-cache/hosted/pub.dev/provider-6.1.1",
+      "rootUri": "file:///Users/juliebannier/.pub-cache/hosted/pub.dev/provider-6.1.2",
       "packageUri": "lib/",
       "languageVersion": "2.12"
     },
@@ -429,7 +447,7 @@
     },
     {
       "name": "test_api",
-      "rootUri": "file:///Users/juliebannier/.pub-cache/hosted/pub.dev/test_api-0.6.1",
+      "rootUri": "file:///Users/juliebannier/.pub-cache/hosted/pub.dev/test_api-0.7.0",
       "packageUri": "lib/",
       "languageVersion": "3.0"
     },
@@ -452,16 +470,22 @@
       "languageVersion": "2.14"
     },
     {
-      "name": "web",
-      "rootUri": "file:///Users/juliebannier/.pub-cache/hosted/pub.dev/web-0.3.0",
+      "name": "vm_service",
+      "rootUri": "file:///Users/juliebannier/.pub-cache/hosted/pub.dev/vm_service-14.2.1",
       "packageUri": "lib/",
-      "languageVersion": "3.2"
+      "languageVersion": "3.3"
+    },
+    {
+      "name": "web",
+      "rootUri": "file:///Users/juliebannier/.pub-cache/hosted/pub.dev/web-0.5.1",
+      "packageUri": "lib/",
+      "languageVersion": "3.3"
     },
     {
       "name": "win32",
-      "rootUri": "file:///Users/juliebannier/.pub-cache/hosted/pub.dev/win32-5.2.0",
+      "rootUri": "file:///Users/juliebannier/.pub-cache/hosted/pub.dev/win32-5.5.1",
       "packageUri": "lib/",
-      "languageVersion": "3.2"
+      "languageVersion": "3.4"
     },
     {
       "name": "wkt_parser",
@@ -482,7 +506,10 @@
       "languageVersion": "3.2"
     }
   ],
-  "generated": "2024-05-21T13:31:20.453163Z",
+  "generated": "2024-05-24T07:38:54.936717Z",
   "generator": "pub",
-  "generatorVersion": "3.2.6"
+  "generatorVersion": "3.4.1",
+  "flutterRoot": "file:///Users/juliebannier/Documents/flutter",
+  "flutterVersion": "3.22.1",
+  "pubCache": "file:///Users/juliebannier/.pub-cache"
 }
