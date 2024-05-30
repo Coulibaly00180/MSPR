@@ -1,14 +1,19 @@
 package com.mspr.back.entities;
 
 import jakarta.persistence.*;
-import lombok.Data;
+import lombok.*;
+
 import java.time.LocalDate;
-import java.util.HashSet;
 import java.util.Set;
 
 
 @Data
+@Getter
+@Setter
 @Entity
+@NoArgsConstructor
+@AllArgsConstructor
+@Builder
 @Table(name = "Annonce")
 public class Annonce {
     
@@ -25,6 +30,14 @@ public class Annonce {
 
     @Column(name = "date_fin", nullable = false)
     private LocalDate dateFin;
+
+    @Column(name = "photo_plante", nullable = false)
+    private String photoPlante;
+
+
+    @ManyToOne
+    @JoinColumn(name = "user", nullable = false)
+    private User user;
 
     //Utilisateurs repondants aux annonces
     @ManyToMany(mappedBy = "annonces_repondues")
@@ -54,7 +67,7 @@ public class Annonce {
 
 
     // Constructeur
-    public Annonce(String titreAnnonce, Set<Plante> plantes_annonce){
+   /* public Annonce(String titreAnnonce, Set<Plante> plantes_annonce){
         this.titreAnnonce = titreAnnonce;
         this.plantes_annonce = plantes_annonce;
     }
@@ -65,6 +78,7 @@ public class Annonce {
         utilisateurs_repondants = new HashSet<User>();
     }
 
+    */
 
     public Long getId() {
         return id;

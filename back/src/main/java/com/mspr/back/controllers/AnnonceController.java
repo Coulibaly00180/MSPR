@@ -2,6 +2,7 @@ package com.mspr.back.controllers;
 
 import com.mspr.back.entities.Annonce;
 import com.mspr.back.services.AnnonceService;
+import com.mspr.back.services.JwtService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -13,16 +14,43 @@ public class AnnonceController {
 
     @Autowired
     private final AnnonceService annonceService;
+    private final JwtService jwtService;
 
-    public AnnonceController(AnnonceService annonceService) {
+    public AnnonceController(AnnonceService annonceService, JwtService jwtService) {
+
         this.annonceService = annonceService;
+        this.jwtService = jwtService;
     }
 
     // ajouter une annonce
-    @PostMapping("/add")
+
+    /*@PostMapping
+    public ResponseEntity<Annonce> createAnnonce(@RequestParam("titreAnnonce") String titreAnnonce,
+                                                 @RequestParam("dateDebut") @DateTimeFormat(iso = DateTimeFormat.ISO.DATE) LocalDate dateDebut,
+                                                 @RequestParam("dateFin") @DateTimeFormat(iso = DateTimeFormat.ISO.DATE) LocalDate dateFin,
+                                                 @RequestParam("photoPlante") MultipartFile photoPlante) throws IOException {
+        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+        User currentUser = (User) authentication.getPrincipal();
+
+        AnnonceDto createAnnonceDto = new AnnonceDto();
+        createAnnonceDto.setTitre(titreAnnonce);
+        createAnnonceDto.setDateDebut(dateDebut);
+        createAnnonceDto.setDateFin(dateFin);
+
+        Annonce newAnnonce = annonceService.createAnnonce(createAnnonceDto, currentUser.getId(), photoPlante);
+
+        return ResponseEntity.ok(newAnnonce);
+    }
+
+     */
+
+
+   /* @PostMapping("/add")
     public Annonce addAnnonce(@RequestBody Annonce annonce) {
         return annonceService.addAnnonce(annonce);
     }
+
+    */
 
     /*
     @GetMapping("/{id}")
